@@ -1,0 +1,35 @@
+{% load i18n wagtailimages_tags blog_tags %}
+<li class="list-group-item">
+<dl>
+{% for entry in entries %}
+<dt>
+    <h6>
+        <a href="{% entry_url entry blog_page %}">{{ entry.title }}</a>
+    </h6>
+</dt>
+<dl>
+    <small>
+    <ul class="list-inline">
+        <li>
+            <i class="fa fa-user"></i>
+            {{ entry.owner.username }}
+        </li>
+        <li>
+            <i class="fa fa-calendar"></i>
+            {{ entry.date|date:"SHORT_DATE_FORMAT" }}
+        </li>
+        {% if blog_page.disqus_api_secret %}
+            <li>
+                <i class="fa fa-comments"></i>
+                {{ entry.num_comments }}
+            </li>
+        {% endif %}
+    </ul></small>
+</dl>
+{% empty %}
+<dt>
+    {% trans 'No entries yet' %}
+</dt>
+{% endfor %}
+</dl>
+</li>

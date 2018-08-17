@@ -1,0 +1,61 @@
+{% load wagtailcore_tags wagtailimages_tags static block_tags %}
+<div id="card-{{ id }}" class="col col-lg-{{ columns }} col-md-{{ columns }} col-sm-12 col-xs-12">
+{% if card.card_type in "card-avatar" %}
+    <div class="card card-avatar">
+        <div class="card-img-top">
+             <img class="img-fluid" src="{% static 'images/bg_squares.jpg'%}" alt="..."/>
+        </div>
+        <div class="card-body">
+            <div class="card-title">
+                <a href="{{ card.url_link }}">
+                {% image card.image original as theimage %}
+                    <img src="{{ theimage.url }}" class="avatar" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
+                    {% with card.title|mysplit:"|" as parts %}
+                    <h5 class="card-title">{{ parts.0 }}</h5>
+                </a>
+                <h6 class="card-subtitle">{{ parts.1 }}</h6>
+                {% endwith %}
+            </div>
+            <p class="card-text">{{ card.text|safe }}</p>
+        </div>
+        {% if card.footer %}<div class="card-footer text-muted">{{ card.footer|safe }}</div>{% endif %}
+    </div>
+{% elif card.card_type in "card-background" %}
+    {% image card.image original as theimage %}
+<div class="card card-background " style="background-image: url({{ theimage.url }});">
+    <div class="filter"></div>
+    <div class="card-body">
+        <div class="author">
+            {% with card.title|mysplit:"|" as parts %}
+            <a href="{{ card.url_link }}"><h5 class="card-title">{{ parts.0 }}</h5></a>
+            <p class="description">{{ parts.1 }}</p>
+            {% endwith %}
+        </div>
+        <p class="card-text">{{ card.text|safe }}</p>
+    </div>
+    {% if card.footer %}<div class="card-footer text-muted">{{ card.footer|safe }}</div>{% endif %}
+</div>
+{% else %}
+<div class="card">
+    <div class="card-img-top">
+        <div class="filter text-center">
+{% if card.url_link %}<a href="{{ card.url_link }}" type="button" class="btn btn-link">
+                <i class="fas fa-link"></i>
+            </a>{% endif %}
+        </div>
+        {% image card.image original as theimage %}
+        <img class="img-fluid" src="{{ theimage.url }}" width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}">
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+            {% with card.title|mysplit:"|" as parts %}
+            <a href="#"><h5 class="card-subtitle">{{ parts.0 }}</h5></a>
+            <p class="description">{{ parts.1 }}</p>
+            {% endwith %}
+        </div>
+        <p class="card-text">{{ card.text|safe }}</p>
+    </div>
+    {% if card.footer %}<div class="card-footer text-muted">{{ card.footer|safe }}</div>{% endif %}
+</div>
+{% endif %}
+</div>

@@ -1,0 +1,84 @@
+{% load i18n static wagtailadmin_tags %}
+<fieldset>
+    <legend>{{ self.heading }}</legend>
+    <ul class="fields">
+        <li>
+            {% include "wagtailadmin/shared/field.html" with show_label=True show_help_text=False %}
+        </li>
+            <li id="id_menu_icon_buttons">
+                <button autocomplete="off" type="button" class="button awesome button-longrunning" data-clicked-text="{% trans 'Please wait...' %}">
+                    <span class="icon icon-spinner"></span>
+                    {% trans "Load from" %} Fontawesome
+                </button>
+                <button autocomplete="off" type="button" class="button pe button-longrunning" data-clicked-text="Please wait...">
+                    <span class="icon icon-spinner"></span>
+                    {% trans "Load from" %} Pe 7 Pixeden
+                </button>
+            </li>
+    </ul>
+</fieldset>
+
+{% block extra_js %}
+<script type="text/javascript">
+var icomoon_check = loadJSON('{% static "js/pe-7-font.json" %}','icomoon');
+var fontello_check = loadJSON('{% static "local/fontello/config.json" %}','fontello');
+$(function() {
+var original_fa = '<span class="icon icon-spinner"></span>' +  $('#id_menu_icon_buttons button.awesome').text(),
+    original_pe = '<span class="icon icon-spinner"></span>' +  $('#id_menu_icon_buttons button.pe').text();
+
+
+    // Init the font icon picker
+    $('#id_menu_icon').closest('li.char_field').css('overflow','visible');
+    var menu_icon = $('#id_menu_icon').fontIconPicker({
+        theme: 'fip-grey',
+        emptyIcon: true,
+        hasSearch: true,
+    });
+    // Add the event on the button
+    $('#id_menu_icon_buttons button.awesome').click(function(e) {
+        e.preventDefault();
+        // Show processing message
+        $(this).prop('disabled', true).addClass('button-longrunning-active');
+        setTimeout(function() {
+            if (fontello_check == true) {
+                // Set new fonts
+                menu_icon.setIcons($fontello_json_icons);
+
+                // Show success message and disable
+                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('Icons loaded').prop('disabled', true);
+                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_pe).prop('disabled', false);
+
+            } else {
+                // Show error message and enable
+                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
+            }
+        }, 1500);
+        e.stopPropagation();
+    });
+    $('#id_menu_icon_buttons button.pe').click(function(e) {
+        e.preventDefault();
+        // Show processing message
+        $(this).prop('disabled', true).addClass('button-longrunning-active');
+        setTimeout(function() {
+            if (icomoon_check == true) {
+                menu_icon.setIcons($icomoon_json_icons, $icomoon_json_search);
+                // Show success message and disable
+                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('Icons loaded').prop('disabled', true);
+                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_fa).prop('disabled', false);
+            } else {
+                // Show error message and enable
+                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
+
+            }
+        }, 1500);
+        e.stopPropagation();
+    });
+    // autoselect font depending on input value
+    var iconEntered = $("input#id_menu_icon").val();
+    var substring = "pe-7s";
+    if(iconEntered.indexOf(substring) !== -1){ $("#id_menu_icon_buttons button.pe").click();}
+    var substring = "fa-";
+    if(iconEntered.indexOf(substring) !== -1){ $("#id_menu_icon_buttons button.awesome").click();}
+});
+</script>
+{% endblock extra_js %}

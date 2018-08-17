@@ -1,0 +1,84 @@
+/* parallax */
+
+.parallax {
+    height: 100vh;
+    max-height: 1050px;
+    padding: 0;
+    color: $white;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+
+    .parallax-image {
+        background-repeat:no-repeat;
+        background-position: center center;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        &[data-filter-color="filter filter-black"]{
+            @include filter_mixin(rgba(0,0,0,.66))
+        }
+        &[data-filter-color="filter filter-white"]{
+            @include filter_mixin(rgba(255, 255, 255, 0.91))
+        }
+        &[data-filter-color="filter filter-blue"]{
+            @include filter_mixin(rgba(9, 82, 239, 0.69))
+        }
+        &[data-filter-color="filter filter-azure"]{
+            @include filter_mixin(rgba(0, 146, 248, 0.69))
+        }
+        &[data-filter-color="filter filter-green"]{
+            @include filter_mixin(rgba(4, 124, 10, 0.69))
+        }
+        &[data-filter-color="filter filter-orange"]{
+            @include filter_mixin(rgba(204, 119, 0, 0.69))
+        }
+        &[data-filter-color="filter filter-red"]{
+            @include filter_mixin(rgba(252, 13, 0, 0.69))
+        }
+    }
+    .container{
+            height: 100%;
+            z-index: 2;
+            text-align: center;
+            position: relative;
+
+            > .content-center{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                -ms-transform: translate(-50%,-50%);
+                -webkit-transform: translate(-50%,-50%);
+                transform: translate(-50%,-50%);
+
+                text-align: center;
+                padding: 0 15px;
+                color: $white;
+                width: 100%;
+                max-width: 880px;
+            }
+        }
+    &:after,
+    &:before{
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        left: 0;
+        top: 0;
+    }
+
+    &:before{
+        background-color: rgba(0,0,0,.5);
+    }
+    &.parallax-small {height: $parallax-small;max-height:$parallax-small;}
+    &.parallax-medium {height: $parallax-medium;max-height:$parallax-medium;}
+    &.parallax-large {height: $parallax-large;max-height:$parallax-large;}
+
+    .container{
+        z-index: 2;
+    }
+
+}

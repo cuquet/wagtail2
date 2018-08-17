@@ -1,0 +1,26 @@
+<div class="{{ classname }}">
+    {% if help_text %}
+        <div class="object-help help">{{ help_text }}</div>
+    {% endif %}
+    <ul class="fields">
+        <div class="row row-flush">
+            <div class="col7 divider-after">
+                <li>
+                <label {% if children.parallax_image.id_for_label %} for="{{ children.parallax_image.id_for_label }}"{% endif %}>
+                {{ children.parallax_image.block.label }}
+                </label>
+                {{ children.parallax_image.render_form }}
+                </li>
+            </div>
+            <div class="col5" style="text-align:left">
+                <li>{{ children.parallax_size.render_form }}</li>
+                <li>{{ children.parallax_filter.render_form }}</li>
+                <li>{{ children.display_btndropdown.render_form }}</li>
+
+            </div>
+        </div>
+        {% with children.parallax_content as child %}
+            <li>{{ child.render_form }}</li>
+        {% endwith %}
+    </ul>
+</div>

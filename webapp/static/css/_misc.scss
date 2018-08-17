@@ -1,0 +1,88 @@
+html{
+  background-color: $body-bg;
+}
+
+body{
+  background:$gray-400;
+  color: $gray-900;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  &.template-homepage{
+    .main-raised{
+      margin: -60px 30px 0px;
+      @include border-radius($border-radius);
+      @include box-shadow($bmd-shadow-16dp);
+
+    }
+  }
+}
+// https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus,
+body:not(.user-is-tabbing) label:focus{
+  outline: none;
+}
+
+.main{
+    position: relative;
+    background: $white;
+}
+
+
+
+/* Animations */
+.nav-pills .nav-link,
+.nav-item .nav-link,
+.navbar,
+.nav-item,
+.nav-tabs .nav-link{
+    @include transition(all $general-transition-time $transition-ease);
+}
+
+//transition for dropdown caret
+.dropdown-toggle:after,
+.bootstrap-switch-label:before{
+    @include transition(all $fast-transition-time $transition-ease);
+}
+
+.dropdown-toggle[aria-expanded="true"]:after{
+    @include rotate-180();
+}
+
+.button-bar{
+    display: block;
+    position: relative;
+    width: 22px;
+    height: 1px;
+    border-radius: 1px;
+    background: $white;
+
+    & + .button-bar{
+        margin-top: 7px;
+    }
+
+    &:nth-child(2){
+        width: 17px;
+    }
+}
+
+.open{
+    @include transform-translate-y(0);
+    @include opacity(1);
+    visibility: visible;
+}
+
+/*.separator{
+    height: 2px;
+    width: 44px;
+    background-color: $gray-600;
+    margin: 20px auto;
+
+    &.separator-primary{
+        background-color: map_get($theme-colors, "primary");
+    }
+}*/

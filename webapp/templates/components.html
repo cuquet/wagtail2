@@ -1,0 +1,1608 @@
+{% extends "base.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags site_tags block_tags  static %}
+
+{% block head %}
+    {% include "includes/head.html" with title_postfix="Components | Wagtail" %}
+{% endblock head %}
+{% block extrahead %}
+
+{% endblock extrahead %}
+
+{% block parallax %}
+{% timestamp as id_prefix %}
+<div id="{{ id_prefix }}" class="parallax parallax-small">
+<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{% static '/images/bg_about.jpg' %}')"data-img-width="900" data-img-height="598" data-diff="100" data-filter-color="filter filter-azure">
+    <div class="content-a container">
+        <div class="content-b content-center">
+            <div class="col-md-8 ml-auto mr-auto">
+                <h1 class="title">Components<small class="subtitle"></small></h1>
+                <p>Besides giving the existing Bootstrap elements a new look, we added new ones, so that the interface and consistent and homogenous.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock parallax %}
+
+{% block sectionclass %}section-gray{% endblock sectionclass %}
+
+{% block content %}
+<div class="main">
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-6 d-none d-lg-block">
+                    <div class="fixed-section bg-light ">
+                        <h4>Nav section</h4>
+                        <ul>
+                            <li><a href="#buttons-row">Buttons</a></li>
+                            <li><a href="#checkbox-row">Checkbox</a></li>
+                            <li><a href="#radio-row">Radio</a></li>
+                            <li><a href="#dropdown-row">Dropdown</a></li>
+                            <li><a href="#inputs-row">Inputs</a></li>
+                            <li><a href="#textarea-row">Textarea</a></li>
+                            <li><a href="#navbar-row">Navigation</a></li>
+                            <li><a href="#pagination-row">Pagination</a></li>
+                            <li><a href="#progressbar-row">Progress Bars</a></li>
+                            <li><a href="#sliders-row">Sliders</a></li>
+                            <li><a href="#badges-row">Labels</a></li>
+                            <li><a href="#datetimepicker-row">Datetimepicker</a></li>
+                            <li><a href="#modal-row">Modals</a></li>
+                            <li><a href="#tooltip-row">Tooltips</a></li>
+                            <li><a href="#popover-row">Popovers</a></li>
+                            <li><a href="#notification-row">Notification</a></li>
+                            <li><a href="#card-row">Cards</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-12">
+                    <p>Going through them, we added:</p>
+                    <ul>
+                        <li> Checkboxes</li>
+                        <li> Radio Buttons</li>
+                        <li> Switchers</li>
+                        <li> Datetimepicker</li>
+                    </ul>
+                    <p>To show raw html on this page we used <a href="https://prismjs.com/" target="_blank">prism</a>. Theme for this syntax highlighter has been integrated in scss structure.
+                        <a href="https://prismjs.com/plugins/copy-to-clipboard/" target="_blank">Copy plugin</a> has been included also.</p>
+                    <div class="row-example" id="button-color-row">
+                        <h2>Buttons </h2>
+                        <h4>Colors</h4>
+                        <p >We worked over the original Bootstrap classes, choosing a different color pallete. We opted for this beautiful scheme of pale colors:</p>
+                        <ul class="nav nav-tabs-code" id="buttons-color-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="buttons-color-component-tab" data-toggle="tab" href="#buttonColorComponent" role="tab" aria-controls="buttonColorComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="buttons-color-html-tab" data-toggle="tab" href="#buttonColorMarkup" role="tab" aria-controls="buttonColorMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="buttonColorComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="buttons-color-component-tab">
+                                <button type="button" class="btn btn-dark">Dark</button>
+                                <button type="button" class="btn btn-light">Light</button>
+                                <button type="button" class="btn btn-primary">Primary</button>
+                                <button type="button" class="btn btn-secondary">Secondary</button>
+                                <button type="button" class="btn btn-info">Info</button>
+                                <button type="button" class="btn btn-success">Success</button>
+                                <button type="button" class="btn btn-warning">Warning</button>
+                                <button type="button" class="btn btn-danger">Danger</button>
+                                <button type="button" class="btn btn-primary disabled">Disabled</button>
+                            </div>
+                            <div id="buttonColorMarkup" class="tab-pane fade " role="tabpanel" aria-labelledby="buttons-color-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-dark&quot;&gt;Dark&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-neutral&quot;&gt;Neutral&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary disabled&quot;&gt;Disabled&lt;/button&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="button-size-row">
+                        <h4>Sizes</h4>
+                        <p >Buttons come in all needed sizes:</p>
+                        <ul class="nav nav-tabs-code" id="buttons-size-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="buttons-size-component-tab" data-toggle="tab" href="#buttonSizeComponent" role="tab" aria-controls="buttonSizeComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="buttons-size-html-tab" data-toggle="tab" href="#buttonSizeMarkup" role="tab" aria-controls="buttonSizeMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="buttonSizeComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="buttons-color-component-tab">
+                                <button type="button" class="btn btn-outline-danger btn-sm">Small</button>
+                                <button type="button" class="btn btn-outline-danger">Regular</button>
+                                <button type="button" class="btn btn-outline-danger btn-lg">Large</button>
+                            </div>
+                            <div id="buttonSizeMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="buttons-size-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger btn-sm&quot;&gt;Small&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger&quot;&gt;Regular&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger btn-lg&quot;&gt;Large&lt;/button&gt;
+</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="button-style-row">
+                        <h4>Styles</h4>
+                        <p >We added extra classes that can help you better customise the look. You can use regular buttons, filled buttons or plain link buttons. Let's see some examples:</p>
+                        <ul class="nav nav-tabs-code" id="buttons-style-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="buttons-style-component-tab" data-toggle="tab" href="#buttonStyleComponent" role="tab" aria-controls="buttonStyleComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="buttons-style-html-tab" data-toggle="tab" href="#buttonStyleMarkup" role="tab" aria-controls="buttonStyleMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="buttonStyleComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="buttons-style-component-tab">
+                                <button type="button" class="btn btn-info">Default</button>
+                                <button type="button" class="btn btn-info"><i class="fa fa-heart"></i>With Icon</button>
+                                <button type="button" class="btn btn-info btn-just-icon"><i class="fa fa-heart"></i></button>
+                                <button type="button" class="btn btn-link">Simple</button>
+                            </div>
+                            <div id="buttonStyleMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="buttons-style-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Default&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-round&quot;&gt;Round&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-round&quot;&gt;&lt;i class=&quot;fa fa-heart&quot;&gt;&lt;/i&gt; With Icon&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-just-icon&quot;&gt;&lt;i class=&quot;fa fa-heart&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-link&quot;&gt;Simple&lt;/button&gt;</code></pre>
+                            </div>
+                        </div>
+                            <p >Button groups, toolbars, and disabled state all work like they are supposed to.</p>
+                    </div>
+                    <div class="row-example" id="checkbox-row">
+                        <h2> Checkboxes </h2>
+                        <p>To use the custom checkboxes, you need to include the Sass file called <code>_checkbox-radio.scss</code>.</p>
+                        <ul class="nav nav-tabs-code" id="checkbox-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="checkbox-component-tab" data-toggle="tab" href="#checkboxComponent" role="tab" aria-controls="checkboxComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="checkbox-html-tab" data-toggle="tab" href="#checkboxMarkup" role="tab" aria-controls="checkboxMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="checkboxComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="radio-component-tab">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        Unchecked
+                                        <span class="form-check-sign"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label form-check-danger">
+                                        <input class="form-check-input form-check-danger" type="checkbox" value="" checked>
+                                        Checked
+                                        <span class="form-check-sign form-check-danger"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check disabled">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="" disabled>
+                                        Disabled unchecked
+                                        <span class="form-check-sign"></span>
+                                    </label>
+                                </div>
+                                <div class="form-check disabled">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox" value="" disabled checked>
+                                        Disabled checked
+                                        <span class="form-check-sign"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="checkboxMarkup"  class="tab-pane fade" role="tabpanel" aria-labelledby="checkbox-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;form-check&quot;&gt;
+&lt;label class=&quot;form-check-label&quot;&gt;
+    &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot;&gt;
+    Unchecked
+    &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; checked&gt;
+        Checked
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check disabled&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; disabled&gt;
+        Disabled unchecked
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check disabled&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; disabled checked&gt;
+        Disabled checked
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                        <p>Usage can be done via Data Attributes</p>
+                    </div>
+                    <div class="row-example" id="radio-row">
+                        <h2> Radio Buttons </h2>
+                        <p>To use the custom radio buttons, you need to include the Sass file called <code>_checkbox-radio.scss</code>.</p>
+                        <ul class="nav nav-tabs-code" id="radio-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="radio-component-tab" data-toggle="tab" href="#radioComponent" role="tab" aria-controls="radioComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="radio-html-tab" data-toggle="tab" href="#radioMarkup" role="tab" aria-controls="radioMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="radioComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="radio-component-tab">
+                                    <div class="form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" >
+                                            Radio is off
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check-radio">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                            Radio is on
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check-radio disabled">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+                                            Disabled radio is off
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check-radio disabled">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="exampleRadioz" id="exampleRadios4" value="option4" checked disabled>
+                                            Disabled radio is on
+                                            <span class="form-check-sign"></span>
+                                        </label>
+                                    </div>
+                            </div>
+                            <div id="radioMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="radio-html-tab">
+<pre  class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;form-check-radio&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;exampleRadios&quot; id=&quot;exampleRadios1&quot; value=&quot;option1&quot; &gt;
+        Radio is off
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check-radio&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;exampleRadios&quot; id=&quot;exampleRadios2&quot; value=&quot;option2&quot; checked&gt;
+        Radio is on
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-check-radio disabled&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;exampleRadios&quot; id=&quot;exampleRadios3&quot; value=&quot;option3&quot; disabled&gt;
+        Disabled radio is off
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-check-radio disabled&quot;&gt;
+    &lt;label class=&quot;form-check-label&quot;&gt;
+        &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;exampleRadioz&quot; id=&quot;exampleRadios4&quot; value=&quot;option4&quot; checked disabled&gt;
+        Disabled radio is on
+        &lt;span class=&quot;form-check-sign&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                        <p>Usage can be done via Data Attributes.</p>
+                    </div>
+                    <div class="row-example" id="dropdown-row">
+                        <h2> Dropdown </h2>
+                        <p>We have added shadow and the ability to customize the animation using <span class="text-monospace">data-dropdown-in</span>
+                            and <span class="text-monospace">data-dropdown-out</span> using <a href="https://daneden.github.io/animate.css/">animate.css</a> animations. Here is an example and the code:
+                        </p>
+                        <ul class="nav nav-tabs-code" id="dropdown-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="dropdown-component-tab" data-toggle="tab" href="#dropdownComponent" role="tab" aria-controls="dropdownComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="dropdown-html-tab" data-toggle="tab" href="#dropdownMarkup" role="tab" aria-controls="dropdownMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="dropdownComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="dropdown-component-tab">
+                                <div class="row justify-content-md-center">
+                                    <div class="col-3 dropdown">
+                                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dropdown
+                                      </button>
+                                      <div class="dropdown-menu" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
+                                        <a class="dropdown-header">Dropdown header</a>
+                                        <a class="dropdown-item active" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="dropdownMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="dropdown-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;button type=&quot;button&quot; class=&quot;btn btn-info dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
+    Dropdown
+  &lt;/button&gt;
+  &lt;div class=&quot;dropdown-menu&quot; data-dropdown-in=&quot;bounceInDown&quot; data-dropdown-out=&quot;bounceOutUp&quot;&gt;
+    &lt;a class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/a&gt;
+    &lt;a class=&quot;dropdown-item active&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;
+    &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+    &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+    &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+    &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="inputs-row">
+                        <h2>Inputs </h2>
+                        <p >We restyled the Bootstrap input to give it a different look. You can use the classic look, different colors and states or input groups.</p>
+                        <ul class="nav nav-tabs-code" id="inputs-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="inputs-component-tab" data-toggle="tab" href="#inputsComponent" role="tab" aria-controls="inputsComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="inputs-html-tab" data-toggle="tab" href="#inputsMarkup" role="tab" aria-controls="inputsMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="inputsComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="dropdown-component-tab">
+                                <form class="form-inline">
+                                  <label class="sr-only" for="inlineFormInputName2">Name</label>
+                                  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+                                  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                                  <div class="input-group mb-2 mr-sm-2">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text">@</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+                                      <small id="usernameHelpInline" class="text-muted">
+                                        Must be 8-20 characters long.
+                                      </small>
+                                    </div>
+                                  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                </form>
+    
+                                <form>
+                                  <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                      <label for="validationServer01">First name</label>
+                                      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
+                                      <div class="valid-feedback">
+                                        Looks good!
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                      <label for="validationServer02">Last name</label>
+                                      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
+                                      <div class="valid-feedback">
+                                        Looks good!
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                      <label for="validationServerUsername">Username</label>
+                                      <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                                        </div>
+                                        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupfeedback" required>
+                                      </div>
+                                      <div id="inputGroupfeedback" class="form-text invalid-feedback">
+                                      Please choose a username.
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                      <label for="validationServer03">City</label>
+                                      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
+                                      <div class="invalid-feedback">
+                                        Please provide a valid city.
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                      <label for="validationServer04">State</label>
+                                      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
+                                      <div class="invalid-feedback">
+                                        Please provide a valid state.
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                      <label for="validationServer05">Zip</label>
+                                      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
+                                      <div class="invalid-feedback">
+                                        Please provide a valid zip.
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="form-check">
+                                      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+                                      <label class="form-check-label" for="invalidCheck3">
+                                        Agree to terms and conditions
+                                      </label>
+                                      <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <button class="btn btn-primary" type="submit">Submit form</button>
+                                </form>
+                            </div>
+                            <div id="inputsMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="inputs-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Default&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;form-group has-success&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control form-control-success&quot; id=&quot;inputSuccess1&quot; placeholder=&quot;Success&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;form-group has-danger&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control form-control-danger&quot; id=&quot;inputDanger1&quot; placeholder=&quot;Error&quot;&gt;
+            &lt;div class=&quot;form-control-feedback&quot;&gt;Sorry, that username's taken. Try another?&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Username&quot; aria-describedby=&quot;basic-addon1&quot;&gt;
+            &lt;span class=&quot;input-group-addon&quot; id=&quot;basic-addon1&quot;&gt;&lt;i class=&quot;fa fa-group&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="textarea-row">
+                        <h2>Textarea</h2>
+                        <p >We added custom style for the textarea, so it looks similar to all other inputs.</p>
+                        <ul class="nav nav-tabs-code" id="textarea-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="textarea-component-tab" data-toggle="tab" href="#textareaComponent" role="tab" aria-controls="textareaComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="textarea-html-tab" data-toggle="tab" href="#textareaMarkup" role="tab" aria-controls="textareaMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="textareaComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="textarea-component-tab">
+                                <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
+                            </div>
+                            <div id="textareaMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="textarea-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;textarea class=&quot;form-control&quot; rows=&quot;4&quot; placeholder=&quot;Tell us your thoughts&quot;&gt;&lt;/textarea&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="navbar-row">
+                        <h2>Navbar </h2>
+                        <p >We restyled the classic Bootstrap Navbar:</p>
+                        <ul class="nav nav-tabs-code" id="navbar-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="navbar-component-tab" data-toggle="tab" href="#navbarComponent" role="tab" aria-controls="navbarComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navbar-html-tab" data-toggle="tab" href="#navbarMarkup" role="tab" aria-controls="navbarMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="navbarComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="navbar-component-tab">
+                                <nav class="navbar navbar-expand-lg navbar-dark " id="sectionsNav1">
+                                <div class="container">
+                                    <div class="navbar-translate">
+                                        <a class="navbar-brand" href="#">Work in progress</a>
+                                        <button class="navbar-toggler navbar-toggler-left collapsed " type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-bar bar1"></span>
+                                            <span class="navbar-toggler-bar bar2"></span>
+                                            <span class="navbar-toggler-bar bar3"></span>
+                                        </button>
+                                    </div>
+                                    <div class="collapse navbar-collapse" id="navbar-menu">
+                                        <ul class="navbar-nav mr-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#pk">Link</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#pk">Link</a>
+                                            </li>
+                                            <div class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <li class="dropdown-header">Dropdown header</li>
+                                                    <a class="dropdown-item" href="#pk">Action</a>
+                                                    <a class="dropdown-item" href="#pk">Another action</a>
+                                                    <a class="dropdown-item" href="#pk">Something else here</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="#pk">Separated link</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="#pk">Another separated link</a>
+                                                </ul>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            </div>
+                            <div id="navbarMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="navbar-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">
+     &lt;nav class=&quot;navbar navbar-expand-lg navbar-dark &quot; id=&quot;sectionsNav1&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;div class=&quot;navbar-translate&quot;&gt;
+                &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Work in progress&lt;/a&gt;
+                &lt;button class=&quot;navbar-toggler navbar-toggler-left collapsed &quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar-menu&quot; aria-controls=&quot;navbar-menu&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                    &lt;span class=&quot;navbar-toggler-bar bar1&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;navbar-toggler-bar bar2&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;navbar-toggler-bar bar3&quot;&gt;&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbar-menu&quot;&gt;
+                &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                        &lt;a class=&quot;nav-link&quot; href=&quot;#pk&quot;&gt;Link&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                        &lt;a class=&quot;nav-link&quot; href=&quot;#pk&quot;&gt;Link&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;div class=&quot;nav-item dropdown&quot;&gt;
+                        &lt;a class=&quot;nav-link dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; id=&quot;dropdownMenuButton&quot; href=&quot;#pk&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/a&gt;
+                        &lt;ul class=&quot;dropdown-menu&quot; aria-labelledby=&quot;dropdownMenuButton&quot;&gt;
+                            &lt;li class=&quot;dropdown-header&quot;&gt;Dropdown header&lt;/li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#pk&quot;&gt;Action&lt;/a&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#pk&quot;&gt;Another action&lt;/a&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#pk&quot;&gt;Something else here&lt;/a&gt;
+                            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#pk&quot;&gt;Separated link&lt;/a&gt;
+                            &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#pk&quot;&gt;Another separated link&lt;/a&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <p >Besides the default navbar, we added 5 new classes for colors: <code>primary</code>, <code>info</code>, <code>success</code>, <code>warning</code>, <code>danger</code>, <code>transparent</code>. If you want to use one of them, you have to replace the <code>navbar-dark</code> with the class for the chosen color <code>navbar-#class</code>.
+                        </p>
+                            <nav class="navbar navbar-expand-md navbar-primary">
+                                <div class="container">
+                                    <button class="navbar-toggler navbar-toggler-right burger-menu" type="button" data-toggle="collapse" data-target="#navbar-primary" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Primary Color</a>
+                                    <div class="collapse navbar-collapse" id="navbar-primary">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-compass-05" aria-hidden="true"></i>&nbsp;Discover</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-single-02" aria-hidden="true"></i>&nbsp;Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-settings-gear-65" aria-hidden="true"></i>&nbsp;Settings</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <br />
+                            <nav class="navbar navbar-expand-md navbar-info">
+                                <div class="container">
+                                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-info" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Info Color</a>
+                                    <div class="collapse navbar-collapse" id="navbar-info">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Discover</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#">Settings</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <br />
+                            <nav class="navbar navbar-expand-md navbar-success">
+                                <div class="container">
+                                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Success Color</a>
+                                    <div class="collapse navbar-collapse" id="navbar-success">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-compass-05" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-single-02" aria-hidden="true"></i> </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="nc-icon nc-settings-gear-65" aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <br />
+                            <nav class="navbar navbar-expand-md navbar-warning">
+                                <div class="container">
+                                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-warning" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Warning Color</a>
+                                    <div class="collapse navbar-collapse" id="navbar-warning">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <br />
+                            <nav class="navbar navbar-expand-md navbar-danger">
+                                <div class="container">
+                                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                        <span class="navbar-toggler-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">Danger Color</a>
+                                    <div class="collapse navbar-collapse" id="navbar-danger">
+                                        <ul class="navbar-nav ml-auto">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Share</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="#"><i class="fa fa-pinterest" aria-hidden="true"></i> Pin</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <br />
+                            <div class="navigation-example">
+                                <nav class="navbar navbar-expand-md navbar-transparent nav-no-padding">
+                                    <div class="container">
+                                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-transparent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-bar"></span>
+                                            <span class="navbar-toggler-bar"></span>
+                                            <span class="navbar-toggler-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="#">Transparent</a>
+                                        <div class="collapse navbar-collapse" id="navbar-transparent">
+                                            <ul class="navbar-nav ml-auto">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        <p >Besides all this customisation, we have an extra navbar. <code>navbar-transparent</code> is a special class that you can to use if you want the navbar to be transparent. We recommend that the part of your page that has the transparent navbar contains something non-cluttered, like an image.</p>
+                    </div>
+                    <div class="row-example" id="navtabs-row">
+                        <h2> Nav Tabs</h2>
+                        <p >We changed the look for the nav tabs, so they can easily integrate with the rest of the kit.</p>
+                        <ul class="nav nav-tabs-code" id="navtabs-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="navtabs-component-tab" data-toggle="tab" href="#navtabsComponent" role="tab" aria-controls="navtabsComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navtabs-html-tab" data-toggle="tab" href="#textareaMarkup" role="tab" aria-controls="navtabsMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="navtabsComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="navtabs-component-tab">
+
+                                <div class="nav-tabs-navigation">
+                                    <div class="nav-tabs-wrapper">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
+                                                <ul class="dropdown-menu ">
+                                                    <div class="dropdown-header" data-toggle="tab" href="#action">Header</div>
+                                                    <a  class="dropdown-item" href="#">Action</a>
+                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Tab panes -->
+                                <div class="tab-content text-center">
+                                    <div class="tab-pane active" id="home1" role="tabpanel">Here is information about home.</div>
+                                    <div class="tab-pane" id="profile1" role="tabpanel">Here is your profile.</div>
+                                    <div class="tab-pane" id="messages1" role="tabpanel">Here are your messages.</div>
+                                    <div class="tab-pane" id="action" role="tabpanel">Vestibulum ex velit, cursus in mauris in, egestas tempor orci.</div>
+                                    <div class="tab-pane" id="another-action" role="tabpanel">Ut sem metus, lacinia id lobortis vel, mollis ut quam.</div>
+                                </div>
+                            </div>
+                            <div id="navTabsMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="navbar-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;nav-tabs-navigation&quot;&gt;
+                &lt;div class=&quot;nav-tabs-wrapper&quot;&gt;
+                    &lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link active&quot; data-toggle=&quot;tab&quot; href=&quot;#home&quot; role=&quot;tab&quot;&gt;Home&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#profile&quot; role=&quot;tab&quot;&gt;Profile&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#messages&quot; role=&quot;tab&quot;&gt;Messages&lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Settings&lt;/a&gt;
+                            &lt;ul class=&quot;dropdown-menu &quot;&gt;
+                                &lt;div class=&quot;dropdown-header&quot; data-toggle=&quot;tab&quot; href=&quot;#action&quot;&gt;Header&lt;/div&gt;
+                                &lt;a  class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;
+                                &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+                            &lt;/ul&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- Tab panes --&gt;
+            &lt;div class=&quot;tab-content text-center&quot;&gt;
+                &lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot; role=&quot;tabpanel&quot;&gt;Here is information about home.&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;profile&quot; role=&quot;tabpanel&quot;&gt;Here is your profile.&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;messages&quot; role=&quot;tabpanel&quot;&gt;Here are your messages.&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;action&quot; role=&quot;tabpanel&quot;&gt;Vestibulum ex velit, cursus in mauris in, egestas tempor orci.&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;another-action&quot; role=&quot;tabpanel&quot;&gt;Ut sem metus, lacinia id lobortis vel, mollis ut quam.&lt;/div&gt;
+            &lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="navpills-row">
+                        <h2> Nav Pills</h2>
+                        <p >We changed the design for the Bootstrap nav pills into something a bit more fresh. We also added more color classes for customisation.
+                        </p>
+                        <ul class="nav nav-tabs-code" id="navpills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="navpills-component-tab" data-toggle="tab" href="#navpillsComponent" role="tab" aria-controls="navpillsComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="navpills-html-tab" data-toggle="tab" href="#navpillsMarkup" role="tab" aria-controls="navpillsMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="navpillsComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="navpills-component-tab">
+                                <!-- Nav pills -->
+                                <ul class="nav nav-pills nav-pills-danger">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-toggle="tab" href="#0">Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#0">Menu</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#0">Concept</a>
+                                    </li>
+                                </ul>
+                                <!-- Pill panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="home" role="tabpanel"></div>
+                                    <div class="tab-pane" id="profile" role="tabpanel"></div>
+                                    <div class="tab-pane" id="messages" role="tabpanel"></div>
+                                    <div class="tab-pane" id="settings" role="tabpanel"></div>
+                                </div>
+                            </div>
+                            <div id="navPillsMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="navbar-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- Nav pills --&gt;
+            &lt;ul class=&quot;nav nav-pills nav-pills-danger&quot;&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a class=&quot;nav-link active&quot; data-toggle=&quot;tab&quot; href=&quot;#0&quot;&gt;Info&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#0&quot;&gt;Menu&lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#0&quot;&gt;Concept&lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;!-- Pill panes --&gt;
+            &lt;div class=&quot;tab-content&quot;&gt;
+                &lt;div class=&quot;tab-pane active&quot; id=&quot;home&quot; role=&quot;tabpanel&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;profile&quot; role=&quot;tabpanel&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;messages&quot; role=&quot;tabpanel&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;tab-pane&quot; id=&quot;settings&quot; role=&quot;tabpanel&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="pagination-row">
+                        <h2> Pagination</h2>
+                        <p >We took the Bootstrap pagination elements and customised them to fit the overall theme.
+                        Fancy larger or smaller pagination? Add <code>.pagination-lg</code> or <code>.pagination-sm</code> for additional sizes.</p>
+                        <ul class="nav nav-tabs-code" id="pagination-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="pagination-component-tab" data-toggle="tab" href="#paginationComponent" role="tab" aria-controls="paginationComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pagination-html-tab" data-toggle="tab" href="#paginationMarkup" role="tab" aria-controls="paginationMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="paginationComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="pagination-component-tab">
+                                <div class="row justify-content-md-center">
+                                    <div class="col-6">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#" aria-label="Previous">{% trans "Previous" %}</a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                                                </li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="#" aria-label="Next">{% trans "Next" %}</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <div class="col-3">
+                                        <nav aria-label="Page navigation example">
+                          <ul class="pagination  pagination-info pagination-sm">
+                            <li class="page-item  disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="paginationMarkup"  class="tab-pane fade" role="tabpanel" aria-labelledby="pagination-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">
+    &lt;nav aria-label=&quot;Page navigation example&quot;&gt;
+        &lt;ul class=&quot;pagination&quot;&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+                &lt;a class=&quot;page-link&quot; href=&quot;#&quot; aria-label=&quot;Previous&quot;&gt;
+                    &lt;i class=&quot;fa fa-angle-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+                &lt;a class=&quot;page-link&quot; href=&quot;#&quot; aria-label=&quot;Next&quot;&gt;
+                    &lt;i class=&quot;fa fa-angle-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;br/&gt;
+    &lt;nav aria-label=&quot;...&quot;&gt;
+        &lt;ul class=&quot;pagination&quot;&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+                &lt;a class=&quot;page-link&quot; href=&quot;#&quot; tabindex=&quot;-1&quot;&gt;Previous&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item active&quot;&gt;
+                &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+                &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;Next&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="progressbar-row">
+                        <h2> Progress Bars</h2>
+                        <p >The progress bars from Bootstrap hold the same classes and functionality. You can use the standard class or you can add the class 'progress-thin' for a progress bar that has only half the height of the normal one.</p>
+                        <ul class="nav nav-tabs-code" id="progressbar-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="progressbar-component-tab" data-toggle="tab" href="#progressbarComponent" role="tab" aria-controls="progressbarComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="progressbar-html-tab" data-toggle="tab" href="#progressbarMarkup" role="tab" aria-controls="progressbarMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="progressbarComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="progressbar-component-tab">
+                                <div class="progress-wrapper">
+                                  <div class="progress-info">
+                                    <div class="progress-label">
+                                      <span>Task completed</span>
+                                    </div>
+                                    <div class="progress-percentage">
+                                      <span>60%</span>
+                                    </div>
+                                  </div>
+                                  <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                  </div>
+                            </div>
+                            </div>
+                            <div id="progressbarMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="navbar-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;progress-wrapper&quot;&gt;
+  &lt;div class=&quot;progress-info&quot;&gt;
+    &lt;div class=&quot;progress-label&quot;&gt;
+      &lt;span&gt;Task completed&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;progress-percentage&quot;&gt;
+      &lt;span&gt;60%&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;progress&quot;&gt;
+    &lt;div class=&quot;progress-bar bg-dark&quot; role=&quot;progressbar&quot; aria-valuenow=&quot;60&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="switcher-row">
+                        <h2> Switchers</h2>
+                        <p >Based on <a href="https://www.abeautifulsite.net/bootstrap-4-switches">Cory LaViska</a>> css switchers </p>
+                        <ul class="nav nav-tabs-code" id="switcher-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="switcher-component-tab" data-toggle="tab" href="#switcherComponent" role="tab" aria-controls="switcherComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="switcher-html-tab" data-toggle="tab" href="#switcherMarkup" role="tab" aria-controls="switcherMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="switcherComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="switcher-component-tab">
+                                <!-- Small switch -->
+                                <div class="form-group">
+                                  <span class="switch switch-sm">
+                                    <input type="checkbox" class="switch" id="switch-sm">
+                                    <label for="switch-sm">Small switch</label>
+                                  </span>
+                                </div>
+
+                                <!-- Normal switch -->
+                                <div class="form-group">
+                                  <span class="switch">
+                                    <input type="checkbox" class="switch" id="switch-normal">
+                                    <label for="switch-normal">Normal switch</label>
+                                  </span>
+                                </div>
+
+                                <!-- Large switch -->
+                                <div class="form-group">
+                                  <span class="switch switch-lg">
+                                    <input type="checkbox" class="switch" id="switch-lg">
+                                    <label for="switch-lg">Large switch</label>
+                                  </span>
+                                </div>
+                            </div>
+                            <div id="switcherMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="switcher-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- Small switch --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;span class=&quot;switch switch-sm&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;switch&quot; id=&quot;switch-sm&quot;&gt;
+    &lt;label for=&quot;switch-sm&quot;&gt;Small switch&lt;/label&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Normal switch --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;span class=&quot;switch&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;switch&quot; id=&quot;switch-normal&quot;&gt;
+    &lt;label for=&quot;switch-normal&quot;&gt;Normal switch&lt;/label&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Large switch --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;span class=&quot;switch switch-lg&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;switch&quot; id=&quot;switch-lg&quot;&gt;
+    &lt;label for=&quot;switch-lg&quot;&gt;Large switch&lt;/label&gt;
+  &lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="badges-row">
+                        <h2>Badges</h2>
+                        <p>Small count and labeling component.</p>
+                        <ul class="nav nav-tabs-code" id="badges-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="badges-component-tab" data-toggle="tab" href="#badgesComponent" role="tab" aria-controls="badgesComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="badges-html-tab" data-toggle="tab" href="#badgesMarkup" role="tab" aria-controls="badgesMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="badgesComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="badges-component-tab">
+                                <span class="badge badge-primary">Primary</span>
+                                <span class="badge badge-secondary">Secondary</span>
+                                <span class="badge badge-success">Success</span>
+                                <span class="badge badge-danger">Danger</span>
+                                <span class="badge badge-warning">Warning</span>
+                                <span class="badge badge-info">Info</span>
+                                <span class="badge badge-light">Light</span>
+                                <span class="badge badge-dark">Dark</span>
+                                <p></p>
+                                <p>Badges can be used as part of links or buttons to provide a counter.</p>
+                                <button type="button" class="btn btn-primary">
+                                  Messages <span class="badge badge-light">9</span>
+                                  <span class="sr-only">unread messages</span>
+                                </button>
+                                <p></p>
+                                <p>Use the <code>.badge-pill</code> modifier class to make badges more rounded</p>
+                                <span class="badge badge-pill badge-primary">Primary</span>
+                            </div>
+                            <div id="badgesMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="badges-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;span class=&quot;badge badge-primary&quot;&gt;Primary&lt;/span&gt;
+&lt;span class=&quot;badge badge-secondary&quot;&gt;Secondary&lt;/span&gt;
+&lt;span class=&quot;badge badge-success&quot;&gt;Success&lt;/span&gt;
+&lt;span class=&quot;badge badge-danger&quot;&gt;Danger&lt;/span&gt;
+&lt;span class=&quot;badge badge-warning&quot;&gt;Warning&lt;/span&gt;
+&lt;span class=&quot;badge badge-info&quot;&gt;Info&lt;/span&gt;
+&lt;span class=&quot;badge badge-light&quot;&gt;Light&lt;/span&gt;
+&lt;span class=&quot;badge badge-dark&quot;&gt;Dark&lt;/span&gt;
+
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;
+Messages &lt;span class=&quot;badge badge-light&quot;&gt;9&lt;/span&gt;
+&lt;span class=&quot;sr-only&quot;&gt;unread messages&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;span class=&quot;badge badge-pill badge-primary&quot;&gt;Primary&lt;/span&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="datetimepicker-row">
+                        <h2>Datetimepicker</h2>
+                        <p >The re-styled the Bootstrap datepicker and we added the Paper Kit colors, which you can give as parameter to the plugin: color = {blue,azure,green,orange,red}.</p>
+                        <ul class="nav nav-tabs-code" id="datetimepicker-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="datetimepicker-component-tab" data-toggle="tab" href="#datetimepickerComponent" role="tab" aria-controls="datetimepickerComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="datetimepicker-html-tab" data-toggle="tab" href="#datetimepickerMarkup" role="tab" aria-controls="datetimepickerMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="datetimepickerComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="datetimepicker-component-tab">
+                                <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker"/>
+                                        <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8" style="overflow:hidden;">
+                                <div class="form-group">
+                                    <div id="datetimepicker13"></div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                            <div id="datepickerMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="datetimepicker-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- markup --&gt;
+&lt;div class=&quot;col-sm-4&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+        &lt;div class=&quot;input-group date&quot; id=&quot;datetimepicker&quot; data-target-input=&quot;nearest&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;form-control datetimepicker-input&quot; data-target=&quot;#datetimepicker&quot;/&gt;
+            &lt;div class=&quot;input-group-append&quot; data-target=&quot;#datetimepicker&quot; data-toggle=&quot;datetimepicker&quot;&gt;
+                &lt;span class=&quot;input-group-text&quot;&gt;&lt;i class=&quot;fa fa-calendar&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- javascript --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            locale: '{{ LANGUAGE_CODE }}',
+        });
+    });
+&lt;/script&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="modal-row">
+                        <h2>Modals</h2>
+                        <p >We restyled the classic Twitter Bootstrap and gave it a more simple look. TO have the footer splitted into 2 parts, please you the 'left-side' and 'right-side' classes. You can see and an example below.</p>
+                        <ul class="nav nav-tabs-code" id="modal-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="modal-component-tab" data-toggle="tab" href="#modalComponent" role="tab" aria-controls="modalComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="modal-html-tab" data-toggle="tab" href="#modalMarkup" role="tab" aria-controls="modalMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="modalComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="modal-component-tab">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    Launch demo modal
+                                </button>
+                            </div>
+                            <div id="modalsMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="modal-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- Button trigger modal --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot;&gt;
+    Launch demo modal
+&lt;/button&gt;
+&lt;!-- Modal --&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;myModal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;exampleModalLabel&quot; aria-hidden=&quot;true&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+                &lt;h5 class=&quot;modal-title text-center&quot; id=&quot;exampleModalLabel&quot;&gt;Modal title&lt;/h5&gt;
+                &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;
+                    &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt; Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+                &lt;div class=&quot;left-side&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-link&quot; data-dismiss=&quot;modal&quot;&gt;Never mind&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;divider&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;right-side&quot;&gt;
+                    &lt;button type=&quot;button&quot; class=&quot;btn btn-danger btn-link&quot;&gt;Delete&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="tooltip-row">
+                        <h2> Tooltips</h2>
+                        <p >We restyled the Bootstrap tooltip.</p>
+                        <ul class="nav nav-tabs-code" id="tooltip-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="tooltip-component-tab" data-toggle="tab" href="#tooltipComponent" role="tab" aria-controls="tooltipComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tooltip-html-tab" data-toggle="tab" href="#tooltipMarkup" role="tab" aria-controls="tooltipMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tooltipComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="tooltip-component-tab">
+                                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">On bottom</button>
+                            </div>
+                            <div id="tooltipMarkup"  class="tab-pane fade" role="tabpanel" aria-labelledby="tooltip-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- Markup --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Tooltip on bottom&quot;&gt;On bottom&lt;/button&gt;
+&lt;!-- Javascript --&gt;
+$('[data-toggle=&quot;tooltip&quot;]').tooltip();</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="popover-row">
+                        <h2>Popovers</h2>
+                        <p >We restyled the Bootstrap popover and we added an extra effect of opening. When the popover is active, the background of the page gets darker, letting you concentrate on the information inside the popover. <br />
+                            See the following example:</p>
+                        <ul class="nav nav-tabs-code" id="popover-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="popover-component-tab" data-toggle="tab" href="#popoverComponent" role="tab" aria-controls="popoverComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="popover-html-tab" data-toggle="tab" href="#popoverMarkup" role="tab" aria-controls="popoverMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="popoverComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="popover-component-tab">
+                                <button type="button" class="btn btn-primary" data-container="body" data-toggle="popover" data-placement="bottom" title="Popover on bottom" data-content="Here will be some very useful information about his popover.">On bottom</button>
+                            </div>
+                            <div id="popoverMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="popover-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;!-- markup --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-container=&quot;body&quot; data-toggle=&quot;popover&quot; data-placement=&quot;bottom&quot; data-title=&quot;Popover on bottom&quot; data-content=&quot;Here will be some very useful information about his popover.&quot;&gt;on bottom&lt;/button&gt;
+    &lt;!-- javascript --&gt;
+pk.initPopovers();</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="notification-row">
+                        <h2> Notifications </h2>
+                        <p>Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages. </p>
+                        <ul class="nav nav-tabs-code" id="notification-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="notification-component-tab" data-toggle="tab" href="#notificationComponent" role="tab" aria-controls="notificationComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="notification-html-tab" data-toggle="tab" href="#textareaMarkup" role="tab" aria-controls="notificationMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="notificationComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="notification-component-tab">
+                                <div class="alert alert-default alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Default!</strong> This is a default alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Primary!</strong> This is a primary alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Secondary!</strong> This is a secondary alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Info!</strong> This is a info alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Success!</strong> This is a success alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Danger!</strong> This is a danger alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <span class="alert-inner--icon"><i class="fa fa-thumbs-o-up"></i></span>
+                                    <span class="alert-inner--text"><strong>Warning!</strong> This is a warning alert—check it out!</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="alertMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="notification-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;alert alert-warning alert-dismissible fade show&quot; role=&quot;alert&quot;&gt;
+    &lt;span class=&quot;alert-inner--icon&quot;&gt;&lt;i class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+    &lt;span class=&quot;alert-inner--text&quot;&gt;&lt;strong&gt;Warning!&lt;/strong&gt; This is a warning alert&mdash;check it out!&lt;/span&gt;
+    &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;&gt;
+        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-example" id="card-row">
+                        <h2> Cards </h2>
+                        <p>Some demo cards</p>
+                        <ul class="nav nav-tabs-code" id="card-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="card-component-tab" data-toggle="tab" href="#cardComponent" role="tab" aria-controls="cardComponent" aria-selected="true">Result</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="card-html-tab" data-toggle="tab" href="#cardMarkup" role="tab" aria-controls="cardMarkup" aria-selected="false">HTML</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="cardComponent" class="tab-pane tab-example-result fade active show" role="tabpanel" aria-labelledby="card-component-tab">
+                                <div class="container">
+                            <div class="row justify-content-md-center">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col col-md-4">
+                                <div class="card card-avatar">
+                                    <div class="card-img-top">
+                                        <img class="img-fluid" src="{% static 'images/bg1.jpg' %}" alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <a href="#">
+                                                <img class="avatar" src="{% static 'images/ryan.jpg' %}" alt="...">
+                                                <h5 class="card-title">Mike Andrew</h5>
+                                            </a>
+                                            <h6 class="card-subtitle">
+                                                michael24
+                                            </h6>
+                                        </div>
+                                        <p class="card-text">
+                                            "Lamborghini Mercy
+                                            <br> Your chick she so thirsty
+                                            <br> I'm in that two seat Lambo"
+                                        </p>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <button href="#" class="btn btn-simple btn-link btn-icon">
+                                            <i class="fa fa-facebook-square"></i>
+                                        </button>
+                                        <button href="#" class="btn btn-simple btn-link btn-icon">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                        <button href="#" class="btn btn-simple btn-link btn-icon">
+                                            <i class="fa fa-google-plus-square"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                        </div>
+                                        <div class="col col-md-4">
+                                <div class="card">
+                                    <div class="card-img-top">
+                                        <div class="filter text-center">
+                                            <button type="button" class="btn btn-link">
+                                                <i class="fa fa-bookmark-o"></i> Bookmark
+                                            </button>
+                                            <button type="button" class="btn btn-link">
+                                                <i class="fa fa-align-left"></i> Read article
+                                            </button>
+                                        </div>
+                                        <img class="img-fluid" src="{% static 'images/bg1.jpg' %}" alt="...">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <a href="#">
+                                                <!--<img class="avatar border-gray" src="{% static 'images/ryan.jpg' %}" alt="...">-->
+                                                <h5 class="card-subtitle">Mike Andrew</h5>
+                                            </a>
+                                            <p class="description">
+                                                michael24
+                                            </p>
+                                        </div>
+                                        <p class="card-text">
+                                            "Lamborghini Mercy
+                                            <br> Your chick she so thirsty
+                                            <br> I'm in that two seat Lambo"
+                                        </p>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <div class="author">
+                                            <a href="#">
+                                        <img class="avatar" src="{% static 'images/ryan.jpg' %}" alt="...">
+                                                <span>Angel</span>
+                                            </a>
+                                        </div>
+                                        <div class="stats">
+                                            <i class="fa fa-facebook-square"></i>
+                                            <i class="fa fa-twitter"></i>
+                                            <i class="fa fa-google-plus-square"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                        </div>
+                                        <div class="col col-md-4">
+                                <div class="card card-background " style="background-image: url({% static '/images/bg6.jpg' %});">
+                                    <div class="filter">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="author">
+                                            <a href="#">
+                                                <h5 class="card-title">Mike Andrew</h5>
+                                            </a>
+                                            <p class="description">
+                                                michael24
+                                            </p>
+                                        </div>
+                                        <p class="card-text">
+                                            "Lamborghini Mercy
+                                            <br> Your chick she so thirsty
+                                            <br> I'm in that two seat Lambo"
+                                        </p>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                        <div class="author">
+                                            <a href="#">
+                                        <img class="avatar" src="{% static 'images/ryan.jpg' %}" alt="...">
+                                                <span>Angel</span>
+                                            </a>
+                                        </div>
+                                        <div class="stats">
+                                            <i class="fa fa-facebook-square"></i>
+                                            <i class="fa fa-twitter"></i>
+                                            <i class="fa fa-google-plus-square"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                            <div id="cardMarkup" class="tab-pane fade" role="tabpanel" aria-labelledby="notification-html-tab">
+<pre class=" language-html"><code class=" language-html" data-lang="html">&lt;div class=&quot;card card-avatar&quot;&gt;
+    &lt;div class=&quot;card-img-top&quot;&gt;
+        &lt;img class=&quot;img-fluid&quot; src=&quot;https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;amp;fm=jpg&amp;amp;h=300&amp;amp;q=75&amp;amp;w=400&quot; alt=&quot;...&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-body&quot;&gt;
+        &lt;div class=&quot;card-title&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;
+                &lt;img class=&quot;avatar&quot; src=&quot;{% static 'images/ryan.jpg' %}&quot; alt=&quot;...&quot;&gt;
+                &lt;h5 class=&quot;card-title&quot;&gt;Mike Andrew&lt;/h5&gt;
+            &lt;/a&gt;
+            &lt;h6 class=&quot;card-subtitle&quot;&gt;
+                michael24
+            &lt;/h6&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;card-text&quot;&gt;
+            &quot;Lamborghini Mercy
+            &lt;br&gt; Your chick she so thirsty
+            &lt;br&gt; I'm in that two seat Lambo&quot;
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-footer text-muted&quot;&gt;
+        &lt;button href=&quot;#&quot; class=&quot;btn btn-simple btn-link btn-icon&quot;&gt;
+            &lt;i class=&quot;fa fa-facebook-square&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;button href=&quot;#&quot; class=&quot;btn btn-simple btn-link btn-icon&quot;&gt;
+            &lt;i class=&quot;fa fa-twitter&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+        &lt;button href=&quot;#&quot; class=&quot;btn btn-simple btn-link btn-icon&quot;&gt;
+            &lt;i class=&quot;fa fa-google-plus-square&quot;&gt;&lt;/i&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-center" id="exampleModalLabel">Modal title</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body"> Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.
+			</div>
+			<div class="modal-footer">
+				<div class="left-side">
+					<button type="button" class="btn btn-default btn-link" data-dismiss="modal">Never mind</button>
+				</div>
+				<div class="divider"></div>
+				<div class="right-side">
+					<button type="button" class="btn btn-danger btn-link">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+{% block extra-content %}
+{% endblock extra-content %}
+
+{% block scrollreveal %}
+{{ block.super }}
+{% endblock scrollreveal %}
+
+
+{% block extra_js %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<script type="text/javascript" >
+$(document).ready(function(){
+    $('#datetimepicker').datetimepicker({
+        locale: '{{ LANGUAGE_CODE }}',
+    });
+    $('#datetimepicker13').datetimepicker({
+        inline: true,
+        sideBySide: true,
+        buttons:{
+            showToday:true
+        }
+    });
+});
+</script>
+<!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>-->
+
+{% endblock extra_js %}
+
+{% block extra_css %}
+{{ block.super }}
+{% endblock extra_css %}

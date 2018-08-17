@@ -1,0 +1,19 @@
+{% load site_tags wagtailcore_tags wagtailroutablepage_tags %}
+{% get_site_root as site_root %}
+
+{% if ancestors %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% pageurl site_root %}" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
+      {% for ancestor in ancestors|slice:"1:" %}
+        {% if forloop.last %}
+          <li class="breadcrumb-item active" aria-current="page" aria-level="{{ancestors|length}}">
+            {{ ancestor }}
+          </li>
+        {% else %}
+          <li class="breadcrumb-item"><a href="{% pageurl ancestor %}" aria-level="{% cycle 1 2 3 4 5 %}">{{ ancestor }}</a></li>
+        {% endif %}
+      {% endfor %}
+  </ol>
+</nav>
+{% endif %}

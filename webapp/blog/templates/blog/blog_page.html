@@ -1,0 +1,142 @@
+{% extends "blog/base.html" %}
+
+{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags blog_tags social_share %}
+
+{% block title %}
+    {% if search_term %}
+        {{ search_term }} | {{ blog_page.title }}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock title %}
+
+{% block meta_title %}
+    {% if search_term %}
+        {% trans 'Entries for' %} {{ search_type }} {{ search_term }}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock meta_title %}
+
+{% block meta_description %}
+    {% if search_term %}
+        {% trans 'Entries for' %} {{ search_type }} {{ search_term }}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock meta_description %}
+
+{% block social_share %}
+    {% image blog_page.header_image fill-800x450 as share_image %}
+    <meta property="og:title" content="{{ blog_page.title }}" />
+    <meta property="og:description" content="{{ blog_page.description }}" />
+    <meta property="og:url" content="{% canonical_url %}" />
+    {% if blog_page.header_image %}
+        <meta property="og:image" content="{% image_url share_image.url %}" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="450" />
+        <meta name="twitter:image" content="{% image_url share_image.url %}" />
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ blog_page.title }}" />
+    <meta name="twitter:description" content="{{ blog_page.description }}" />
+{% endblock social_share %}
+
+{% block content %}
+{% if search_term %}
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <div class="searchTerm"><i class="fa fa-filter"></i> {% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="row py-3">
+    {% for entry in entries %}
+    <div class="col-md-6">
+        <div class="card" >
+            <div class="card-header">
+                {% if entry.header_image %}
+                {% image entry.header_image original as header_image %}
+                <img class="card-img-top" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}">
+                {% endif %}
+                <div class="filter">
+                    <button type="button" class="btn btn-neutral btn-simple">
+                        <i class="fa fa-align-left"></i>
+                        <a href="{% entry_url entry blog_page %}"> {% trans "Continue reading" %}</a>
+                    </button>
+                    <button type="button" class="btn btn-neutral btn-simple">
+                        <i class="fa fa-chat"></i>
+                        <a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}">
+                        </a> {% trans "Comments" %}
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <section>
+                    <h5 class="card-title">
+                        <a href="{% entry_url entry blog_page %}">{{ entry.title}}</a>
+                    </h5>
+                    <div class="card-subtitle mb-2 text-muted">
+                        <ul class="card-links">
+                        {% if entry.categories.count > 0 %}
+                        <li><i class="fa fa-folder-open"></i>{% categories_list entry.categories %}</li>
+                        {% endif %}
+                        </ul>
+                    </div>
+                </section>
+                <div class="card-text">
+                {% if entry.excerpt|striptags %}
+                    {{ entry.excerpt|richtext }}
+                {% else %}
+                    {{ entry.body|richtext|truncatewords_html:70 }}
+                {% endif %}
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                    <div class="author">
+<!--     TODO                   <ul class="social-share list-inline ">
+                        <li class="social-item">
+                           {% post_to_facebook entry.url '<span><i class="fa fa-facebook"></i></span>' %}
+                        </li>
+                        <li class="social-item">
+                            {% post_to_twitter entry.title entry.url '<span><i class="fa fa-twitter"></i></span>' %}
+                        </li>
+                        <li class="social-item">
+                            {% post_to_linkendin entry.url '<span><i class="fa fa-linkedin"></i></span>' %}
+                        </li>
+                        <li class="social-item">
+                            {% post_to_gplus entry.url '<span><i class="fa fa-google-plus"></i></span>' %}
+                        </li>
+                    </ul>-->
+                        <a class="card-link" href="{% routablepageurl blog_page 'entries_by_author' entry.owner.username %}">
+                           {% if entry.owner.avatar %}
+                            <img src="{{ entry.owner.avatar.url }}" alt="{{ entry.owner.username|capfirst }}" class="avatar">
+                            {% endif %}
+                           <span> {{ entry.owner.username|capfirst }} </span>
+                        </a>
+                    </div>
+                   <div class="stats pull-right">
+                        <i class="fa fa-clock-o"></i>
+                       <a class="card-link" href="{% entry_url entry blog_page %}">{{ entry.date|timesince }}</a>
+                   </div>
+                </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col">
+        <span>{% trans 'No results founds.' %}</span>
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col">
+{# Pagination - uses django.core.paginator #}
+{# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
+{% include 'blog/includes/pagination.html' with page_obj=entries page_num=entries.paginator.num_pages %}
+    </div>
+</div>
+{% endblock content %}

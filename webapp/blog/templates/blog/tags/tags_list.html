@@ -1,0 +1,6 @@
+{% load i18n wagtailroutablepage_tags %}
+{% for tag in tags %}
+<a href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}"><span class="badge badge-primary badge-pill">{{ tag }}</span></a>
+{% empty %}
+<span class="badge badge-default badge-pill">{% trans 'No tags yet' %}</span>
+{% endfor %}

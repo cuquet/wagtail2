@@ -1,0 +1,80 @@
+.pagination {
+  .page-item .page-link {
+    border: $pagination-border-width solid transparent;
+    border-radius: 50% !important;
+    transition: all .3s;
+    margin: 0 3px;
+    line-height: $pagination-line-height;
+    color: $pagination-color;
+    font-weight: $font-weight-base;
+    font-size: $font-size-base;
+    text-transform: none;
+    background: $pagination-bg;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      color: $pagination-hover-color;
+      border: $pagination-border-width solid $pagination-hover-border-color;
+      background-color: $pagination-hover-bg;
+      @include box-shadow($bmd-shadow-2dp);
+
+    }
+  }
+
+  .page-item.active .page-link {
+    color: $pagination-active-color;
+    border: $pagination-border-width solid $pagination-active-border-color;
+    background-color: $pagination-active-bg;
+    &:focus,
+    &:hover {
+      // box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, .1);
+      @include box-shadow($bmd-shadow-2dp);
+
+
+    }
+
+  }
+
+  .page-item.disabled {
+    cursor: not-allowed;
+    .page-link{
+      color: $pagination-disabled-color;
+    }
+  }
+
+  // Colors
+  @each $color, $value in $theme-colors {
+    &.pagination-#{$color} {
+      .page-item .page-link{
+        &:focus,
+        &:hover {
+          background-color: tv($color, fade1);
+        }
+      }
+      .page-item.active .page-link{
+        background-color: map_get($theme-colors, $color);
+        border: $pagination-border-width solid map_get($theme-colors, $color);
+
+      }
+    }
+  }
+  &.pagination-lg{
+    .page-link {
+      padding: $pagination-padding-y-lg $pagination-padding-x-lg;
+      font-size: $font-size-lg;
+      line-height: $pagination-line-height;
+    }
+  }
+  &.pagination-sm{
+    .page-link {
+      padding: $pagination-padding-y-sm $pagination-padding-x-sm;
+      font-size: $font-size-sm;
+      line-height: $pagination-line-height;
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,10 @@
+{% load block_tags %}
+<div>
+{% with value.parallax_head|mysplit:"|" as parts %}
+    <h1>{{ parts.0 }}<small class="subtitle">{{ parts.1 }}</small></h1>
+{% endwith %}
+    {{ value.parallax_text }}
+</div>
+{% if value.parallax_pro %}
+<label class="pro square">{{ value.parallax_pro }}</label>
+{% endif %}

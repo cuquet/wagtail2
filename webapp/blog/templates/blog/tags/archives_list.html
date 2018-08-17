@@ -1,0 +1,29 @@
+{% load i18n wagtailroutablepage_tags %}
+<div class="accordion" id="accordionyear_list">
+    {% regroup archives by year as year_list %}
+        {% for year in year_list %}
+  <div class="card">
+    <div class="card-header" id="heading{{ year.grouper }}">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{ year.grouper }}" aria-expanded="false" aria-controls="collapse{{ year.grouper }}">
+          {{ year.grouper }}
+        </button>
+      </h5>
+    </div>
+    <div id="collapse{{ year.grouper }}" class="collapse" aria-labelledby="heading{{ year.grouper }}" data-parent="#accordionyear_list">
+      <div class="card-body">
+          <ul class="list-group list-group-flush">
+          {% regroup year.list by month as month_list %}
+              {% for month in month_list reversed %}
+              <li class="list-group-item">
+                  <a href="{% routablepageurl blog_page 'entries_by_date' year.grouper month.list.0|date:'m' %}">{{ month.list.0|date:"F" }}</a>
+              </li>
+              {% endfor %}
+          </ul>
+      </div>
+    </div>
+  </div>
+    {% empty %}
+    {% trans 'No entry archives yet' %}
+    {% endfor %}
+</div>

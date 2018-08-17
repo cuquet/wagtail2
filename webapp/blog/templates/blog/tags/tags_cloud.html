@@ -1,0 +1,11 @@
+{% load i18n static wagtailroutablepage_tags %}
+<div id="tagcloud">
+    {% for tag in tags %}
+        <a href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}" rel="{{ tag.weight }}">{{ tag }}</a>
+    {% empty %}
+        {% trans 'No tags yet' %}
+    {% endfor %}
+</div>
+
+{% block extra_js %}{% endblock extra_js %}
+{% block extra_css %}{% endblock extra_css %}

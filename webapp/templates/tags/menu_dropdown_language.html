@@ -1,0 +1,19 @@
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" id="language-list">
+        <i class="pe-7s-world"></i><span class="badge badge-info">{{ LANGUAGE_CODE }}</span><p>{% trans 'Language' %}</p>
+    </a>
+    {% static "images/flags/" as flag_path %}
+    <div class="dropdown-menu dropdown-menu-right" id="language-list" aria-labelledby="language-list" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
+        {% for language in languages %}
+        {% with language.code|upper|add:".png" as flag_static %}
+            <a rel="{{ language.code }}" href="#" class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}">
+                <img src="{{ flag_path }}{{ flag_static }}"> {{ language.name_local|capfirst }}
+            </a>
+        {% endwith %}
+        {% endfor %}
+    </div>
+</li>

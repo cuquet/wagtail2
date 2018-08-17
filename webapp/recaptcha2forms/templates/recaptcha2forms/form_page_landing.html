@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags i18n wagtailimages_tags %}
+
+{% block parallax %}
+{% if self.parallax %}
+    {% include_block self.parallax %}
+{% else %}
+    {% image self.header_image original as parallax_image %}
+    <div class="parallax-image filter-black">
+        <div class="not-fullscreen background parallax parallax-small" style="background-image:url('{{ parallax_image.url }}');" data-img-width="{{ parallax_image.width }}" data-img-height="{{ parallax_image.height }}" data-diff="100">
+            <div class="content-a">
+                <div class="content-b small-info">
+                    {% block heading %}{% endblock %}
+                    <h1>{{ self.title }}</h1>
+                    {{ self.excerpt|richtext }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock parallax %}
+
+{% block content %}
+<div class="container">
+  <div class="row center-block">
+    <div class="col-md-8 col-md-offset-2" style="margin-bottom: -15px;">
+      {{ self.thank_you_text|richtext }}
+    </div>
+  </div>
+</div>
+{% endblock %}

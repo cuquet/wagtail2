@@ -1,0 +1,41 @@
+{% load i18n static wagtailcore_tags %}
+{% with request.user as user %}
+
+<li class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle d-none d-sm-block" data-toggle="dropdown" role="button">
+        <i class="pe-7s-users"></i>
+        <p>{% if user.is_authenticated %}<span class="label label-fill label-success" >{{ user.get_username }}</span>{% else %}{% trans "Users" %}{% endif %}<span class="caret"></span></p>
+    </a>
+    <a href="#" class="nav-link dropdown-toggle d-block d-sm-none" data-toggle="dropdown" role="button">
+        <i class="pe-7s-users"></i>&nbsp;
+        {% if user.is_authenticated %}<span class="label label-fill label-success">{{ user.get_username }}</span>{% else %}{% trans "Users" %}{% endif %}<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+    {% if user.is_staff %}
+      <li role="presentation"><a href="{% url 'wagtailadmin_home' %}">
+          <i class="pe-7s-tools pe-va pe-fw "></i>&nbsp;{% trans "Administration" %}</a>
+      </li>
+      <li class="divider"></li>
+    {% endif %}
+      <li role="presentation"><a href="https://mail.melindro.org/webmail">
+          <i class="pe-7s-mail pe-va pe-fw"></i>&nbsp;{% trans "Webmail" %}</a></li>
+      <li role="presentation"><a href="https://mail.melindro.org/profilemanager">
+          <i class="pe-7s-users pe-va pe-fw"></i>&nbsp;{% trans "Profilemanager" %}</a></li>
+      <li class="divider"></li>
+
+      {% if user.is_authenticated %}
+        <li role="presentation"><a href="{% url 'wagtailadmin_account' %}">
+            <i class="pe-7s-config pe-va pe-fw"></i>&nbsp;{% trans "Update profile" %}</a></li>
+        <li class="divider"></li>
+        <li role="presentation"><a href="{% url 'wagtailadmin_logout' %}">
+            <i class="pe-7s-close-circle pe-va pe-fw"></i>&nbsp;{% trans "Log out" %}</a></li>
+      {% else %}
+        <li role="presentation"><a href="{% url 'wagtailadmin_login' %}">
+            <i class="pe-7s-upload pe-rotate-90 pe-va pe-fw"></i>{% trans "Log in" %}</a></li>
+        <li role="presentation"><a href="#">
+            <i class="pe-7s-add-user pe-va pe-fw"></i>&nbsp;{% trans "Sign up" %}</a></li>
+      {% endif %}
+    </ul>
+</li>
+
+{% endwith %}

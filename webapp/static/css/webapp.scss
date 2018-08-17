@@ -1,0 +1,148 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Grand+Hotel|Life+Savers:400,700');
+@import 'variables';
+@import 'bootstrap/scss/core-bootstrap';
+@import 'mixins';
+
+
+small {
+    display: block;
+    font-family: 'Grand Hotel', cursive;
+}
+form small, form span {
+    padding-left: 5px;
+    font-family: $font-family-sans-serif;
+
+}
+// Core CSS
+@import "misc";
+@import "tests"; //buttons
+@import "forms";
+@import "checkbox-radio";
+@import "filter";
+//
+//
+//// components
+@import "alert";
+@import "dropdown";
+@import "navbar";
+@import "parallax";
+@import "tooltips-and-popovers";
+@import "pagination";
+@import "cards";
+@import "switch";
+@import "progress";
+@import "prism";
+@import "responsive";
+
+
+.section{
+  padding-top: 20px;
+}
+footer {
+    padding-bottom:10px;
+}
+
+.scrollToTop:hover{text-decoration:none;}
+.scrollToTop {
+	display: block;
+	position: fixed;
+	z-index: 999;
+	bottom: 10px;
+	right: 10px;
+	padding: 10px;
+}
+/*
+* ==========================================================================
+//   Preloader
+* ==========================================================================
+*/
+#preload {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: $white;
+    z-index: 10000;
+    @include opacity(.7);
+}
+#preload-status {
+    position: absolute;
+    top: 40%;
+}
+
+
+/*.img-wrapper {
+    margin-bottom: 1em;
+    position: relative;
+
+    img {
+        display: block;
+        width: 100%;
+        margin-bottom:0;
+    }
+
+    &.left {
+        float:left;
+        width: 45%;
+        margin-right: 5%;
+    }
+    &.right {
+        float:right;
+        width: 45%;
+        margin-left: 5%;
+    }
+}*/
+
+/*
+.btn-twitter {
+  background-color: #55acee;
+}
+
+.btn-twitter:active:focus {
+  background-color: #55acee;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-facebook:active:focus {
+  background-color: #3b5998;
+}
+
+.btn-google-plus {
+  background-color: #dd4b39;
+}
+
+.btn-google-plus:active:focus {
+  background-color: #dd4b39;
+}
+
+.btn-github {
+  background-color: #333333;
+}
+
+.btn-github:active:focus {
+  background-color: #333333;
+}
+
+.blog-post .section-text{padding-bottom:0}
+.blog-post .section-text p{font-size:1.188rem;line-height:1.5em;color:#555;margin-bottom:30px}
+.blog-post .section-text .blockquote p{font-size:1.5rem}
+.blog-post .section-blog-info{padding-top:30px;padding-bottom:0}
+.blog-post .section-blog-info .btn{margin-top:0;margin-bottom:0}
+.blog-post .section-blog-info .blog-tags{padding-top:8px}
+.blog-post .section-blog-info .card-profile{margin-top:0;text-align:left}
+.blog-post .section-blog-info .card-profile .description{font-size:1rem}
+.blog-post .section-blog-info .card-profile .btn{margin-top:25px}
+.blog-post .section-comments .title{margin-bottom:30px}
+.blog-post .media p{color:#555}*/
+
+

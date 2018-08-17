@@ -1,0 +1,34 @@
+{% load i18n static site_tags wagtailcore_tags wagtailroutablepage_tags %}
+{% get_site_root as site_root %}
+    <ul class="navbar-nav ml-auto">
+        {% if show_search %}
+        <li class="nav-item  d-none d-sm-block">
+            <a class="nav-link" href="javascript:void(0);" data-toggle="search" >
+                <i class="pe-7s-search"></i>
+                <p>{% trans "Search" %}</p>
+            </a>
+        </li>
+        <form class="navbar-form form-inline ml-auto navbar-search-form" action="{% url 'search' %}" method="get" role="search" style="display: none;">
+            {% csrf_token %}
+                <div class="form-group has-white">
+                    <input class="form-control" type="text" name="query" value="{% if query_string %}{{ query_string }}{% endif %}" placeholder="{% trans 'Search' %}...">
+                </div>
+        </form>
+        {% endif %}
+        <li class="nav-item">
+            <a href="{% pageurl site_root %}" class="nav-link" ><i class="pe-7s-home"></i><p>{% trans 'Home' %}</p></a>
+            <!--a href="{% pageurl site_root %}" class="nav-link d-block d-sm-none">{% trans 'Home' %}</a -->
+        </li>
+        {% for menuitem in menuitems %}
+            <li class="nav-item {% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+                <a href="{% pageurl menuitem %}" class="nav-link {% if menuitem.show_dropdown %}dropdown-toggle" id="ddtoggle_{{ menuitem.link_page.pk }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false{% endif %}" >
+                    {% if menuitem.specific.menu_icon %}<i class="{{ menuitem.specific.menu_icon }}"></i>{% endif %}<p>{% if menuitem.specific.translated_title %}{{ menuitem.specific.translated_title }}{% else %}{{ menuitem.title }}{% endif %}</p>
+                </a>
+                {% if menuitem.show_dropdown %}{% top_menu_children parent=menuitem %}{% endif %}
+            </li>
+        {% endfor %}
+        {% include "tags/menu_dropdown_language.html" %}
+        <!--TODO {# include "tags/menu_dropdown_user.html" #}-->
+    </ul>
+
+

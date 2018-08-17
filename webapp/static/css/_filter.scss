@@ -1,0 +1,21 @@
+.parallax.filter-black, .parallax-image.filter-black, .header-filter.filter-black{
+@include filter_mixin(rgba(0,0,0,0.66))
+}
+.parallax.filter-white, .parallax-image.filter-white, .header-filter.filter-white{
+@include filter_mixin(rgba(255, 255, 255, 0.91))
+}
+.parallax.filter-blue, .parallax-image.filter-blue, .header-filter.filter-blue{
+@include filter_mixin(rgba(9, 82, 239, 0.69))
+}
+.parallax.filter-azure, .parallax-image.filter-azure, .header-filter.filter-azure{
+@include filter_mixin(rgba(0, 146, 248, 0.69))
+}
+.parallax.filter-green, .parallax-image.filter-green, .header-filter.filter-green{
+@include filter_mixin(rgba(4, 124, 10, 0.69))
+}
+.parallax.filter-orange, .parallax-image.filter-orange, .header-filter.filter-orange{
+@include filter_mixin(rgba(204, 119, 0, 0.69))
+}
+.parallax.filter-red, .parallax-image.filter-red, .header-filter.filter-red{
+@include filter_mixin(rgba(252, 13, 0, 0.69))
+}

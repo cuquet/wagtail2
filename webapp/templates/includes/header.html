@@ -1,0 +1,29 @@
+{% load wagtailsettings_tags static site_tags block_tags %}
+
+{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
+<nav class="navbar navbar-icons navbar-expand-lg navbar-primary fixed-top navbar-transparent navbar-color-on-scroll" color-on-scroll="300" id="sectionsNav">
+    <div class="container">
+        <div class="navbar-translate">
+            {% block logo %}
+            <div class="">
+                <div class="logo-container">
+                    <img class="rounded-circle" src="{% static 'images/logo_d.png' %}">
+                </div>
+                <div class="navbar-brand">{% get_settings use_default_site=True %}
+                {% with request.site.site_name|mysplit:"|" as parts %}
+                <p>{{ parts.0 }}<small >{{ parts.1 }}</small></p>
+                {% endwith %}
+                </div>
+            </div>
+            {% endblock logo %}
+            <button class="navbar-toggler navbar-toggler-left collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse" >
+            {% top_menu parent=site_root calling_page=self show_search=self.show_search %}
+        </div>
+    </div>
+</nav>

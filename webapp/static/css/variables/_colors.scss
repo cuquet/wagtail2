@@ -1,0 +1,202 @@
+//
+// Color system
+//
+
+// stylelint-disable
+$white:    #ffffff;
+$gray-100: #f6f9fc;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #8898aa;
+$gray-700: #525f7f;
+$gray-800: #32325d;
+$gray-900: #212529;
+$black:    #000;
+
+$grays: ();
+$grays: map-merge((
+        "100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900
+), $grays);
+
+$blue:    #007bff;
+$indigo:  #6610f2;
+$purple:  #6f42c1;
+$pink:    #e83e8c;
+$red:     #dc3545;
+$orange:  #fd7e14;
+$yellow:  #ffc107;
+$green:   #28a745;
+$teal:    #20c997;
+$cyan:    #17a2b8;
+
+$colors: ();
+$colors: map-merge((
+        "blue":       $blue,
+        "indigo":     $indigo,
+        "purple":     $purple,
+        "pink":       $pink,
+        "red":        $red,
+        "orange":     $orange,
+        "yellow":     $yellow,
+        "green":      $green,
+        "teal":       $teal,
+        "cyan":       $cyan,
+        "white":      $white,
+        "gray":       $gray-600,
+        "gray-dark":  $gray-800
+), $colors);
+
+$primary:       #5e72e4;
+$secondary:     #f4f5f7;
+$success:       #2dce89;
+$info:          #11cdef;
+$warning:       #fb6340;
+$danger:        #f5365c;
+$light:         $gray-100;
+$dark:       #172b4d;
+
+$theme-colors: ();
+$theme-colors: map-merge((
+        "primary":    $primary,
+        "secondary":  $secondary,
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $light,
+        "dark":    $dark
+), $theme-colors);
+// stylelint-enable
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval:      8% !default;
+
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold:  150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:             $gray-900 !default;
+$yiq-text-light:            $white !default;
+
+
+$opacity-1:                  rgba(255,255,255, .1) ;
+$opacity-2:                  rgba(255,255,255, .2) ;
+$opacity-5:                  rgba(255,255,255, .5) ;
+$opacity-8:                  rgba(255,255,255, .8) ;
+$opacity-gray-3:             rgba(222,222,222, .3) ;
+$opacity-gray-5:             rgba(222,222,222, .5) ;
+$opacity-gray-8:             rgba(222,222,222, .8) ;
+
+// To modify an existing color in our $theme-colors map,
+// add the following to your custom Sass file:
+$theme-colors: ( "primary": #5e72e4,
+                  "danger": #ff4136 ,
+                  "default": #172b4d);
+
+
+
+// Social icons color
+$social-twitter:                   #55acee ;
+$social-twitter-state-color:       darken(#55acee, 5%) ;
+
+$social-facebook: 			       #3b5998 ;
+$social-facebook-state-color:      darken(#3b5998, 5%) ;
+
+$social-google: 			       #dd4b39 ;
+$social-google-state-color:        darken(#dd4b39, 5%) ;
+
+$social-linkedin: 			         #0077B5 ;
+$social-linkedin-state-color:        darken(#0077B5, 5%) ;
+
+
+
+// https://www.sitepoint.com/managing-color-values-with-sass/
+// Store the different functions which could alter colors:
+// 1 Key is shorthand to be used in partials, value is map.
+// 2-A First item in map (key: function) is the function name,
+// 2-B Optional second map (key: parameters) is a list of additional values.
+// With these limitations, this function does not support
+// adjust-color, scale-color & change-color.
+$variations: (
+        light: (
+                function: lighten,
+                parameters: 15%
+        ),
+        dark: (
+                function: darken,
+                parameters: 10%
+        ),
+        fade9: (
+                function: rgba,
+                parameters: .90
+        ),
+        fade7: (
+                function: rgba,
+                parameters: .7
+        ),
+        fade3: (
+                function: rgba,
+                parameters: .3
+        ),
+        fade1: (
+                function: rgba,
+                parameters: .1
+        ),
+        gray: (
+                function: grayscale
+        ),
+        shade: (
+                function: mix,
+                parameters: white 80%
+        )
+);
+
+@function theme-variation($color, $variation: false) {
+
+  // Correctly set $color variable:
+  @if map-has-key($theme-colors, $color) {
+    // $color is in $colors, set variable = map-value
+    $color: map-get($theme-colors, $color);
+  } @else {
+    @if type-of($color) != color {
+      // $color is not in $color and $color is not a color
+      @error "Invalid color name: `#{$color}`.";
+    }
+    // $color is a valid color - use it
+  }
+
+  @if $variation {
+    @if not map-has-key($variations, $variation) {
+      // variation is not in $variations
+      @error "Invalid $variation: `#{$variation}`.";
+    } @else {
+      // make it easier to deal with nested map
+      $this-variation: map-get($variations, $variation);
+      // $args = $function, $color
+      $args: join(map-get($this-variation, function), $color);
+      @if map-get($this-variation, parameters) {
+        // $args = $function, $colors, $parameters
+        $args: join($args, map-get($this-variation, parameters));
+      }
+      //@return $args;
+      @return call($args...);
+    }
+  }
+  // no $variation, just return $color
+  @return $color;
+}
+
+// Alias function to make typing easier:
+@function tv($color, $variation:false) {
+  @return theme-variation($color, $variation);
+}

@@ -1,0 +1,129 @@
+@media screen and (max-width: 517px) {
+    .alert .alert-icon{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 576px){
+}
+
+@media screen and (max-width: 580px) {
+    .alert{
+        button.close{
+            position: absolute;
+            right: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .image-container{
+        &.image-left{
+            margin-bottom: 220px;
+
+            p.blockquote{
+                margin: 0 auto;
+                position: relative;
+                right: 0;
+            }
+        }
+    }
+
+    .nav-tabs{
+        display: inline-block;
+        width: 100%;
+        padding-left: 100px;
+        padding-right: 100px;
+        text-align: center;
+
+        .nav-item > .nav-link{
+            margin-bottom: 5px;
+        }
+    }
+}
+
+@media screen and (min-width: 768px){
+    .image-container{
+        &.image-right{
+            top: 80px;
+            margin-left: - 100px;
+            margin-bottom: 130px;
+        }
+
+        &.image-left{
+            margin-right: -100px;
+        }
+    }
+}
+
+@media screen and (max-width: 991px){
+    @include navbar-collapse();
+    .navbar-collapse {
+        @include transform-translate-x(300px);
+    }
+    .nav-open {
+        .navbar-collapse{
+            @include transform-translate-x(0px);
+        }
+        .wrapper{
+            @include transform-translate-x(-150px);
+            @include opacity(0.55);
+
+        }
+        .navbar-translate{
+            @include transform-translate-x(-300px);
+        }
+    }
+
+    .badge{
+        line-height:unset;
+        font-size: ($font-size-sm * .6);
+        height: 50%;
+        margin-right: .25em;
+    }
+}
+
+@media screen and (min-width: 991px) and (max-width: 1200px){
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+// Ipad responsive portrait mode
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and ( orientation : portrait){
+}
+// Responsive typography refers to scaling text and components by simply adjusting
+// the root element’s font-size within a series of media queries. Bootstrap doesn’t
+// do this for you, but it’s fairly easy to add if you need it.
+//
+// Here’s an example of it in practice. Choose whatever font-sizes
+// and media queries you wish.
+// TODO
+/*html {
+    font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 1.4rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.6rem;
+    }
+}*/

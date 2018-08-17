@@ -1,0 +1,14 @@
+{% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show {% if message.tags %}{{ message.tags }}{% endif %}" data-auto-dismiss="5000" role="alert">
+        <!-- you can add the class "alert-auto-close" and the alert notification will be closed in 5 seconds -->
+        <div class="container">
+            <i class="fa fa-info-circled" aria-hidden="true"></i>
+             <p>{{ message }}</p>
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+{% endif %}

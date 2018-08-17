@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  redis:
+    restart: always
+    image: redis:3.0
+    expose:
+      - "6379"
+  elasticsearch:
+    image: elasticsearch:2.3
+    restart: always
+    expose:
+      - "9200"
+  web:
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DATABASE_URL: ${DATABASE_URL_PROD}
+      CACHE_URL: redis://redis
+      ELASTICSEARCH_ENDPOINT: elasticsearch
+      WAIT_FOR: mariadb:3306
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    links:
+      - redis:redis
+      - elasticsearch:elasticsearch
+    external_links:
+      - mariadb:mariadb
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - elasticsearch
+networks:
+  default:
+    external:
+      name: my_network

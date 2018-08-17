@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n static wagtailcore_tags %}
+
+{% block body_class %}template-searchresults{% endblock %}
+{% block sectionclass %}section-gray{% endblock sectionclass %}
+
+{% block title %}Search{% endblock %}
+
+{% block parallax %}
+<div class="parallax parallax-small filter filter-orange">
+    <div class="fullscreen background parallax parallax-small " style="background-image:url('{% static 'images/bg_office.png' %}');"  data-diff="100">
+        <div class="content-a">
+            <div class="content-b motto col-md-10 col-md-offset-1">
+            <h1>{% trans "Search results" %}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock parallax %}
+
+{% block content %}
+    <form action="{% url 'search' %}" method="get">
+        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+        <input type="submit" value="Search" class="button">
+    </form>
+
+    {% if search_results %}
+        <p>You searched{% if search_query %} for “{{ search_query }}”{% endif %}</p>
+        <ul>
+            {% for result in search_results %}
+                <li>
+                    <h4><a href="{% pageurl result %}">{{ result.specific }}</a></h4>
+                    {% if result.specific.search_description %}
+                        {{ result.specific.search_description|safe }}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if search_results.has_previous %}
+            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% if search_results.has_next %}
+            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+        {% endif %}
+    {% elif search_query %}
+    <p>No results found</p>
+    {% endif %}
+{% endblock %}

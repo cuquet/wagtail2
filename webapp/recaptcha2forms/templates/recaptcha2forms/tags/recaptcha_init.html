@@ -1,0 +1,12 @@
+<script src="https://www.google.com/recaptcha/api.js{% if explicit %}?onload=djangoRecaptchaOnLoadCallback&render=explicit{% if language %}&hl={{ language }}{% endif %}{% elif language %}?hl={{ language }}{% endif %}" async defer></script>
+{% if explicit %}
+<script>
+    var django_recaptcha_callbacks = []
+
+    var djangoRecaptchaOnLoadCallback = function() {
+        django_recaptcha_callbacks.forEach(function(callback) {
+            callback();
+        });
+    }
+</script>
+{% endif %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags site_tags block_tags  static %}
+
+{% block parallax %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
+{% endblock parallax %}
+
+{% block sectionclass %}section-gray{% endblock sectionclass %}
+
+{% block content %}
+    {% if self.body %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-12">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}
+
+{% block extra-content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-12">
+                <div class="row">
+                    {% for related_link in self.related_links.all %}
+                    <a href="{{related_link.link}}">{{related_link.title}}</a>
+                    {% endfor %}
+                </div>
+                <div class="row justify-content-md-center">
+{% with self.card_items.all|length as numcards %}
+    {% widthratio 12 numcards 1 as cardcolcounter %}
+    {% for card in self.card_items.all %}
+        {% include "blocks/card.html" with card=card columns=cardcolcounter id=forloop.counter %}
+    {% endfor %}
+{% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock extra-content %}
+
+{% block scrollreveal %}
+{{ block.super }}
+.reveal('.content-a', {origin:'top',distance:'50px',duration:1400}){% for card in self.card_items.all %}
+{% if forloop.first %}.reveal('#card-{{ forloop.counter }}', {origin:'left',distance:'50px',duration:1600})
+{% elif forloop.last %}.reveal('#card-{{ forloop.counter }}', {origin:'right',distance:'50px',duration:1800})
+{% else %}.reveal('#card-{{ forloop.counter }}', {origin:'top',distance:'50px',duration:1700})
+{% endif %}{% endfor %}{% endblock scrollreveal %}
+
+{% block extra_css %}
+<style>
+.card:hover {
+    background:rgba(5, 195, 249, 0.5);
+    color:#ffffff;
+}
+.sblock .card-user .avatar{border:0;}
+</style>
+{% endblock extra_css %}

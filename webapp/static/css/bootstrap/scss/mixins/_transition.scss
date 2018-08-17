@@ -1,0 +1,21 @@
+@mixin transition($transition...) {
+  @if $enable-transitions {
+    @if length($transition) == 0 {
+      -webkit-transition: $transition-base;
+      -moz-transition: $transition-base;
+      -o-transition: $transition-base;
+      -ms-transition: $transition-base;
+      transition:  $transition-base;
+    } @else {
+      -webkit-transition: $transition;
+      -moz-transition: $transition;
+      -o-transition: $transition;
+      -ms-transition: $transition;
+      transition:  $transition;
+    }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}

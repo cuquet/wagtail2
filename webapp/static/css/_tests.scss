@@ -1,0 +1,165 @@
+.btn{
+  border: $btn-border-width solid transparent;
+  font-weight: $btn-font-weight;
+  cursor: pointer;
+  i {padding-right:5px;}
+  &:hover,
+  &:focus{
+    outline: 0 !important;
+    @include box-shadow($btn-box-shadow);
+    text-decoration: none;
+
+  }
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    @include opacity($btn-disabled-opacity);
+    @include box-shadow(none);
+  }
+
+  &.btn-link{
+    color: $link-color;
+    @include box-shadow(none);
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: $link-hover-decoration;
+    }
+    &:focus,
+    &.focus {
+      text-decoration: $link-hover-decoration;
+    }
+    &:disabled,
+    &.disabled {
+      color: $btn-link-disabled-color;
+      pointer-events: none;
+    }
+    @include transition($fast-transition-time linear);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background-image: none;
+    @include box-shadow($btn-focus-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-active-box-shadow);
+    }
+  }
+
+  &[class*="btn-outline-"]{
+    background-image: none;
+    background-color: transparent;
+  }
+}
+
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
+.btn-group .btn-group + .btn-group{
+  margin-left: -2px;
+}
+
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+
+/*.btn-neutral {
+  @include button-variant($white, $white);
+  color: $gray-600;
+}*/
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+}
+// TODO
+.btn-wd {
+  min-width: 140px;
+}
+
+//
+// Block button
+//
+
+.btn-block {
+  display: block;
+  width: 100%;
+
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
+
+.btn-just-icon{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  padding: 8px;
+  &:hover,
+  &:focus{
+    border-radius: 50px;
+  }
+  &.btn-sm{
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    padding: 5px;
+
+    i{
+      font-size: $font-size-sm;
+    }
+  }
+  &.btn-lg{
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    padding: 12px 10px;
+    i{
+      font-size: ($font-size-base * 1.80);
+      padding: 0;
+    }
+
+  }
+  i{
+    font-size: $font-size-lg;
+    padding: 2px 0px;
+  }
+}
+
+.btn-link.btn-just-icon{
+  padding: 8px;
+}

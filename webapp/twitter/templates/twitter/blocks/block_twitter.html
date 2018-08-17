@@ -1,0 +1,32 @@
+<div class="twitter-widget">
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+
+{% if self.twitter_box_username %}
+    <a class="twitter-timeline"
+       href="https://twitter.com/{{ self.twitter_box_username }}"
+       data-tweet-limit="{{ self.twitter_box_tweet_limit }}"
+       data-chrome="transparent">
+Tweets by @{{ self.twitter_box_username }}
+</a>
+    <div id="timeline"></div>
+    <!--<a class="twitter-timeline" href="https://twitter.com/{{ self.twitter_box_username }}" data-widget-id="{{ self.twitter_box_widget_id }}" data-tweet-limit="{{ self.twitter_box_tweet_limit }}">Tweets by {{ self.twitter_box_username}}</a>-->
+    <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>-->
+{% endif %}
+</div>
+
+<!--<a class="twitter-timeline" href="https://twitter.com/applesfera">Tweets by applesfera</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>-->

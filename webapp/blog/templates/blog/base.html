@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags  blog_tags %}
+
+
+{% block title %}
+    {{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}
+{% endblock title %}
+
+{% block meta_title %}
+    {% if blog_page.seo_title %}
+        {{ blog_page.seo_title }}
+    {% else %}
+        {{ blog_page.title }}
+    {% endif %}
+{% endblock meta_title %}
+
+{% block extrahead %}
+    {% block social_share %}{% endblock social_share %}
+    <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
+    {% block css %}
+        <style>
+            body {
+                --main-color: {{blog_page.main_color}};
+            }
+        </style>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
+    {% endblock %}
+{% endblock extrahead %}
+
+
+{% block wrapper %}
+    {% block parallax %}
+    {% include 'includes/parallax.html' with parallax_image=blog_page.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=blog_page.title parallax_text=blog_page.description %}
+    {% endblock parallax %}
+    <div class="main main-raised">
+        <div class="container container-blog">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                {% block content %}{% endblock content %}
+                {% block extra_content %}{% endblock extra_content %}
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="blog_sidebar">
+                    <div class="row rss-sitemap">
+                        <a href="{% feeds_url blog_page %}" target="_blank" title="RSS">
+                             <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
+                        </a>
+                    </div>
+                    <form name="search_form" class="search_form" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                             <input type="search" class="form-control" name="q" placeholder="{% trans 'Search' %}">
+                             <div class="input-group-addon">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                             </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    {% if blog_page.display_last_entries %}
+                        <ul class="list-group">
+                            <h3>{% trans 'Last Entries' %}</h3>
+                            {% recent_entries blog_page.num_last_entries %}
+                        </ul>
+                    {% endif %}
+                    {% if blog_page.display_popular_entries %}
+                        <ul class="list-unstyled">
+                            <h3>{% trans 'Popular Entries' %}</h3>
+                            {% popular_entries blog_page.num_popular_entries %}
+                        </ul>
+                    {% endif %}
+                    {% if blog_page.display_categories %}
+                        <ul class="list-group">
+                            <h3>{% trans 'Categories' %}</h3>
+                            {% categories_list %}
+                        </ul>
+                    {% endif %}
+                    {% if blog_page.display_tags %}
+                        <ul class="list-group">
+                            <h3>{% trans 'Tags' %}</h3>
+                            {% tags_cloud %}
+                        </ul>
+                    {% endif %}
+                    {% if blog_page.display_archive %}
+                        <ul class="list-group widget menu">
+                            <h3>{% trans 'Archive' %}</h3>
+                            {% archives_list %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock wrapper %}
+
+{% block js %}
+{% endblock js %}
+
+{% block extra_css %}
+<!--<link rel="stylesheet" href="{% static 'blog/css/blog.css' %}"/>-->
+{% endblock extra_css %}

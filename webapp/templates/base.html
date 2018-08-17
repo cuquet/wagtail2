@@ -1,0 +1,115 @@
+<!doctype html>
+{% load i18n wagtailsettings_tags wagtailcore_tags site_tags block_tags cache static wagtailuserbar %}
+{% get_settings use_default_site=True %}
+{% get_site_root as site_root %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+{% block head %}
+    {% include "includes/head.html" with title_postfix=" | Wagtail" %}
+{% endblock head %}
+{% block extrahead %}{% endblock extrahead %}
+</head>
+<body class="{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %} sidebar-collapse">
+    {% wagtailuserbar 'bottom-left' %}
+    <!-- Preloader start -->
+    <div id="preload">
+        <div id="preload-status"><img src="{% static 'images/preloader.gif' %}" class="img-responsive center-block img-rounded clearfix"></div>
+    </div> <!-- Preloader Ends -->
+
+    {% block header %}{# Header contains the main_navigation block #}
+        {% include "includes/header.html" with parent=site_root calling_page=self %}
+    {% endblock header %}
+
+    {% block messages %}
+        {% include "includes/messages.html" %}
+    {% endblock messages %}
+
+    {% block wrapper %}
+    <div class="wrapper">
+        {% block parallax %}{% endblock %}
+        <div class="main main-raised">
+        {% breadcrumbs %}
+        {% block heading %}{% endblock %}
+        {% block content %}{% endblock %}
+        {% block extra-content %}{% endblock extra-content %}
+        </div>
+    </div>
+    {% endblock wrapper %}
+    {% block footer %}
+    {% include "includes/footer.html" %}
+    {% endblock footer %}
+    <footer>
+        <div class="container">
+            <div class="text-center copyright">
+                {% get_footer_text %}
+                <span>|</span>
+                {% trans "Powered by" %}
+                <a href="http://www.wagtail.io">Wagtail</a>,
+                {% trans "and" %}
+                <a href="http://www.djangoproject.com">Django</a>
+                <span>|</span>
+                {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a> &
+                <a target="_blank" href="http://www.creative-tim.com/">Creative Tim</a>
+        </div>
+        </div>
+    </footer>
+    <a href="#page-top" class="btn btn-success btn-fill scrollToTop"><i class="fa fa-arrow-up"></i> {% trans "Back to top" %}</a>
+
+<!-- Modal Core -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+<!--   Core JS Files   -->
+{# External javascript #}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!--<script src="{% static 'local/jquery.3.2.1.min.js' %}"></script>-->
+<!--<script src="{% static 'local/popper.min.js' %}"></script>-->
+<!--<script src="{% static 'local/bootstrap.min.js' %}"></script>-->
+{# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/jquery.dropdown-effects.js' %}"></script>
+<script src="{% static 'js/jquery.animate.js' %}"></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<script src="{% static 'js/webapp.js' %}"></script>
+<script type="text/javascript" >
+$(document).ready(function(){
+    LAUNCH.Selectlanguage('{% url "set_language" %}', '{{ csrf_token }}');
+    LAUNCH.ButtonScrollUp();
+    $('#modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var recipient = button.data('modalhtml')
+        var modal = $(this)
+        modal.find('#modal-body').load(recipient, function () {
+            LAUNCH.ModalSubmit();
+        });
+    })
+
+    if ( $(window).width() > 769) {
+        $('#navbarCollapse').animateCss('bounceInRight');
+        $('.navbar-translate').animateCss('bounceInLeft');
+        window.sr = ScrollReveal({easing:'ease-in-out'}){% block scrollreveal %}{% endblock scrollreveal %}
+        .reveal('#footer1', {origin:'left',distance:'50px',duration:1200})
+        .reveal('#footer2', {origin:'bottom',distance:'50px',duration:1400})
+        .reveal('#footer3', {origin:'bottom',distance:'50px',duration:1600})
+        .reveal('#footer4', {origin:'right',distance:'50px',duration:1200});
+    }
+});
+</script>
+{# Override this block in individual templates in order to add javascript on a template by template basis #}
+{% block extra_js %}{% endblock %}
+</body>
+</html>

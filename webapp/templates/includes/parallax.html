@@ -1,0 +1,18 @@
+{% load i18n wagtailcore_tags wagtailimages_tags block_tags %}
+{% timestamp as id_prefix %}
+{% image parallax_image original as the_image %}
+
+<div id="{{ id_prefix }}" class="parallax {{ parallax_size }}">
+<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{{ the_image.url }}')"data-img-width="{{ the_image.width }}" data-img-height="{{ the_image.height }}" data-diff="80" data-filter-color="{{ parallax_filter }}">
+    <div class="content-a container">
+        <div class="content-b content-center">
+              <div class="col-md-8 ml-auto mr-auto">
+                {% with parallax_head|mysplit:"|" as parts %}
+                <h1 class="title">{{ parts.0 }}<small class="subtitle">{{ parts.1 }}</small></h1>
+                {% endwith %}
+                <p>{{ parallax_text|richtext }}</p>
+              </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,119 @@
+
+//== Parallax
+$parallax-small: 350px;
+$parallax-medium: 560px;
+$parallax-large: 780px;
+
+@import "variables/colors";
+@import "variables/shadow";
+
+$enable-shadows:            true;
+
+
+$general-transition-time:  300ms             ;
+$slow-transition-time:           370ms       ;
+$dropdown-coordinates:      29px -50px       ;
+$fast-transition-time:           150ms       ;
+$select-coordinates:         50% -40px       ;
+$transition-linear:         linear           ;
+$transition-bezier:         cubic-bezier(0.34, 1.61, 0.7, 1) ;
+$transition-ease:           ease 0.3s;
+
+$transition-base:             all .2s ease-in-out ;
+$transition-fade:             opacity .15s linear ;
+$transition-collapse:         all 0.50s cubic-bezier(0.685, 0.0473, 0.346, 1) ;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                map-get($theme-colors, "primary");
+$link-decoration:           none ;
+$link-hover-color:          darken($link-color, 15%) ;
+$link-hover-decoration:     underline ;
+// Components
+//
+// Define common padding and border radius sizes and more.
+$component-active-color:      $white ;
+$component-active-bg:         map-get($theme-colors, "primary");
+// Fonts
+// stylelint-disable value-keyword-case
+$font-family-sans-serif:          'Life Savers', 'Montserrat', 'Helvetica Neue',  Arial, sans-serif;
+// stylelint-enable value-keyword-case
+$font-size-base:              1rem ; // Assumes the browser default, typically `16px`
+$font-size-lg:                ($font-size-base * 1.25) ;
+$font-size-sm:                ($font-size-base * .875) ;
+$font-weight-light:           300 ;
+$font-weight-normal:          400 ;
+$font-weight-bold:            700 ;
+$font-weight-base:            $font-weight-normal ;
+$line-height-base:            1.5 ;
+$h1-font-size:                $font-size-base * 2.5 ;
+$h2-font-size:                $font-size-base * 2 ;
+$h3-font-size:                $font-size-base * 1.75 ;
+$h4-font-size:                $font-size-base * 1.5 ;
+$h5-font-size:                $font-size-base * 1.25 ;
+$h6-font-size:                $font-size-base ;
+
+// Buttons
+$btn-box-shadow:              $bmd-shadow-2dp ;
+$btn-active-box-shadow:       $bmd-shadow-6dp ;
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out ;
+
+// Dropdowns
+$dropdown-box-shadow:               $bmd-shadow-2dp ;
+$dropdown-font-weight:              $font-weight-normal;
+
+// Pagination
+$pagination-color:                  $link-color ;
+$pagination-bg:                     transparent ;
+$pagination-hover-color:            $link-hover-color ;
+$pagination-hover-bg:               tv("primary", fade1) ;
+$pagination-active-color:           $component-active-color ;
+$pagination-active-bg:              map_get($theme-colors, "primary") ;
+
+
+// Modals
+$modal-transition:                  transform .3s ease-out ;
+
+
+// Body
+$smoke-bg:                   #F5F5F5 ;
+$body-bg:                   $smoke-bg ;
+$body-color:                $gray-900 ;
+
+$topbar-x:             topbar-x !default;
+$topbar-back:          topbar-back !default;
+$bottombar-x:          bottombar-x !default;
+$bottombar-back:       bottombar-back !default;
+
+// Alerts
+$alert-bg-level:                    -2;
+$alert-border-level:                -2;
+$alert-color-level:                 0;
+
+//Prism
+$code-font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+;
+$code-font-size: 		14px;
+$code-line-height:		1.375;
+
+$code-border: 			    1px solid #e1e1e8;
+$code-background:			#f5f7ff;
+$code-color:				#5e6687;
+$code-color-fade:			#bebec5;
+$code-text-shadow:			none ; //0 1px 0 #000;
+$code-box-shadow:           none;
+
+$code-color-tag:            #3d8fd1;
+$code-color-string:			#c76b29;
+
+$code-color-comment:		#6f705e;
+$code-color-keyword:		#f12770;
+$code-color-value:			#ac9739;
+$code-color-name:			#e6d06c;
+$code-color-number:			#a77afe;
+$code-color-variable:		#fff;
+$code-color-selector:		#a6e22d;
+
+

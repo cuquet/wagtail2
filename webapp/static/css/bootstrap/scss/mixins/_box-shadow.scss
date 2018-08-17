@@ -1,0 +1,6 @@
+@mixin box-shadow($shadow...) {
+  @if $enable-shadows {
+    -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+    box-shadow: $shadow;
+  }
+}

@@ -1,0 +1,151 @@
+.navbar{
+    border: none;
+    font-size: $font-size-base;
+    min-height: 53px;
+    margin-bottom: 5px;
+    padding:0;
+    @include transition(all 0.4s);
+    @include box-shadow($bmd-shadow-2dp);
+}
+
+.navbar-nav{
+  .nav-item{
+    color: $white;
+    .nav-link{
+      vertical-align: middle;
+      &:not(.btn){
+        color: $white;
+        @include opacity(.5);
+        text-transform: uppercase;
+        font-size: $font-size-sm;
+        &.disabled{
+          @include opacity(.3);
+          color: $white;
+        }
+      }
+    }
+
+    &.active .nav-link:not(.btn),
+    .nav-link:not(.btn):not(.disabled):focus,
+    .nav-link:not(.btn):not(.disabled):hover,
+    .nav-link:not(.btn):not(.disabled):active{
+      // background-color: $opacity-2;
+      @include opacity(1);
+      // border-radius: $border-radius;
+    }
+  }
+  .dropdown-menu{
+    float: none;
+    margin-top: -20px;
+    .divider{
+      height: 1px;
+      margin: 5px 0;
+      overflow: hidden;
+      background-color: $white;
+    }
+  }
+}
+.logo-container{
+  width: 50px;
+  overflow: hidden;
+  margin: 12px;
+  border-radius: 50%;
+  float: left;
+  border: 1px solid $gray-500;
+}
+
+.navbar-brand {
+  font-size: $navbar-brand-font-size;
+  &:hover,
+  &:focus{
+    text-decoration: none;
+  }
+}
+
+.navbar-toggler{
+  width: 37px;
+  height: 27px;
+  outline: 0;
+
+  &.navbar-toggler-left{
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+  }
+
+  &:hover{
+    & .navbar-toggler-bar.bar2{
+      width: 22px;
+    }
+  }
+}
+
+.button-dropdown{
+  .navbar-toggler-bar:nth-child(2){
+    width: 17px;
+  }
+}
+
+.navbar-transparent{
+  background-color: transparent !important;
+  @include box-shadow(none);
+  padding-top: 25px;
+  color: $white;
+}
+
+.navbar-icons{
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        text-align: center;
+        padding: 6px 15px;
+        margin: 6px 3px;
+
+        i[class^="pe-7s-"] {
+          font-weight: lighter;
+          font-size: 32px;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  .navbar-brand{
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .navbar-#{$color} {
+    background-color: tv($color, fade9);
+    &.navbar-transparent{
+      background-color: transparent !important;
+      @include box-shadow(none);
+      color: color-yiq(map-get($theme-colors, $color));
+    }
+    navbar-brand{
+      color: color-yiq(map-get($theme-colors, $color));
+    }
+  }
+}
+
+.navbar-form{
+   @include box-shadow(none);
+   .form-control{
+       border-radius: 0;
+       border:0;
+       padding: 0;
+       background-color: transparent;
+        height: 22px;
+        font-size: $font-size-base;
+        line-height: $nav-link-height;
+        color: $white;
+    }
+    .navbar-transparent & .form-control {
+      color: $white;
+      border-bottom: 1px solid rgba($white, .6);
+    }
+
+}
