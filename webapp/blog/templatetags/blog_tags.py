@@ -44,6 +44,21 @@ def tags_list(context, limit=None, tags_qs=None):
     return context
 
 
+@register.inclusion_tag('blog/tags/categories_table.html', takes_context=True)
+def categories_table(context, categories_qs=None):
+    blog_page = context['blog_page']
+    if categories_qs:
+        categories = categories_qs.all()
+    else:
+        categories = Category.objects.with_uses(blog_page).filter(parent=None)
+
+    for category in categories:
+        category.cat_entries = len(blog_page.get_entries().filter(entry_categories__category__slug=category.slug))
+
+    context['categories'] = categories
+    return context
+
+
 @register.inclusion_tag('blog/tags/categories_list.html', takes_context=True)
 def categories_list(context, categories_qs=None):
     blog_page = context['blog_page']

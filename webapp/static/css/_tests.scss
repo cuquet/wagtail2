@@ -77,11 +77,17 @@
   }
 }
 
+@each $color, $value in $social-colors {
+  .btn-social-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
 
 /*.btn-neutral {
   @include button-variant($white, $white);
   color: $gray-600;
 }*/
+
 
 
 //

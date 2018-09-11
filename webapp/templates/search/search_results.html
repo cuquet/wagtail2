@@ -7,11 +7,14 @@
 {% block title %}Search{% endblock %}
 
 {% block parallax %}
-<div class="parallax parallax-small filter filter-orange">
-    <div class="fullscreen background parallax parallax-small " style="background-image:url('{% static 'images/bg_office.png' %}');"  data-diff="100">
+<div class="parallax parallax-small">
+    <div class="background parallax-image" style="background-image:url('{% static 'images/bg_office.png' %}');"  data-diff="100" data-filter-color="filter filter-orange">
         <div class="content-a">
-            <div class="content-b motto col-md-10 col-md-offset-1">
-            <h1>{% trans "Search results" %}</h1>
+            <div class="content-b px-5 content-center">
+              <div class="col mx-auto">
+                <h1 class="display-3">{% trans "Search results" %}</h1>
+                  {% if search_results %}<p class="lead">{% trans "You searched" %}{% if search_query %} “{{ search_query }}”{% endif %}</p>{% endif %}
+              </div>
             </div>
         </div>
     </div>
@@ -19,12 +22,14 @@
 {% endblock parallax %}
 
 {% block content %}
-    <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
-    </form>
-
-    {% if search_results %}
+<div class="container pt-3">
+    <div class="row">
+        <div class="col">
+        <form action="{% url 'search' %}" method="get">
+            <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
+            <input type="submit" value="Search" class="button">
+        </form>
+        {% if search_results %}
         <p>You searched{% if search_query %} for “{{ search_query }}”{% endif %}</p>
         <ul>
             {% for result in search_results %}
@@ -44,7 +49,10 @@
         {% if search_results.has_next %}
             <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
         {% endif %}
-    {% elif search_query %}
-    <p>No results found</p>
-    {% endif %}
+        {% elif search_query %}
+        <p>No results found</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

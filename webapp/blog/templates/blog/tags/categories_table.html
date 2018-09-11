@@ -1,0 +1,16 @@
+{% load i18n wagtailroutablepage_tags %}
+<table class="table table-striped table-sm table-hover">
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <th scope="row">
+                <a href="{% routablepageurl blog_page 'entries_by_category' category.slug %}">{{ category.name }} <span class="badge badge-info float-right">{{ category.cat_entries }}</span></a>
+            </th>
+        </tr>
+        {% empty %}
+        <tr>
+            <th scope="row">{% trans 'No categories yet' %}</th>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

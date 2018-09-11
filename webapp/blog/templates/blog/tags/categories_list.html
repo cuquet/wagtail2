@@ -1,7 +1,6 @@
 {% load i18n wagtailroutablepage_tags %}
-
 {% for category in categories %}
-    <a href="{% routablepageurl blog_page 'entries_by_category' category.slug %}"><span class="badge badge-info">{{ category.name }}</span></a>
+<a class="mr-1" href="{% routablepageurl blog_page 'entries_by_category' category.slug %}">{{ category.name }}</a>
 {% empty %}
-    <span class="badge badge-default">{% trans 'No categories yet' %}</span>
+{% trans 'No categories yet' %}
 {% endfor %}

@@ -1,46 +1,37 @@
 {% load i18n site_tags static %}
-<div class="section">
-    <div class="container">
-        <h1 class="sr-only" id="page-footer">{% trans "Sitemap" %}</h1>
-        <div class="row">
-            <div id="footer1" class="col">
-                <div class="d-inline-block"><h5><i class="fa fa-globe"></i></h5></div> {% include "tags/language_selector.html" %}
+<div class="container">
+    <!--<h1 class="sr-only" id="page-footer">{% trans "Sitemap" %}</h1>-->
+    <div class="row align-items-center justify-content-between">
+        <div id="footer1" class="col">
+            {% if not in_maintenance and settings.base.BaseSiteSettings.contact_us %}
+            <div class="d-inline-block">
+            {% with modalhtml=settings.base.BaseSiteSettings.contact_us.url %}
+                <h5><a class=" text-dark" id="comment-button"  data-toggle="modal" data-target="#modal" data-modalhtml="{{ modalhtml }}" href="#" rel="tooltip" title="{% trans 'Contact us' %}"><i class="fa fa-paper-plane"></i></a></h5>
+            {% endwith %}
             </div>
-            <div id="footer2" class="">
-                {% if not in_maintenance %}
-                {% endif %}
-            </div>
-            <div id="footer3" class="col">
-                {% if not in_maintenance and settings.base.BaseSiteSettings.contact_us %}
-                <div class="d-inline-block"><h5><i class="fa fa-paper-plane"></i></h5></div>
-                <div class="d-inline-block">
-                {% blocktrans with modalhtml=settings.base.BaseSiteSettings.contact_us.url %}
-                    <h5><a id="comment-button" class="btn" data-toggle="modal" data-target="#modal" data-modalhtml="{{ modalhtml }}" href="#" >Contact us</a></h5>
-                {% endblocktrans %}
-                </div>
-                {% endif %}
-            </div>
-            <div id="footer4" class="col">
-                <div class="d-inline-block">
-                    <h5><i class="fa fa-share-alt"></i>   {% trans "Follow or Share us" %}</h5>
-                </div>
-                <div class="d-inline-block">
-                <a class="btn btn-info btn-just-icon" data-toggle="tooltip" data-placement="left" title="{% trans 'Share on Facebook' %}" data-container="body" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.melindro.org" target="_blank">
+            {% endif %}
+            <div class="d-inline-block">
+            </div> {% include "tags/language_selector.html" %}
+        </div>
+<!--        <div id="footer2" class="col">{% if not in_maintenance %}{% endif %}</div>
+        <div id="footer3" class="col"></div>-->
+        <div id="footer4" class="col">
+            <div class="d-inline-block float-right">
+                <a class="btn btn-just-icon btn-social-facebook" data-toggle="tooltip" data-placement="left" title="{% trans 'Share on Facebook' %}" data-container="body" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.melindro.org" target="_blank">
                     <i class="fa fa-facebook-official"></i>
                 </a>
-                <a class="btn btn-info btn-just-icon" data-toggle="tooltip" data-placement="top" title="{% trans 'Follow us on Twitter' %}" data-container="body" href="https://twitter.com/angelc_calleja" data-show-count="false" data-size="large" data-show-screen-name="false">
+                <a class="btn btn-just-icon btn-social-twitter" data-toggle="tooltip" data-placement="top" title="{% trans 'Follow us on Twitter' %}" data-container="body" href="https://twitter.com/angelc_calleja" data-show-count="false" data-size="large" data-show-screen-name="false">
                     <i class="fa fa-twitter"></i>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </a>
-                <a class="btn btn-info btn-just-icon" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Share on Google+' %}" data-container="body" href="https://plus.google.com/share?url=http%3A//www.melindro.org" target="_blank">
+                <a class="btn btn-just-icon btn-social-google" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Share on Google+' %}" data-container="body" href="https://plus.google.com/share?url=http%3A//www.melindro.org" target="_blank">
                     <i class="fa fa-google-plus-circle"></i>
                 </a>
                 <a class="btn btn-info btn-just-icon" data-toggle="tooltip" data-placement="right" title="{% trans 'Share by e-mail' %}" data-container="body" href="mailto:?subject=I%20would%20share%20this&amp;body=%20http%3A%2F%2Fwww.melindro.org" target="_blank" >
                     <i class="fa fa-at"></i>
                 </a>
-                </div>
             </div>
         </div>
-        <hr style="margin-top:0;"/>
     </div>
+    <hr style="margin-top:0;"/>
 </div>

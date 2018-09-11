@@ -6,6 +6,7 @@
 {% endblock parallax %}
 
 {% block content %}
+<div class="container">
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <form class="" action="{% pageurl page %}" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
@@ -28,6 +29,7 @@
             </fieldset>
         </form>
     </div>
+</div>
 </div>
 {% endblock %}
 

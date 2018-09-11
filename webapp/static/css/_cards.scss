@@ -1,63 +1,40 @@
-.card, .accordion .card:last-of-type {
-  border-radius: $card-border-radius;
-  display: inline-block;
-  position: relative;
+.card {
   overflow: hidden;
   width: 100%;
-  margin: 20px 0;
+  // margin: 20px 0;
   z-index: 1;
-  box-shadow: $bmd-shadow-2dp;
+  @include box-shadow($bmd-shadow-2dp);
 
   .card-img-top {
     width: 100%;
     overflow: hidden;
     //height: 260px;
-    border-radius: $card-border-radius $card-border-radius 0 0;
-    position: relative;
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    .btn-link{
+    .btn-link {
       color: $white;
       text-decoration: none;
       background-color: transparent;
       border: none;
       @include box-shadow(none);
-      &:hover, &:focus{
+      &:hover, &:focus {
         font-weight: 700;
       }
     }
-    img {
-      width: 100%;
-    }
   }
-  .filter{
+  .filter {
     position: absolute;
     z-index: 2;
-    background-color: rgba(0,0,0,.68);
+    background-color: rgba(0, 0, 0, .68);
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
-    @include opacity(0);
-
-    .btn{
-      @include vertical-align();
-    }
-  }
-  &:hover .filter{
-    @include opacity(1);
-  }
-  .btn-hover{
     @include opacity(0);
   }
-  &:hover .btn-hover{
+  &:hover .filter {
     @include opacity(1);
-  }
-
-  .card-body {
-    min-height: 190px;
   }
 
   .card-header:not(.card-avatar) {
@@ -65,47 +42,19 @@
     margin-right: 0;
   }
 
-  .card-text {
-
-  }
-
-  .avatar{
-    border-radius: 50%;
-  }
-  .card-footer{
-    //margin-top: 24px;
-    div{
-      display: inline-block;
-    }
-    border-top: 0;
-    .author{
+  .card-footer {
+    .author {
       .avatar {
+        border-radius: 50%;
         border: 2px solid $white;
         width: 32px;
         height: 32px;
       }
     }
-    .stats{
-      float:right;
-      margin-left: 5px;
-      margin-top:6px;
-    }
-  }
-  // TODO REVISAR SOCIAL
-  .social-line{
-    margin-top: 20px;
-    text-align: center;
-
-    .btn.btn-icon ,
-    .btn.btn-icon .btn-icon-mini{
-      margin-left: 5px;
-      margin-right: 5px;
-      box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.2);
-    }
   }
 
-  &.card-avatar{
-    .card-img-top{
+  &.card-avatar {
+    .card-img-top {
       height: 110px;
     }
     .card-body {
@@ -133,10 +82,10 @@
     }
   }
 
-  &.card-background{
+  &.card-background {
     border: 0;
     position: relative;
-    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
     background-position: 50%;
     background-size: cover;
     &:after {
@@ -151,24 +100,26 @@
       background-color: rgba(0, 0, 0, .56);
     }
 
-    .filter{
+    .filter {
       @include opacity(0.55);
       border-radius: $card-border-radius;
     }
-    &:hover .filter{
+    &:hover .filter {
       @include opacity(0.75);
     }
-    .card-body,
-    .card-footer,
-    .card-text, small, a {
-      color: $white !important;
-    }
-    .card-body,
-    .card-footer{
-      position: relative;
+    .card-img-overlay,
+    .card-footer {
       z-index: 3;
-      max-width: 440px;
-      margin: 0 auto;
+    }
+  }
+}
+.accordion .card {
+  display:flex;
+  &.card-plain{
+    margin:0;
+    @include box-shadow(none);
+    .card-header{
+      padding:0;
     }
   }
 }

@@ -1,26 +1,34 @@
-var window_height,
-    searchVisible = 0,
-    $navbar,
-    scroll_distance;
+var window_height;
+var scroll_distance;
+
+
+// PreLoader
+$(window).on("load", function () {
+    setTimeout(function() {
+        $('#preload').delay(2000).fadeOut(1000); //.addClass('animated fadeOutUp'); //
+    });
+});
+$(window).on('resize', function() {
+    LAUNCH.backgroundResize();
+    if(!$("html").hasClass("touch")){
+        LAUNCH.initParallax();
+    }
+});
+// $(window).focus(function(){LAUNCH.backgroundResize();});
+
 
 $(function () {
     // PreLoader
     "use strict";
-    // Scroll to the top
-    // Check to see if the window is top if not then display button
-    $('.scrollToTop').hide();
     $(window).scroll(function(){
-        if ($(this).scrollTop() > 30) {
-            $('.scrollToTop').show().removeClass('animated rollOut').addClass('animated rollIn'); //.fadeIn();
-        } else {
-            $('.scrollToTop').removeClass('animated rollIn').addClass('animated rollOut'); //.fadeOut();
-        }
+        LAUNCH.initParallax();
     });
-    // Click event to scroll to top
-    $('.scrollToTop').on('click', function(event) {
-        event.preventDefault();
-        $('html, body, div.main').animate({scrollTop : 0},800);
-    });
+
+    window_height = $(window).height();
+    window.addEventListener('keydown', handleFirstTab);
+
+    LAUNCH.initScrollTop();
+
     //  Activate the Tooltips
     $('[data-toggle="tooltip"], [rel="tooltip"]').tooltip();
     // Activate Popovers
@@ -48,63 +56,32 @@ $(function () {
     // https://github.com/twbs/bootstrap/issues/23378
     Popper.Defaults.modifiers.computeStyle.gpuAcceleration = false;
 
-    window_height = $(window).height();
-    window.addEventListener('keydown', handleFirstTab);
 
-    // efecte de color a navbar en avançar
-    $navbar = $('.navbar[color-on-scroll]');
+    // ----efecte de color a navbar en avançar
+    var $navbar = $('.navbar[color-on-scroll]');
     scroll_distance = $navbar.attr('color-on-scroll') || 300;
     if ($('.navbar-color-on-scroll').length != 0) {
-        $(window).on('scroll', LAUNCH.checkScrollForTransparentNavbar);
+        $(window).on('scroll', LAUNCH.checkScrollForTransparentNav);
     }
-    LAUNCH.checkScrollForTransparentNavbar();
-    LAUNCH.initNavbarSearch();
-    LAUNCH.AlertAutoDismiss();
+    LAUNCH.checkScrollForTransparentNav();
+    LAUNCH.initNavSearch();
+    LAUNCH.initAlertAutoDismiss();
     LAUNCH.backgroundResize();
-    LAUNCH.ParallaxPosition();
-    // Parallax
-    // detect touch
+    // LAUNCH.initParallax();
+    // ----Parallax detect touch
     if("ontouchstart" in window){
         document.documentElement.className = document.documentElement.className + " touch";
     }
     if(!$("html").hasClass("touch")){
         // background fix
         $(".parallax").css("background-attachment", "fixed");
-        LAUNCH.ParallaxPosition();
+        LAUNCH.initParallax();
     }
 });
-
-// PreLoader
-$(window).on("load", function () {
-    setTimeout(function() {
-        $('#preload').delay(2000).fadeOut(1000); //.addClass('animated fadeOutUp'); //
-    });
-});
-$(window).on('resize', function() {
-    LAUNCH.backgroundResize();
-    if(!$("html").hasClass("touch")){
-        LAUNCH.ParallaxPosition();
-    }
-});
-$(window).scroll(function(){LAUNCH.ParallaxPosition();});
-// $(window).focus(function(){LAUNCH.backgroundResize();});
-
 
 LAUNCH = {
     misc: {
         transparent: true,
-    },
-
-    ButtonScrollUp: function () {
-        $(".btn-scrolldown").click(function (event) {
-            var lng_scroll;
-            if (responsive >= 768) {
-                lng_scroll = '+=700px';
-            } else {
-                lng_scroll = '+=600px';
-            }
-            $('html, body').animate({scrollTop: lng_scroll}, 800);
-        });
     },
 
     Selectlanguage: function (action, csrf) {
@@ -151,7 +128,7 @@ LAUNCH = {
         });
     },
 
-    AlertAutoDismiss: function () {
+    initAlertAutoDismiss: function () {
         $('.alert[data-auto-dismiss]').each(function (index, element) {
             var $element = $(element),
                 timeout = $element.data('auto-dismiss') || 5000;
@@ -162,11 +139,10 @@ LAUNCH = {
         });
     },
 
-    ParallaxPosition: debounce(function () {
-        var current_scroll = $(this).scrollTop();
-
-        oVal = ($(window).scrollTop() / 3);
-        $(".parallax-image").each(function(i) {
+    initParallax: function () {
+        var scrollTop = $(window).scrollTop();
+        var oVal = (scrollTop / 3);
+        $('.parallax-image').each(function() {
             $(this).css({
                 'transform': 'translate3d(0,' + oVal + 'px,0)',
                 '-webkit-transform': 'translate3d(0,' + oVal + 'px,0)',
@@ -175,60 +151,9 @@ LAUNCH = {
             });
         });
 
-    }, 6),
+    },
 
-    /*ParallaxPosition: function(e){
-        var heightWindow = window_height;
-        var topWindow = $(window).scrollTop();
-        var bottomWindow = topWindow + heightWindow;
-        var currentWindow = (topWindow + bottomWindow) / 2;
-        $(".parallax-image").each(function(i){
-            var path = $(this);
-            var height = path.height();
-            var top = path.offset().top;
-            var bottom = top + height;
-            // only when in range
-            if(bottomWindow > top && topWindow < bottom){
-                var imgW = path.data("resized-imgW");
-                var imgH = path.data("resized-imgH");
-                // min when image touch top of window
-                var min = 0;
-                // max when image touch bottom of window
-                var max = - imgH + heightWindow;
-                // overflow changes parallax
-                var overflowH = height < heightWindow ? imgH - height : imgH - heightWindow; // fix height on overflow
-                top = top - overflowH;
-                bottom = bottom + overflowH;
-                // value with linear interpolation
-                var value = min + (max - min) * (currentWindow - top) / (bottom - top);
-                // set background-position
-                var orizontalPosition = path.attr("data-oriz-pos");
-                orizontalPosition = orizontalPosition ? orizontalPosition : "50%";
-                $(this).css("background-position", orizontalPosition + " " + value + "px");
-            }
-        });
-    },*/
-
-    /*    NavbarBurguerImage: function() {
-        var $navbar = $('.navbar').find('.navbar-translate').siblings('.navbar-collapse');
-        var background_image = $navbar.data('nav-image');
-
-        if ($(window).width() < 991 || $('body').hasClass('burger-menu')) {
-            if (background_image != undefined) {
-                $navbar.css('background', "url('" + background_image + "')")
-                    .removeAttr('data-nav-image')
-                    .css('background-size', "cover")
-                    .addClass('has-image');
-            }
-        } else if (background_image != undefined) {
-            $navbar.css('background', "")
-                .attr('data-nav-image', '' + background_image + '')
-                .css('background-size', "")
-                .removeClass('has-image');
-        }
-    },*/
-
-    checkScrollForTransparentNavbar: debounce(function() {
+    checkScrollForTransparentNav: debounce(function() {
         if ($(document).scrollTop() > scroll_distance) {
           if (LAUNCH.misc.transparent) {
             LAUNCH.misc.transparent = false;
@@ -242,30 +167,55 @@ LAUNCH = {
         }
      }, 17),
 
-    initNavbarSearch: function(){
-        $('[data-toggle="search"]').click(function(){
-            if(searchVisible == 0){
-                searchVisible = 1;
-                $(this).parent().addClass('active');
-                $('.navbar-search-form').animate({width: 'toggle'}, { complete: function() {
-                        $('.navbar-search-form input').focus();
-                    },
-                });
+    initNavSearch: function(){
+        var search = document.getElementById('search'),
+            searchWrapper = document.getElementById('search-wrapper'),
+            closeIcon = document.getElementById('close-icon');
+        search.onfocus = function () {
+            searchWrapper.classList.add('search-expanded');
+            this.addEventListener('transitionend', function () {
+                closeIcon.style.display = 'block';
+            });
+        },
+        search.onblur = function () {
+            searchWrapper.classList.remove('search-expanded');
+            closeIcon.classList.add('closing');
+            this.addEventListener('transitionend', function () {
+                closeIcon.classList.remove('closing');
+                closeIcon.style.display = 'none';
+            });
+        },
+        closeIcon.onclick = function () {
+            this.classList.add('closing');
+            document.activeElement.blur();
+            setTimeout(function () {
+                closeIcon.classList.remove('closing');
+            }, 1000);
+        }
+    },
+
+    initScrollTop: function(){
+        // Scroll to the top
+        // Check to see if the window is top if not then display button
+        $('.scrollToTop').hide();
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 30) {
+                $('.scrollToTop').show().removeClass('animated rollOut').addClass('animated rollIn'); //.fadeIn();
             } else {
-                searchVisible = 0;
-                $(this).parent().removeClass('active');
-                $(this).blur();
-                $('.navbar-search-form').animate({width: 'toggle'}, { complete: function() {
-                        $('.navbar-search-form input').blur();
-                    },
-                });
+                $('.scrollToTop').removeClass('animated rollIn').addClass('animated rollOut'); //.fadeOut();
             }
+        });
+        // Click event to scroll to top
+        $('.scrollToTop').on('click', function(event) {
+            event.preventDefault();
+            $('html, body, div.main').animate({scrollTop : 0},800);
+            $(this).tooltip('hide');
         });
     },
 
     backgroundResize: function(){
         var windowH = window_height;
-        $(".background").each(function(i){
+        $('.background').each(function(){
             var path = $(this);
             // variables
             var contW = path.width();
@@ -303,9 +253,8 @@ LAUNCH = {
             format: 'dd/mm/yyyy',
             color: 'green',
         });
-    },
+    }
 };
-
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
@@ -324,11 +273,24 @@ function debounce(func, wait, immediate) {
     }, wait);
     if (immediate && !timeout) func.apply(context, args);
   };
-};
+}
 
 function handleFirstTab(e) {
     if (e.keyCode === 9) { // the "I am a keyboard user" key
         document.body.classList.add('user-is-tabbing');
         window.removeEventListener('keydown', handleFirstTab);
     }
-};
+}
+
+function simpleParallax(intensity, element) {
+    $(window).scroll(function() {
+        var scrollTop = $(window).scrollTop();
+        var imgPos = scrollTop / intensity + 'px';
+        element.css({
+            'transform': 'translateY(' + imgPos + ')',
+            '-webkit-transform': 'translateY(' + imgPos + ')',
+            '-ms-transform': 'translateY(' + imgPos + ')',
+            '-o-transform': 'translateY(' + imgPos + ')'
+        });
+    });
+}

@@ -8,36 +8,36 @@
 {% block sectionclass %}section-gray{% endblock sectionclass %}
 
 {% block content %}
-    {% if self.body %}
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12">
-            </div>
-        </div>
+{% if self.body %}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col">{{self.body}}</div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 {% endblock content %}
 
 {% block extra-content %}
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-12">
-                <div class="row">
-                    {% for related_link in self.related_links.all %}
-                    <a href="{{related_link.link}}">{{related_link.title}}</a>
-                    {% endfor %}
-                </div>
-                <div class="row justify-content-md-center">
-{% with self.card_items.all|length as numcards %}
-    {% widthratio 12 numcards 1 as cardcolcounter %}
-    {% for card in self.card_items.all %}
-        {% include "blocks/card.html" with card=card columns=cardcolcounter id=forloop.counter %}
-    {% endfor %}
-{% endwith %}
-                </div>
-            </div>
+<div class="container">
+    {% if self.related_links|length > 0 %}
+    <div class="row justify-content-md-center">
+        <div class="col-12">
+            {% for related_link in self.related_links.all %}
+            <a href="{{related_link.link}}">{{related_link.title}}</a>
+            {% endfor %}
         </div>
     </div>
+    {% endif %}
+    <div class="card-deck justify-content-md-center">
+{% for card in self.card_items.all %}
+{% include "blocks/card.html" with card=card %}
+{% if forloop.counter|divisibleby:"2" %}<div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>{% endif %}
+{% if forloop.counter|divisibleby:"3" %}<div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md--></div>{% endif %}
+{% if forloop.counter|divisibleby:"4" %}<div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 4 on lg--></div>{% endif %}
+{% if forloop.counter|divisibleby:"5" %}<div class="w-100 d-none d-xl-block"><!-- wrap every 5 on xl--></div>{% endif %}
+{% endfor %}
+    </div>
+</div>
 {% endblock extra-content %}
 
 {% block scrollreveal %}
@@ -49,11 +49,4 @@
 {% endif %}{% endfor %}{% endblock scrollreveal %}
 
 {% block extra_css %}
-<style>
-.card:hover {
-    background:rgba(5, 195, 249, 0.5);
-    color:#ffffff;
-}
-.sblock .card-user .avatar{border:0;}
-</style>
 {% endblock extra_css %}

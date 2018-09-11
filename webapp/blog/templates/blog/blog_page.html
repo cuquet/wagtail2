@@ -42,98 +42,46 @@
     <meta name="twitter:description" content="{{ blog_page.description }}" />
 {% endblock social_share %}
 
+{% block body_class %}blog-list {% endblock body_class%}
+
 {% block content %}
 {% if search_term %}
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <div class="searchTerm"><i class="fa fa-filter"></i> {% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
+<section class="section">
+    <div class="border rounded p-1 text-muted">
+        <div class="d-flex flex-row align-items-center justify-content-md-between">
+            <div class="p-1">
+                <div class="searchTerm"><i class="fa fa-filter"></i>  {% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
             </div>
         </div>
     </div>
-</div>
+</section>
 {% endif %}
-<div class="row py-3">
+<section class="py-3">
     {% for entry in entries %}
-    <div class="col-md-6">
-        <div class="card" >
-            <div class="card-header">
-                {% if entry.header_image %}
-                {% image entry.header_image original as header_image %}
-                <img class="card-img-top" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}">
-                {% endif %}
-                <div class="filter">
-                    <button type="button" class="btn btn-neutral btn-simple">
-                        <i class="fa fa-align-left"></i>
-                        <a href="{% entry_url entry blog_page %}"> {% trans "Continue reading" %}</a>
-                    </button>
-                    <button type="button" class="btn btn-neutral btn-simple">
-                        <i class="fa fa-chat"></i>
-                        <a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}">
-                        </a> {% trans "Comments" %}
-                    </button>
-                </div>
-            </div>
-            <div class="card-body">
-                <section>
-                    <h5 class="card-title">
-                        <a href="{% entry_url entry blog_page %}">{{ entry.title}}</a>
-                    </h5>
-                    <div class="card-subtitle mb-2 text-muted">
-                        <ul class="card-links">
-                        {% if entry.categories.count > 0 %}
-                        <li><i class="fa fa-folder-open"></i>{% categories_list entry.categories %}</li>
-                        {% endif %}
-                        </ul>
-                    </div>
-                </section>
-                <div class="card-text">
-                {% if entry.excerpt|striptags %}
-                    {{ entry.excerpt|richtext }}
-                {% else %}
-                    {{ entry.body|richtext|truncatewords_html:70 }}
-                {% endif %}
-                </div>
-            </div>
-            <div class="card-footer text-muted">
-                    <div class="author">
-<!--     TODO                   <ul class="social-share list-inline ">
-                        <li class="social-item">
-                           {% post_to_facebook entry.url '<span><i class="fa fa-facebook"></i></span>' %}
-                        </li>
-                        <li class="social-item">
-                            {% post_to_twitter entry.title entry.url '<span><i class="fa fa-twitter"></i></span>' %}
-                        </li>
-                        <li class="social-item">
-                            {% post_to_linkendin entry.url '<span><i class="fa fa-linkedin"></i></span>' %}
-                        </li>
-                        <li class="social-item">
-                            {% post_to_gplus entry.url '<span><i class="fa fa-google-plus"></i></span>' %}
-                        </li>
-                    </ul>-->
-                        <a class="card-link" href="{% routablepageurl blog_page 'entries_by_author' entry.owner.username %}">
-                           {% if entry.owner.avatar %}
-                            <img src="{{ entry.owner.avatar.url }}" alt="{{ entry.owner.username|capfirst }}" class="avatar">
-                            {% endif %}
-                           <span> {{ entry.owner.username|capfirst }} </span>
-                        </a>
-                    </div>
-                   <div class="stats pull-right">
-                        <i class="fa fa-clock-o"></i>
-                       <a class="card-link" href="{% entry_url entry blog_page %}">{{ entry.date|timesince }}</a>
-                   </div>
-                </div>
+    <div class="row justify-content-around align-items-center">
+        {% if entry.header_image %}<div class="col-md-3 mb-2">
+        {% image entry.header_image original as header_image %}
+        <a href="{% entry_url entry blog_page %}"><img class="img-thumbnail" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}"></a>
+        </div>{% endif %}
+        <div class="col mb-2">
+            <h1>{{ entry.title}}</h1>
+            {% include 'blog/entry_links.html' with entry=entry %}
         </div>
+    </div>
+    {% if entry.excerpt|striptags %}
+        {{ entry.excerpt|richtext }}
+    {% else %}
+        {{ entry.body|richtext|truncatewords_html:70 }}
+    {% endif %}
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-info" href="{% entry_url entry blog_page %}"><i class="fa fa-align-left"></i> {% trans "Continue reading" %} <i class="fa fa-angle-right"></i></a>
     </div>
     {% empty %}
-    <div class="col">
-        <span>{% trans 'No results founds.' %}</span>
-    </div>
+    <span>{% trans 'No results founds.' %}</span>
     {% endfor %}
-</div>
-<div class="row">
-    <div class="col">
+</section>
+<div class="row justify-content-md-center">
+    <div class="col-3">
 {# Pagination - uses django.core.paginator #}
 {# Append any other url query string variables to the next and previous links - allows tag to be passed through #}
 {% include 'blog/includes/pagination.html' with page_obj=entries page_num=entries.paginator.num_pages %}

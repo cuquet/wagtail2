@@ -20,17 +20,17 @@
         {% endif %}
     {% elif field|widget_type == 'dateinput' %}
         <div class="input-group" >
-        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-calendar" aria-hidden="true"></i></span></div>
         {% render_field field class="datepicker form-control" data-toggle="tooltip" data-placement="top" title=field.help_text|safe|capfirst title=field.label|capfirst %}
         </div>
     {% elif field|widget_type == 'select' %}
         <div class="input-group" >
-        <span class="input-group-addon"><i class="fa fa-list" aria-hidden="true"></i></span>
+            <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-list" aria-hidden="true"></i></span></div>
         {% render_field field class="selectpicker form-control show-tick" title=field.help_text|safe|capfirst title=field.label|capfirst %}
         </div>
     {% elif field|widget_type == 'textarea' %}
         <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-edit" aria-hidden="true"></i></span>
+        <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-edit" aria-hidden="true"></i></span></div>
         {% render_field field class="form-control" placeholder=field.help_text|safe|capfirst placeholder=field.label|capfirst rows="3" %}
         </div>
     {% elif field|widget_type == 'recaptchawidget' %}
@@ -40,16 +40,16 @@
     {% elif field|widget_type in 'urlinputemailinputtextinput' %}
         {% if field|widget_type == 'urlinput' %}
             <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-globe" aria-hidden="true"></i></span>
+                <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-globe" aria-hidden="true"></i></span></div>
         {% elif field|widget_type == 'emailinput' %}
             <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-mail" aria-hidden="true"></i></span>
+                <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-mail" aria-hidden="true"></i></span></div>
         {% else %}
             <div class="input-group">
             {% if field.name|lower in "username" %}
-                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-user" aria-hidden="true"></i></span></div>
             {% else %}
-                <span class="input-group-addon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <div class="input-group-prepend"><span class="input-group-text" ><i class="fa fa-pencil" aria-hidden="true"></i></span></div>
             {% endif %}
         {% endif %}
         {% render_field field class="form-control" placeholder=field.label|capfirst %}

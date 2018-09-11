@@ -1,59 +1,32 @@
-{% load wagtailroutablepage_tags static wagtailimages_tags blog_tags social_share %}
-<div class="row">
-    <div class="col-md-12 ml-auto mr-auto">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="blog-tags">
-                    {% if entry.tags.count > 0 %}
-                    Tags:
-                    {% tags_list blog_page.num_tags_entry_header entry.tags %}
-                    {% endif %}
-                </div>
-            </div>
-            <div class="col-md-6">
-                <ul class="list-inline">
+{% load i18n wagtailroutablepage_tags static wagtailimages_tags blog_tags social_share %}
+<div class="border rounded p-1 text-muted">
+    <div class="d-flex flex-row align-items-center justify-content-md-between">
+        <div class="p-1">
+            <a href="{% routablepageurl blog_page 'entries_by_author' entry.owner.username %}">
+                <img class="border rounded-circle avatar-sm" src="{% if entry.owner.avatar %}{{ entry.owner.avatar.url }}{% else %}{% static 'images/avatar/default_avatar.png' %}{% endif %}" alt="{{ entry.owner.username|capfirst }}">
+                <span>{{ entry.owner.username|capfirst }}</span>
+            </a>
+            | <i class="fa fa-clock-o" aria-hidden="true"></i> {{ entry.date|date:"DATE_FORMAT" }}
+            {% if blog_page.display_comments %}
+            | <i class="fa fa-comments" aria-hidden="true"></i><a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}"> {% trans "View Comments" %}</a>
+            {% endif %}
+        </div>
+        <div class="p-1">
+            <div class="float-right">
                 {% post_to_gplus self.url '<span><i class="fa fa-google-plus"></i></span>' %}
                 {% post_to_twitter self.title self.url '<span><i class="fa fa-twitter"></i></span>' %}
                 {% post_to_linkendin self.url '<span><i class="fa fa-linkedin"></i></span>' %}
                 {% post_to_facebook self.url '<span><i class="fa fa-facebook"></i></span>' %}
-                </ul>
-            </div>
-        </div>
-        <div class="card card-profile card-plain">
-            <div class="row">
-                <div class="col-md-2">
-                    {% if entry.owner.avatar %}
-                    <div class="card-avatar">
-                        <a href="{% routablepageurl blog_page 'entries_by_author' entry.owner.username %}">
-                            <img class="img-raised rounded-circle img-fluid" src="{{ entry.owner.avatar.url }}" alt="{{ entry.owner.username|capfirst }}">
-                        </a>
-                        <div class="ripple-container"></div>
-                    </div>
-                    {% endif %}
-                </div>
-                <div class="col-md-8">
-                    <h4 class="card-title"><a href="{% routablepageurl blog_page 'entries_by_author' entry.owner.username %}">{{ entry.owner.username|capfirst }}</a></h4>
-                    <p class="description">I've been trying to figure out the bed design for the master bedroom at our Hidden Hills compound...I like good music from Youtube.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <ul class="list-inline">
-                      <li class="list-inline-item">
-                          <i class="fa fa-calendar"></i><a href="{% entry_url entry blog_page %}">{{ entry.date|date:"DATE_FORMAT" }}</a>
-                      </li>
-                      {% if blog_page.display_comments %}
-                        <li class="list-inline-item">
-                            <i class="fa fa-chat"></i>
-                            <a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}">View Comments</a>
-                        </li>
-                        {% endif %}
-                      <li class="list-inline-item">
-                          <i class="fa fa-folder-open"></i>
-                            {% categories_list entry.categories %}</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
+    <div class="d-flex flex-row  justify-content-md-between">
+        <div class=" d-inline-flex p-1 ">
+            <h6 class="small mr-1">{% trans "Categories"%}</h6>{% categories_list entry.categories %}
+        </div>
+        <div class=" d-inline-flex p-1 ">
+            <h6 class="small mr-1">{% trans "Tags"%}</h6>{% if entry.tags.count > 0 %}{% tags_list blog_page.num_tags_entry_header entry.tags %}{% endif %}
+        </div>
+    </div>
 </div>
+

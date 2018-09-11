@@ -44,7 +44,7 @@ class BlogPageFeed(Feed):
         return self.blog_page.title
 
     def description(self):
-        return self.blog_page.description
+        return self.blog_page.excerpt
 
     def link(self):
         return self.blog_page.last_url_part

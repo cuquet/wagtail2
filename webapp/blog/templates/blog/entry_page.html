@@ -52,25 +52,28 @@
 
 
 {% block content %}
-    <div class="section section-text"
-             {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-        {{ self.body|richtext }}
-         <div class="col-md-2">
-            <a href="{% pageurl blog_page %}" class="blog_btn back">
-                <i class="fa fa-angle-left"></i> {% trans 'Return' %}
-            </a>
-        </div>
+<section class="section post-info">
+    {% include 'blog/entry_links.html' with entry=self %}
+</section>
+<section class="section post-content"
+         {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
+    {{ self.body|richtext }}
+    <div class="col-md-2">
+        <a href="{% pageurl blog_page %}" class="btn btn-info">
+            <i class="fa fa-angle-left"></i> {% trans 'Return' %}
+        </a>
     </div>
-    <div class="section section-blog-info">
-        {% include 'blog/entry_links.html' with entry=self %}
-    </div>
-    <div class="section section-comments">
-        {% show_comments %}
-    </div>
+</section>
+<section class="section post-comments">
+    {% show_comments %}
+</section>
 {% endblock content %}
 
 {% block extra_content %}
-    {% if self.has_related %}
-        {% include 'blog/related_entries.html' with entry=self %}
-    {% endif %}
+<section class="section post-related">
+{% if self.has_related %}
+    <hr class="mb-0"/>
+    {% include 'blog/related_entries.html' with entry=self %}
+{% endif %}
+</section>
 {% endblock extra_content %}

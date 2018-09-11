@@ -1,6 +1,6 @@
 {% load site_tags wagtailcore_tags %}
 
-<div class="dropdown-menu dropdown-menu-right" aria-labelledby="ddtoggle_{{ parent.link_page.pk }}" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="{{parent.type}}_ddtoggle_{{ parent.link_page.pk }}" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
     {# Include link to parent because the parent link is a drop down #}
         <a class="dropdown-item" href="{% pageurl parent %}" >
             {% if menuitem.specific.menu_icon %}<i class="{{ parent.specific.menu_icon }}"></i>{% endif %}
@@ -8,9 +8,7 @@
         </a>
         <div class="dropdown-divider"></div>
     {% for child in menuitems_children %}
-        <a class="dropdown-item" href="{% pageurl child %}" >
-        {% if child.specific.menu_icon %}<i class="{{ child.specific.menu_icon }}"></i>{% endif %}
-            {{ child.title }}
-        </a>
+        <a class="dropdown-item" href="{{child.url}}" >
+        {% if child.specific.menu_icon %}<i class="{{ child.specific.menu_icon }}" aria-expanded="false"></i>{% endif %} {{ child.title }}</a>
     {% endfor %}
 </div>

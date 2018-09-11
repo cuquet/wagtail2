@@ -17,29 +17,22 @@
     <!-- Preloader start -->
     <div id="preload">
         <div id="preload-status"><img src="{% static 'images/preloader.gif' %}" class="img-responsive center-block img-rounded clearfix"></div>
-    </div> <!-- Preloader Ends -->
-
-    {% block header %}{# Header contains the main_navigation block #}
-        {% include "includes/header.html" with parent=site_root calling_page=self %}
-    {% endblock header %}
-
-    {% block messages %}
-        {% include "includes/messages.html" %}
-    {% endblock messages %}
-
+    </div>
+    {% block header %}{% include "includes/header.html" with parent=site_root calling_page=self %} {% endblock header %}
+    {% block messages %}{% include "includes/messages.html" %}{% endblock messages %}
+    <section class="wrapper">
     {% block wrapper %}
-    <div class="wrapper">
         {% block parallax %}{% endblock %}
-        <div class="main main-raised">
+        <div class="main main-raised {% block sectionclass %}{% endblock sectionclass %}">
         {% breadcrumbs %}
         {% block heading %}{% endblock %}
         {% block content %}{% endblock %}
         {% block extra-content %}{% endblock extra-content %}
         </div>
-    </div>
     {% endblock wrapper %}
+    </section>
     {% block footer %}
-    {% include "includes/footer.html" %}
+    <section class="footer">{% include "includes/footer.html" %}</section>
     {% endblock footer %}
     <footer>
         <div class="container">
@@ -53,24 +46,23 @@
                 <span>|</span>
                 {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a> &
                 <a target="_blank" href="http://www.creative-tim.com/">Creative Tim</a>
-        </div>
+            </div>
         </div>
     </footer>
-    <a href="#page-top" class="btn btn-success btn-fill scrollToTop"><i class="fa fa-arrow-up"></i> {% trans "Back to top" %}</a>
-
-<!-- Modal Core -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <a href="#page-top" class="btn btn-success btn-just-icon scrollToTop" data-toggle="tooltip" data-placement="left" title="{% trans 'Back to top' %}"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    <!-- Modal Core -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div id="modal-body" class="modal-body"></div>
+                <div class="modal-footer"></div>
             </div>
-            <div id="modal-body" class="modal-body"></div>
-            <div class="modal-footer"></div>
         </div>
     </div>
-</div>
 <!--   Core JS Files   -->
 {# External javascript #}
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -86,9 +78,8 @@
 <script src="{% static 'js/prism.js' %}"></script>
 <script src="{% static 'js/webapp.js' %}"></script>
 <script type="text/javascript" >
-$(document).ready(function(){
+$(function () {
     LAUNCH.Selectlanguage('{% url "set_language" %}', '{{ csrf_token }}');
-    LAUNCH.ButtonScrollUp();
     $('#modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var recipient = button.data('modalhtml')

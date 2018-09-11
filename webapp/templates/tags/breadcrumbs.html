@@ -2,7 +2,7 @@
 {% get_site_root as site_root %}
 
 {% if ancestors %}
-<nav aria-label="breadcrumb">
+<nav class=" px-1 rounded" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{% pageurl site_root %}" ><i class="fa fa-home" aria-hidden="true"></i></a></li>
       {% for ancestor in ancestors|slice:"1:" %}

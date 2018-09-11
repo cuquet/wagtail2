@@ -4,7 +4,7 @@ from django.conf import settings
 from wagtail.core.models import Page
 
 from webapp.base.models import FooterText
-
+from webapp.blog.models import BlogPage, Category
 
 register = template.Library()
 # https://docs.djangoproject.com/en/1.9/howto/custom-template-tags/
@@ -65,16 +65,24 @@ def top_menu(context, parent, calling_page=None, show_search=True):
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent, calling_page=None):
-    menuitems_children = parent.get_children()
-    menuitems_children = menuitems_children.live().in_menu()
-    for menuitem in menuitems_children:
-        menuitem.has_dropdown = has_menu_children(menuitem)
-        # We don't directly check if calling_page is None since the template
-        # engine can pass an empty string to calling_page
-        # if the variable passed as calling_page does not exist.
-        menuitem.active = (calling_page.url_path.startswith(menuitem.url_path)
-                           if calling_page else False)
-        menuitem.children = menuitem.get_children().live().in_menu()
+    parent.type = parent.specific_class.__name__
+    if parent.type == 'BlogPage':
+        blog_page = BlogPage.objects.live().filter(pk=parent.pk)[0]
+        menuitems_children = Category.objects.with_uses(blog_page).filter(parent=None)
+        for menuitem in menuitems_children:
+            menuitem.title = menuitem.name
+            menuitem.url = parent.url + blog_page.reverse_subpage('entries_by_category', args=(menuitem.slug, ))
+    else:
+        menuitems_children = parent.get_children()
+        menuitems_children = menuitems_children.live().in_menu()
+        for menuitem in menuitems_children:
+            menuitem.has_dropdown = has_menu_children(menuitem)
+            # We don't directly check if calling_page is None since the template
+            # engine can pass an empty string to calling_page
+            # if the variable passed as calling_page does not exist.
+            menuitem.active = (calling_page.url_path.startswith(menuitem.url_path)
+                               if calling_page else False)
+            menuitem.children = menuitem.get_children().live().in_menu()
     return {
         'parent': parent,
         'menuitems_children': menuitems_children,

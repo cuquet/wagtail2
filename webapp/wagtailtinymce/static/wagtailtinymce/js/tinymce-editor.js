@@ -27,9 +27,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 'use strict';
 
-var mcePlugins = ['hr', 'code', 'fullscreen', 'noneditable', 'paste', 'table', 'imagetools', ],
-    mceTools = ['inserttable'],
-    mceExternalPlugins = {};
+var mcePlugins, mceTools, mceExternalPlugins, mceValidElements;
+mcePlugins = ['hr', 'code', 'fullscreen', 'paste', 'table', 'imagetools'];
+mceTools = ['inserttable'];
+mceExternalPlugins = {};
+mceValidElements = '*[*]';
 
 function registerMCEPlugin(name, path, language) {
     if (path) {
@@ -51,9 +53,12 @@ function makeTinyMCEEditable(id, kwargs) {
     kwargs = kwargs || {};
     $.extend(kwargs, {
         selector: '#' + id.toString(),
+        content_css: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css',
         plugins: mcePlugins,
         tools: mceTools,
         external_plugins: mceExternalPlugins,
+        valid_elements : mceValidElements,
+        schema: 'html5',
         setup: function (editor) {
             editor.on('change', function () {
                 editor.save();

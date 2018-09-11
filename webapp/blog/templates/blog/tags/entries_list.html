@@ -1,35 +1,19 @@
 {% load i18n wagtailimages_tags blog_tags %}
-<li class="list-group-item">
-<dl>
+<ul class="list-unstyled">
 {% for entry in entries %}
-<dt>
-    <h6>
-        <a href="{% entry_url entry blog_page %}">{{ entry.title }}</a>
-    </h6>
-</dt>
-<dl>
-    <small>
-    <ul class="list-inline">
-        <li>
-            <i class="fa fa-user"></i>
-            {{ entry.owner.username }}
-        </li>
-        <li>
-            <i class="fa fa-calendar"></i>
-            {{ entry.date|date:"SHORT_DATE_FORMAT" }}
-        </li>
-        {% if blog_page.disqus_api_secret %}
-            <li>
-                <i class="fa fa-comments"></i>
-                {{ entry.num_comments }}
-            </li>
-        {% endif %}
-    </ul></small>
-</dl>
+  <li class="media">
+    {% if entry.header_image %}
+    {% image entry.header_image fill-50x50 as header_image %}
+    <img class="rounded mr-3" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}">
+    {% else %}
+    <div class="border rounded mr-3" style="width:50px;height:50px;"></div>
+    {% endif %}
+    <div class="media-body">
+      <h6 class="mt-0 mb-1"><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h6>
+      <p class="font-weight-light small text-muted "><i class="fa fa-clock-o" aria-hidden="true"></i> {{ entry.date|timesince }}</p> {# |date:"SHORT_DATE_FORMAT" #}
+    </div>
+  </li>
 {% empty %}
-<dt>
-    {% trans 'No entries yet' %}
-</dt>
+    <li class="media"><div class="media-body">{% trans 'No entries yet' %}</div></li>
 {% endfor %}
-</dl>
-</li>
+</ul>

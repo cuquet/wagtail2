@@ -71,6 +71,7 @@ $pagination-hover-color:            $link-hover-color ;
 $pagination-hover-bg:               tv("primary", fade1) ;
 $pagination-active-color:           $component-active-color ;
 $pagination-active-bg:              map_get($theme-colors, "primary") ;
+$pagination-line-height:            1;
 
 
 // Modals
