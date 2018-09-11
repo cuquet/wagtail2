@@ -2,10 +2,10 @@
 {% load i18n static %}
 
 {% block parallax %}
-<div class="parallax parallax-small filter filter-black">
-    <div class="fullscreen background parallax {{ self.parallax_size }} " style="background-image:url('{% static 'images/bg_404.jpg' %}');"  data-diff="100">
+<div class="parallax parallax-small">
+    <div class="background parallax-image" style="background-image:url('{% static 'images/bg_404.jpg' %}');"  data-diff="100" data-filter-color="filter filter-black">
         <div class="content-a">
-            <div class="content-b motto col-md-10 col-md-offset-1">
+            <div class="content-b px-5 content-center">
             {% block heading %}{% endblock %}
             </div>
         </div>
@@ -16,30 +16,28 @@
 {% block body_class %}template-404{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div id="top-panel" class="jumbotron">
-    <div class="row">
-        <div class="col-md-5">
-            <h1>Oops!</h1>
-            <h2>{% trans "Page not found" %}</h2>
-            <div class="error-details">
-                <br />
-                  {% blocktrans %}
-                  <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers
-                  <b>Back</b> button to navigate to the page you have prevously come from</p>
-                  <p><b>Or you could just press this neat little button:</b></p>
-                  {% endblocktrans %}
+<div class=" m-2 pb-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 order-md-12">
+                <img src="{% static 'images/404.png' %}" class="img-fluid" alt="404">
             </div>
-            <div class="error-actions">
-                <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>  {% trans "Take Me Home" %}</a>
+            <div class="col-md-5 order-md-1">
+                <h1 class="display-3">Oops!</h1>
+                <h1 class="display-5">{% trans "Page not found" %}</h1>
+                <div class="error-details">
+                    <br />
+                      {% blocktrans %}
+                      <p>The page you requested could not be found, either contact your webmaster or try again. Use your browsers
+                      <b>Back</b> button to navigate to the page you have prevously come from</p>
+                      <p><b>Or you could just press this neat little button:</b></p>
+                      {% endblocktrans %}
+                </div>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg"><i class="fa fa-home" aria-hidden="true"></i>  {% trans "Take Me Home" %}</a>
+                </div>
             </div>
         </div>
-        <div class="col-md-7">
-            <div class="img-src">
-                <img src="{% static 'images/404.png' %}" class="img-responsive center-block" alt="404">
-            </div>
-        </div>
-    </div>
     </div>
 </div>
 {% endblock %}

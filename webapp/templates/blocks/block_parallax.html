@@ -2,10 +2,10 @@
 {% timestamp as id_prefix %}
 {% image value.parallax_image original as parallax_image %}
 
-<div class="parallax-image {{ value.parallax_filter }}">
-    <div id="{{ id_prefix }}" class="background parallax {{ value.parallax_size }} " style="background-image:url('{{ parallax_image.url }}');" data-img-width="{{ parallax_image.width }}" data-img-height="{{ parallax_image.height }}" data-diff="100">
+<div class="parallax {{ value.parallax_size }} ">
+    <div id="{{ id_prefix }}" class="background parallax-image" style="background-image:url('{{ parallax_image.url }}');" data-img-width="{{ parallax_image.width }}" data-img-height="{{ parallax_image.height }}" data-diff="100" data-filter-color="{{ value.parallax_filter }}">
         <div class="content-a">
-            <div class="content-b motto col-md-10 col-md-offset-1">
+            <div class="content-b px-5 content-center">
                 {% include_block value.parallax_content %}
                 {% if value.display_btndropdown%}
                     <div class="clearfix">
