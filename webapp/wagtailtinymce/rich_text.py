@@ -23,6 +23,8 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# A wagtail_hooks.py cal afegir WhitelistRule per exemple que  <p> accepti class="..."
+
 from __future__ import absolute_import, unicode_literals
 
 import json
@@ -63,13 +65,12 @@ class TinyMCERichTextArea(WidgetWithScript, widgets.Textarea):
                     ['link', 'unlink'],
                     ['wagtaildoclink', 'wagtailimage', 'wagtailembed'],
                     ['code'],
-                    ['pastetext', 'fullscreen'],
+                    ['pastetext', 'visualblocks','fullscreen'],
                 ]
             ],
-            'menus': False,
+            'menus': ['edit', 'insert', 'view', 'format', 'table', 'tools', 'help'],
             'options': {
                 'browser_spellcheck': True,
-                'noneditable_leave_contenteditable': True,
                 'language': language_code,
                 'language_load': True,
             },

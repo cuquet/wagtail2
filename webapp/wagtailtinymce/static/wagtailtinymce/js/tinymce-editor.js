@@ -28,7 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 'use strict';
 
 var mcePlugins, mceTools, mceExternalPlugins, mceValidElements;
-mcePlugins = ['hr', 'code', 'fullscreen', 'paste', 'table', 'imagetools'];
+mcePlugins = ['hr', 'code', 'fullscreen', 'paste', 'table', 'imagetools','lists','searchreplace','charmap', 'visualblocks'];
 mceTools = ['inserttable'];
 mceExternalPlugins = {};
 mceValidElements = '*[*]';
@@ -58,13 +58,20 @@ function makeTinyMCEEditable(id, kwargs) {
         tools: mceTools,
         external_plugins: mceExternalPlugins,
         valid_elements : mceValidElements,
-        schema: 'html5',
-        setup: function (editor) {
+        style_formats_merge: true,
+        style_formats: [
+            {title: 'Bootstrap 4', items: [
+              {title: 'Lead Paragraph', selector: 'p', classes: 'lead'},
+              {title: 'Muted small', selector: 'small', classes: 'text-muted'},
+            ]},
+          // Your format as described on this page
+        ],
+/*        setup: function (editor) {
             editor.on('change', function () {
                 editor.save();
             });
-        }
+        }*/
     });
 
-    tinymce.EditorManager.init(kwargs);
+    tinymce.init(kwargs);
 }

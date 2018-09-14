@@ -44,9 +44,12 @@ else:
 if WAGTAIL_VERSION >= '2.0':
     from wagtail.admin.templatetags.wagtailadmin_tags import hook_output
     from wagtail.core import hooks
+    from wagtail.admin.rich_text.converters.editor_html import WhitelistRule
+    from wagtail.core.whitelist import allow_without_attributes, attribute_rule
 else:
     from wagtail.wagtailadmin.templatetags.wagtailadmin_tags import hook_output
     from wagtail.wagtailcore import hooks
+    from wagtail.wagtailcode.whitelist import allow_without_attributes, attribute_rule
 
 
 def to_js_primitive(string):
@@ -144,3 +147,29 @@ def docs_richtexteditor_js():
         to_js_primitive(static('wagtailtinymce/js/tinymce-plugins/wagtaildoclink.js')),
         to_js_primitive(translation.to_locale(translation.get_language())),
     )
+
+
+@hooks.register('register_rich_text_features')
+def boostraptypography_feature(features):
+    if WAGTAIL_VERSION >= '2.0':
+        features.register_converter_rule('editorhtml', 'boostraptypography', [
+            WhitelistRule('div', attribute_rule({'class': True})),
+            WhitelistRule('p', attribute_rule({'class': True})),
+            WhitelistRule('small', attribute_rule({'class': True})),
+            WhitelistRule('ul', attribute_rule({'class': True})),
+            WhitelistRule('li', attribute_rule({'class': True})),
+            WhitelistRule('dl', attribute_rule({'class': True})),
+            WhitelistRule('dt', attribute_rule({'class': True})),
+            WhitelistRule('dd', attribute_rule({'class': True})),
+            WhitelistRule('span', attribute_rule({'class': True})),
+
+        ])
+
+        features.default_features.append('boostraptypography')
+    else:
+        def boostraptypography_rules():
+            return {
+                'p': attribute_rule({'class': True}),
+            }
+
+        hooks.register('construct_whitelister_element_rules', boostraptypography_rules)
