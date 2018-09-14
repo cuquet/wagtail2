@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load i18n wagtailcore_tags wagtailimages_tags blog_tags  %}
+{% load i18n wagtailcore_tags wagtailimages_tags block_tags blog_tags  %}
 
 {% block title %}
     {{ self.title }} | {{ blog_page.title }}
@@ -57,7 +57,7 @@
 </section>
 <section class="section post-content"
          {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-    {{ self.body|richtext }}
+    {{ self.body|myrichtext }}
     <div class="col-md-2">
         <a href="{% pageurl blog_page %}" class="btn btn-info">
             <i class="fa fa-angle-left"></i> {% trans 'Return' %}

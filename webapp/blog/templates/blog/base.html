@@ -91,12 +91,12 @@
 {% endblock wrapper %}
 
 {% block extra_js %}
-<script src="{% static 'js/jquery.tagcloud.js' %}"></script>
-<script type="text/javascript" >
+<script type="text/javascript" src="{% static 'js/jquery.tagcloud.js' %}"></script>
+<script type="text/javascript">
 $(function () {
-  $('#tagcloud a').tagcloud();
+    $("#tagcloud").tagcloud({height:100,type:"sphere",sizemin:8,sizemax:26,power:.5});
 });
 </script>
 {% endblock %}
-
-{% block extra_css %}{% endblock extra_css %}
+{% block extra_css %}
+{% endblock extra_css %}

@@ -1,11 +1,11 @@
-{% load wagtailcore_tags i18n %}
+{% load wagtailcore_tags block_tags i18n %}
 
 
 
 
 <form id="{{ self.title|slugify }}" data-async data-target="#modal-body" action="{% pageurl page %}" method="POST">
     <fieldset>
-        <legend>{{ self.excerpt|richtext }}</legend>
+        <legend>{{ self.excerpt|myrichtext }}</legend>
         {% csrf_token %}
         {% for field in form.hidden_fields %}
             {{ field }}

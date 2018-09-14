@@ -1,4 +1,4 @@
-{% load i18n wagtailcore_tags wagtailimages_tags blog_tags %}
+{% load i18n wagtailcore_tags wagtailimages_tags block_tags blog_tags %}
 <h3>{% trans 'Related Entries' %}</h3>
 <ul class="list-unstyled">
 {% for related_entry in entry.related %}
@@ -11,7 +11,7 @@
     {% endif %}
   <div class="media-body">
     <h5 class="mt-0 mb-1"><a href="{% entry_url related_entry blog_page %}">{{ related_entry.title }}</a></h5>
-    {% if related_entry.excerpt %}{{ related_entry.excerpt|richtext }}{% else %}{{ related_entry.body|richtext|truncatewords:20 }}{% endif %}
+    {% if related_entry.excerpt %}{{ related_entry.excerpt|myrichtext }}{% else %}{{ related_entry.body|myrichtext|truncatewords:20 }}{% endif %}
   </div>
 </li>
 {% endfor %}

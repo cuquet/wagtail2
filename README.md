@@ -8,8 +8,9 @@ It has also some experiments like:
 * Recaptcha for forms.
 * twitter panel on pages.
 * Disqus comments for the blog
+* TinyMCE editor (+ some WhitelistRules for bootstrap 4)
 
-Template is based on [Bootstrap 4](https://getbootstrap.com) but it has some adjustments like [Creative Tim](https://www.creative-tim.com) free bootstrap themes. SCSS code is available.
+Template is based on [Bootstrap 4](https://getbootstrap.com) but it has some adjustments like [Creative Tim](https://www.creative-tim.com) free bootstrap themes. SCSS is available.
 
 Next steps:
 1. Multilingual layer.

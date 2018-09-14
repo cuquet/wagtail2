@@ -1,10 +1,12 @@
 {% load i18n static wagtailroutablepage_tags %}
-    <div id="tagcloud" class="">
-        {% for tag in tags %}
-            <a href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}" rel="{{ tag.weight }}">{{ tag }}</a>
-        {% empty %}
-            {% trans 'No tags yet' %}
-        {% endfor %}
-    </div>
+<ul id="tagcloud" style="width: 100%; height: 100px;font-family: 'Oswald', sans-serif;">
+    {% for tag in tags %}
+    <li value="{{ tag.weight }}" title="{{ tag }}">
+        <a href="{% routablepageurl blog_page 'entries_by_tag' tag.slug %}" rel="{{ tag.weight }}">{{ tag }}</a>
+    </li>
+    {% empty %}
+        {% trans 'No tags yet' %}
+    {% endfor %}
+</ul>
 {% block extra_js %}{% endblock extra_js %}
 {% block extra_css %}{% endblock extra_css %}

@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 
-{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags blog_tags social_share %}
+{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags block_tags blog_tags social_share %}
 
 {% block title %}
     {% if search_term %}
@@ -69,12 +69,12 @@
         </div>
     </div>
     {% if entry.excerpt|striptags %}
-        {{ entry.excerpt|richtext }}
+        {{ entry.excerpt|myrichtext }}
     {% else %}
-        {{ entry.body|richtext|truncatewords_html:70 }}
+        {{ entry.body|myrichtext|truncatewords_html:70 }}
     {% endif %}
     <div class="d-flex justify-content-end">
-        <a class="btn btn-info" href="{% entry_url entry blog_page %}"><i class="fa fa-align-left"></i> {% trans "Continue reading" %} <i class="fa fa-angle-right"></i></a>
+        <a class="btn btn-outline-info" href="{% entry_url entry blog_page %}"><i class="fa fa-align-left"></i> {% trans "Continue reading" %} <i class="fa fa-angle-right"></i></a>
     </div>
     {% empty %}
     <span>{% trans 'No results founds.' %}</span>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags i18n wagtailimages_tags widget_tweaks %}
+{% load wagtailcore_tags i18n wagtailimages_tags widget_tweaks block_tags %}
 
 {% block parallax %}
 {% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
@@ -11,7 +11,7 @@
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <form class="" action="{% pageurl page %}" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
             <fieldset>
-                <legend>{{ self.excerpt|richtext }}</legend>
+                <legend>{{ self.excerpt|myrichtext }}</legend>
                 {% comment %}{{ form.as_p }}{% endcomment %}
                 {% csrf_token %}
                 {% for field in form %}

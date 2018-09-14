@@ -1,11 +1,11 @@
 {# extends "base.html" #}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags block_tags %}
 
 {% block content %}
 <div class="container">
   <div class="row center-block">
     <div>
-      {{ self.thank_you_text|richtext }}
+      {{ self.thank_you_text|myrichtext }}
     </div>
   </div>
 </div>

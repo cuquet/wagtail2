@@ -1,4 +1,3 @@
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.html import format_html_join
 from django.conf import settings
 

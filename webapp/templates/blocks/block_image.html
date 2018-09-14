@@ -1,4 +1,4 @@
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags block_tags %}
 
 <!--<figure>
     {% image self.image fill-600x600 %}
@@ -14,7 +14,7 @@
     <img id="img-{{ id_prefix }}" src="{{ theimage.url }}" class="{{ self.image.shape }}"  width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
     {% if child.value.caption %}
         <div class="caption">
-            {{ self.image.caption|richtext }}
+            {{ self.image.caption|myrichtext }}
         </div>
     {% endif %}
 </div>
