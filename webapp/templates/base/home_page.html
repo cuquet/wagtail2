@@ -2,16 +2,16 @@
 {% load wagtailcore_tags wagtailimages_tags site_tags block_tags  static %}
 
 {% block parallax %}
-{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title_translated parallax_text=self.excerpt_translated %}
 {% endblock parallax %}
 
 {% block sectionclass %}section-gray{% endblock sectionclass %}
 
 {% block content %}
-{% if self.body %}
+{% if self.body_translated %}
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col">{{self.body}}</div>
+        <div class="col">{{self.body_translated}}</div>
     </div>
 </div>
 {% endif %}

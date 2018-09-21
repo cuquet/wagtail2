@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags  blog_tags %}
 
-{% block title %}
-    {{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}
+{% block title %}<!--TODO BLOG_PAGE_DESCRIPTION-->
+    {{ blog_page.title_translated }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}
 {% endblock title %}
 
 {% block meta_title %}
     {% if blog_page.seo_title %}
         {{ blog_page.seo_title }}
     {% else %}
-        {{ blog_page.title }}
+        {{ blog_page.title_translated }}
     {% endif %}
 {% endblock meta_title %}
 

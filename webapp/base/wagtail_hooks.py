@@ -7,6 +7,7 @@ from wagtail.core import hooks
 @hooks.register('insert_global_admin_css')
 def global_admin_css():
     css_files = [
+        'css/panel_tab.css',
         'css/jquery.fonticonpicker.min.css',
         'css/jquery.fonticonpicker.grey.min.css',
         'css/pe-icon-7-stroke.css',

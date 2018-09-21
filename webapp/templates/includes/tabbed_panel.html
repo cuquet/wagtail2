@@ -1,0 +1,30 @@
+{% load wagtailadmin_tags block_tags static %}
+{% timestamp as id_prefix %}
+
+{% spaceless %}
+<div class="PanelTabs" role="tablist">
+    {% if help_text %}
+    <div class="object-help help">{{ help_text }}</div>
+    {% endif %}
+    <div class="panel-heading button-group">
+        <ul class="nav nav-tabs">
+            {% for child in self.children %}
+          <li role="presentation" class="button button-small button-secondary{% if forloop.first %} active{% endif %}" >
+              <a href="#{{ id_prefix }}-{{ forloop.counter }}-{{ child.heading|cautious_slugify }}"
+                 aria-controls="{{ id_prefix }}-{{ child.heading|cautious_slugify }}"
+                 role="tab" data-toggle="tab">{{ child.heading }}</a>
+          </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            {% for child in self.children %}
+            <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{ id_prefix }}-{{ forloop.counter }}-{{ child.heading|cautious_slugify }}">
+                {{ child.render_as_object }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endspaceless %}

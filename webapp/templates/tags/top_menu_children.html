@@ -4,11 +4,11 @@
     {# Include link to parent because the parent link is a drop down #}
         <a class="dropdown-item" href="{% pageurl parent %}" >
             {% if menuitem.specific.menu_icon %}<i class="{{ parent.specific.menu_icon }}"></i>{% endif %}
-            {{ parent.title }}
+            {{ parent.title_translated }}
         </a>
         <div class="dropdown-divider"></div>
     {% for child in menuitems_children %}
         <a class="dropdown-item" href="{{child.url}}" >
-        {% if child.specific.menu_icon %}<i class="{{ child.specific.menu_icon }}" aria-expanded="false"></i>{% endif %} {{ child.title }}</a>
+        {% if child.specific.menu_icon %}<i class="{{ child.specific.menu_icon }}" aria-expanded="false"></i>{% endif %} {{ child.title_translated }}</a>
     {% endfor %}
 </div>

@@ -177,3 +177,28 @@ class IconPanel(FieldPanel):
             'field': self.bound_field,
             'field_type': self.field_type(),
         }))
+
+
+class TabbedPanel(BaseFormEditHandler):
+    template = "includes/tabbed_panel.html"
+
+    def __init__(self, *args, **kwargs):
+        self.base_form_class = kwargs.pop('base_form_class', None)
+        super().__init__(*args, **kwargs)
+
+    def clone(self):
+        new = super().clone()
+        new.base_form_class = self.base_form_class
+        return new
+
+# class TabbedPanel(object):
+#     def __init__(self, children, base_form_class=None):
+#         self.children = children
+#         self.base_form_class = base_form_class
+#
+#     def bind_to_model(self, model):
+#         return type(str('_TabbedPanel'), (BaseTabbedPanel,), {
+#             'model': model,
+#             'children': [child.bind_to_model(model) for child in self.children],
+#             'base_form_class': self.base_form_class,
+#         })

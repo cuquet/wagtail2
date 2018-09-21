@@ -1,0 +1,47 @@
+.PanelTabs .panel-heading{
+    padding-bottom: 5px;
+}
+
+.PanelTabs .panel-body{
+    border:1px solid #eee;
+    padding: 0 10px 0 5px;
+}
+.PanelTabs .panel-body .tab-content > .tab-pane {
+  display: none;
+}
+.PanelTabs .panel-body .tab-content > .active {
+  display: block;
+}
+
+.PanelTabs > .block_field {
+	width: 100%
+}
+
+.tab-content fielset {
+    padding-top:40px;
+}
+
+.field-content {
+	width: 100%;
+}
+/*media screen and (min-width: 50em)
+.field-col, .field-content {
+    overflow: auto;
+	width: 100%
+}*/
+/*.PanelTabs .nav-tabs > li {
+  float: left;
+  margin-bottom: -1px;
+}*/
+.PanelTabs .nav-tabs > li:hover,
+.PanelTabs .nav-tabs > li:focus {
+    color: #777;
+	background-color: #ddd;
+}
+.PanelTabs .nav-tabs > li.active,
+.PanelTabs .nav-tabs > li.active > a,
+.PanelTabs .nav-tabs > li.active > a:hover,
+.PanelTabs .nav-tabs > li.active > a:focus {
+    color: #FFF;
+    background-color: #358c8b
+}
