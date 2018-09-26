@@ -3,26 +3,34 @@
 
 {% spaceless %}
 <div class="PanelTabs" role="tablist">
-    {% if help_text %}
-    <div class="object-help help">{{ help_text }}</div>
+    {% if self.help_text %}
+    <div class="object-help help">{{ self.help_text }}</div>
     {% endif %}
     <div class="panel-heading button-group">
         <ul class="nav nav-tabs">
             {% for child in self.children %}
-          <li role="presentation" class="button button-small button-secondary{% if forloop.first %} active{% endif %}" >
-              <a href="#{{ id_prefix }}-{{ forloop.counter }}-{{ child.heading|cautious_slugify }}"
-                 aria-controls="{{ id_prefix }}-{{ child.heading|cautious_slugify }}"
-                 role="tab" data-toggle="tab">{{ child.heading }}</a>
+            {% for lang, lang_descript in self.lang_list %}
+            {% if forloop.counter0 == forloop.parentloop.counter0 %}
+          <li role="presentation" class="button button-small button-secondary{% if forloop.parentloop.first %} active{% endif %}" >
+              <a href="#{{ id_prefix }}-{{ forloop.counter0 }}-{{ lang|cautious_slugify }}"
+                 aria-controls="{{ id_prefix }}-{{ lang|cautious_slugify }}"
+                 role="tab" data-toggle="tab">{{ lang_descript }} {{ lang }}</a>
           </li>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
         </ul>
     </div>
     <div class="panel-body">
         <div class="tab-content">
             {% for child in self.children %}
-            <div role="tabpanel" class="tab-pane{% if forloop.first %} active{% endif %}" id="{{ id_prefix }}-{{ forloop.counter }}-{{ child.heading|cautious_slugify }}">
+            {% for lang, lang_descript in self.lang_list %}
+            {% if forloop.counter0 == forloop.parentloop.counter0 %}
+            <div role="tabpanel" class="tab-pane{% if forloop.parentloop.first %} active{% endif %}" id="{{ id_prefix }}-{{ forloop.counter0 }}-{{ lang|cautious_slugify }}">
                 {{ child.render_as_object }}
             </div>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
         </div>
     </div>
