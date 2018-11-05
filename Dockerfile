@@ -10,8 +10,7 @@ RUN set -ex \
 		musl-dev \
 		linux-headers \
 		pcre-dev \
-		mariadb-dev \
-		mariadb-client-libs \
+        postgresql-dev \
 		libjpeg-turbo-dev \
 		zlib-dev \
 		git \
@@ -27,24 +26,26 @@ RUN set -ex \
 	)" \
 	&& apk add --virtual .python-rundeps $runDeps \
 	&& apk del .build-deps
-RUN apk add --no-cache mysql-client
-RUN mkdir -p /var/www/webapp/
-WORKDIR /var/www/webapp/
-ADD . /var/www/webapp/
+# RUN apk add --no-cache mysql-client
+RUN apk add --no-cache postgresql-client
+RUN mkdir -p /var/www/webapp/media
+WORKDIR /var/www/
+ADD . /var/www/
 EXPOSE 8000
 
 # Add custom environment variables needed by Django or your settings file here:
-# ENV DJANGO_SETTINGS_MODULE=melindro.settings.production DJANGO_DEBUG=off
+ENV DJANGO_SETTINGS_MODULE=webapp.settings.production DJANGO_DEBUG=off
 
 # uWSGI configuration (customize as needed):
-ENV UWSGI_VIRTUALENV=/venv UWSGI_WSGI_FILE=melindro/wsgi_production.py UWSGI_HTTP=:8000 UWSGI_MASTER=1 UWSGI_WORKERS=2 UWSGI_THREADS=8 UWSGI_UID=1000 UWSGI_GID=2000
+ENV UWSGI_VIRTUALENV=/venv UWSGI_WSGI_FILE=webapp/wsgi_production.py UWSGI_HTTP=:8000 UWSGI_MASTER=1 UWSGI_WORKERS=2 UWSGI_THREADS=8 UWSGI_UID=1000 UWSGI_GID=2000
 
 # Call collectstatic with dummy environment variables:
-RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
+# RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
+RUN DATABASE_URL=postgres://none REDIS_URL=none /venv/bin/python manage.py collectstatic --clear --ignore=*.scss -v 3
 
 # make sure static files are writable by uWSGI process
-RUN chown -R 1000:2000 /var/www/webapp/melindro/media
+RUN chown -R 1000:2000 /var/www/webapp/media
 
 # start uWSGI, using a wrapper script to allow us to easily add more commands to container startup:
-ENTRYPOINT ["/var/www/webapp/docker-entrypoint.sh"]
-CMD ["/venv/bin/uwsgi", "--http-auto-chunked", "--http-keepalive", "--static-map", "/media/=/var/www/webapp/melindro/media/"]
+ENTRYPOINT ["/var/www/docker-entrypoint.sh"]
+CMD ["/venv/bin/uwsgi", "--http-auto-chunked", "--http-keepalive", "--static-map", "/media/=/var/www/webapp/media/"]
