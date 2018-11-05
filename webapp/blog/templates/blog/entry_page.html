@@ -2,14 +2,14 @@
 {% load i18n wagtailcore_tags wagtailimages_tags block_tags blog_tags  %}
 
 {% block title %}
-    {{ self.title_translated }} | {{ blog_page.title_translated }}
+    {{ self.title }} | {{ blog_page.title }}
 {% endblock title %}
 
 {% block meta_title %}
     {% if self.seo_title %}
         {{ self.seo_title }}
     {% else %}
-        {{ self.title_translated }}
+        {{ self.title }}
     {% endif %}
 {% endblock meta_title %}
 
@@ -17,7 +17,7 @@
     {% if self.search_description %}
         {{ self.search_description }}
     {% else %}
-        {{ self.body_translated|striptags|truncatewords:20 }}
+        {{ self.body|striptags|truncatewords:20 }}
     {% endif %}
 {% endblock meta_description %}
 
@@ -28,7 +28,7 @@
 {% block social_share %}
     {% image self.header_image fill-800x450 as share_image %}
     <meta property="og:title" content="{{ self.title }}" />
-    <meta property="og:description" content="{% if self.excerpt_translated %}{{ self.excerpt_translated|striptags }}{% else %}{{ self.body_translated|striptags|truncatewords:20 }}{% endif %}" />
+    <meta property="og:description" content="{% if self.excerpt %}{{ self.excerpt|striptags }}{% else %}{{ self.body|striptags|truncatewords:20 }}{% endif %}" />
     <meta property="og:url" content="{% canonical_url entry=self %}" />
     {% if self.header_image %}
         <meta property="og:image" content="{% image_url share_image.url %}" />
@@ -38,7 +38,7 @@
     {% endif %}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ self.title }}" />
-    <meta name="twitter:description" content="{% if self.excerpt_translated %}{{ self.excerpt_translated|striptags }}{% else %}{{ self.body_translated|striptags|truncatewords:20 }}{% endif %}" />
+    <meta name="twitter:description" content="{% if self.excerpt %}{{ self.excerpt|striptags }}{% else %}{{ self.body|striptags|truncatewords:20 }}{% endif %}" />
 {% endblock social_share %}
 
 {% block body_class %}blog-post {% endblock body_class%}
@@ -46,7 +46,7 @@
 
 {% if self.header_image %}
 {% block parallax %}
-{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt_translated %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
 {% endblock parallax %}
 {% endif %}
 
@@ -57,7 +57,7 @@
 </section>
 <section class="section post-content"
          {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-    {{ self.body_translated|myrichtext }}
+    {{ self.body|myrichtext }}
     <div class="col-md-2">
         <a href="{% pageurl blog_page %}" class="btn btn-info">
             <i class="fa fa-angle-left"></i> {% trans 'Return' %}

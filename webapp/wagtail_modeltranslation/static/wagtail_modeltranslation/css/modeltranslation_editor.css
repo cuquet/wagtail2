@@ -1,10 +1,18 @@
-.PanelTabs .panel-heading{
-    padding-bottom: 5px;
+.translation-field-copy-wrapper{
+    float: right;
 }
-
-.PanelTabs .panel-body{
+.PanelTabs {
     border:1px solid #eee;
-    padding: 0 10px 0 5px;
+    margin-bottom: 0.8em;
+}
+.PanelTabs .panel-heading{
+    padding: 1em 1em 0;
+}
+.PanelTabs .panel-heading ul {
+    padding: 0;
+}
+.PanelTabs .panel-body{
+    padding: 0 1em 1em 1em;
 }
 .PanelTabs .panel-body .tab-content > .tab-pane {
   display: none;
@@ -24,15 +32,6 @@
 .field-content {
 	width: 100%;
 }
-/*media screen and (min-width: 50em)
-.field-col, .field-content {
-    overflow: auto;
-	width: 100%
-}*/
-/*.PanelTabs .nav-tabs > li {
-  float: left;
-  margin-bottom: -1px;
-}*/
 .PanelTabs .nav-tabs > li:hover,
 .PanelTabs .nav-tabs > li:focus {
     color: #777;
@@ -44,4 +43,7 @@
 .PanelTabs .nav-tabs > li.active > a:focus {
     color: #FFF;
     background-color: #358c8b
+}
+.PanelTabs .panel-body .tab-content .tab-pane label {
+  padding: 0.5em 0 0.5em 0;
 }

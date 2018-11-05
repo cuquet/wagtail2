@@ -9,7 +9,7 @@
     <div class="border rounded mr-3" style="width:50px;height:50px;"></div>
     {% endif %}
     <div class="media-body">
-      <h6 class="mt-0 mb-1"><a href="{% entry_url entry blog_page %}">{{ entry.title_translated }}</a></h6>
+      <h6 class="mt-0 mb-1"><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h6>
       <p class="font-weight-light small text-muted "><i class="fa fa-clock-o" aria-hidden="true"></i> {{ entry.date|timesince }}</p> {# |date:"SHORT_DATE_FORMAT" #}
     </div>
   </li>

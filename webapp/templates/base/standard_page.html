@@ -2,14 +2,14 @@
 {% load wagtailcore_tags %}
 
 {% block parallax %}
-{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt_translated %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
 {% endblock parallax %}
 
 {% block sectionclass %}{% endblock sectionclass %}
 
 {% block heading %}
 {% if not self.header_image %}
-<h1>{{ self.title_translated}}</h1>
+<h1>{{ self.title}}</h1>
 {% endif %}
 {% endblock heading%}
 
@@ -17,8 +17,8 @@
 <div class="container">
 <div class="row">
     <div class="col-md-{% if self.twitter %}8{% else %}10{% endif %} ml-auto mr-auto">
-        {% if self.body_translated %}
-        <div class="body-content">{% include_block page.body_translated %}</div>
+        {% if self.body %}
+        <div class="body-content">{% include_block page.body %}</div>
         {% endif %}
     </div>
     {% if self.twitter %}

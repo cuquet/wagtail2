@@ -4,28 +4,25 @@ from django.db import models
 from django import forms
 
 from django.utils.translation import ugettext_lazy as _
-from wagtail.contrib.forms.models import AbstractEmailForm, AbstractForm
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.core.models import Page, Orderable, Collection
-from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import PageChooserPanel, FieldPanel, FieldRowPanel, \
-    MultiFieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.core.models import Orderable
+from wagtail.core.fields import RichTextField
+from wagtail.admin.edit_handlers import PageChooserPanel, FieldPanel, \
+    MultiFieldPanel, InlinePanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
-from wagtail.search import index
 from wagtail.snippets.models import register_snippet
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
 
-from .abstracts import BasePageAbstrac, BaseMinimalPageAbstract
-from .blocks import CARD_CHOICES, BaseStreamBlock, BaseParallaxBlock
+from .abstracts import BasePageAbstract, BaseMinimalPageAbstract
+from .blocks import CARD_CHOICES
 
-from webapp.twitter.abstracts import MyTwitterBlockAbstract
-from webapp.twitter.panels import twitter_block_panel
+from webapp.wagtail_block_twitter.abstracts import MyTwitterBlockAbstract
+from webapp.wagtail_block_twitter.panels import twitter_block_panel
 from webapp.blog.models import Category
+
 
 # http://docs.wagtail.io/en/v2.1/reference/contrib/settings.html?highlight=settings
 @register_setting(icon='cogs')
@@ -99,12 +96,15 @@ class LinkFields(models.Model):
 
 
 class RelatedLink(LinkFields):
-    title = models.CharField(max_length=255, help_text="Link title")
+    title = models.CharField(max_length=255, help_text=_("Link title"))
 
     panels = [
         FieldPanel('title'),
         MultiFieldPanel(LinkFields.panels),
     ]
+
+    class Meta:
+        abstract = True
 
 
 @register_snippet
@@ -130,11 +130,11 @@ class FooterText(models.Model):
         verbose_name_plural = _('Footer Text')
 
 
-class CardContent(models.Model):
+class Card(models.Model):
     url_link = models.CharField(
         verbose_name=_('Url'),
         max_length=255,
-        null = True, blank = True,
+        null=True, blank=True,
         help_text=_("Relative links are allowed")
     )
     title = models.CharField(
@@ -142,51 +142,43 @@ class CardContent(models.Model):
         max_length=255,
         help_text=_("Title of the card")
     )
+
     text = RichTextField(verbose_name="Text", null=True, blank=True)
     footer = RichTextField(verbose_name="Footer", null=True, blank=True)
 
+    image = models.ForeignKey('wagtailimages.Image', verbose_name=_('Header image'),
+                              null=True, blank=True,
+                              on_delete=models.SET_NULL, related_name='+')
+
+    card_type = models.CharField(verbose_name=_('Card type'), max_length=30, choices=CARD_CHOICES,
+                                 default="", help_text=_('Check on components page'),
+                                 null=True, blank=True)
     panels = [
+        FieldPanel('card_type', classname=""),
+        ImageChooserPanel('image', classname=""),
         FieldPanel('url_link'),
         FieldPanel('title'),
-        FieldPanel('text', classname=''),
-        FieldPanel('footer', classname='collapsible'),
+        FieldPanel('text'),
+        FieldPanel('footer'),
     ]
 
     class Meta:
         abstract = True
 
 
-class Card(CardContent):
-    image = models.ForeignKey('wagtailimages.Image', verbose_name=_('Header image'),
-                              null=True, blank=True,
-                              on_delete=models.SET_NULL, related_name='+')
-    card_type = models.CharField(verbose_name=_('Card type'), max_length=30, choices=CARD_CHOICES,
-                                     default="", help_text=_('Check on components page'),
-                                     null=True, blank=True)
-    panels = [
-        FieldPanel('card_type', classname=""),
-        ImageChooserPanel('image', classname=""),
-        MultiFieldPanel(CardContent.panels, classname=""),
-    ]
-
-
 class HomePage(BaseMinimalPageAbstract):
     search_fields = BaseMinimalPageAbstract.search_fields
-
     content_panels = BaseMinimalPageAbstract.content_panels + [
-        MultiFieldPanel([
-            InlinePanel('card_items', label=_("Card items"), # help_text=_(""),
-                min_num=None, max_num=None, classname=""),
-        ], heading=_('Cards'), classname="collapsible"),
-        MultiFieldPanel([
-            InlinePanel('related_links', label=_('Related links')),
-        ], heading=_('Related links'), classname="collapsible"),
+        # MultiFieldPanel([
+        InlinePanel('card_items', label=_('Card items')),  # help_text=_(""),
+        #    min_num=None, max_num=None, classname=""),
+        # ], heading=_('Cards'), classname="collapsible"),
+        # MultiFieldPanel([
+        InlinePanel('related_links', label=_('Related links')),
+        # ], heading=_('Related links'), classname="collapsible"),
     ]
-
     promote_panels = BaseMinimalPageAbstract.promote_panels
-
     settings_panels = BaseMinimalPageAbstract.settings_panels
-
     # Defining what content type can sit under the parent. Since it's a blank
     # array no subpage can be added
     # subpage_types = []
@@ -194,31 +186,23 @@ class HomePage(BaseMinimalPageAbstract):
     # @property
     # def cards(self):
     #     return [card for card in self.card_items.all()]
-
     class Meta:
         verbose_name = _('Homepage')
 
 
-class HomePageCard(Card, Orderable ):
-    card_items = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='card_items')
+class HomePageRelatedLink(Orderable, RelatedLink):
+    homepage = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='related_links')
 
 
-class HomePageRelatedLink(RelatedLink, Orderable):
-    page = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='related_links')
+class HomePageCard(Orderable, Card):
+    homepage = ParentalKey(HomePage, on_delete=models.CASCADE, related_name='card_items')
 
 
-class StandardPage(MyTwitterBlockAbstract, BasePageAbstrac):
-    feed_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    search_fields = BasePageAbstrac.search_fields
-
-    content_panels = BasePageAbstrac.content_panels + [
+class StandardPage(MyTwitterBlockAbstract, BasePageAbstract):
+    feed_image = models.ForeignKey('wagtailimages.Image', null=True, blank=True,
+                                   on_delete=models.SET_NULL, related_name='+')
+    search_fields = BasePageAbstract.search_fields
+    content_panels = BasePageAbstract.content_panels + [
         MultiFieldPanel([
             # InlinePanel('carousel_items', label="Carousel items"),
             InlinePanel('related_links', label=_('Related links')),
@@ -226,8 +210,9 @@ class StandardPage(MyTwitterBlockAbstract, BasePageAbstrac):
         ], heading=_('Related links and feed image'), classname="collapsible"),
         ] + twitter_block_panel
 
-    promote_panels = BasePageAbstrac.promote_panels
+    promote_panels = BasePageAbstract.promote_panels
+    settings_panels = BasePageAbstract.settings_panels
 
 
-class StandardPageRelatedLink(RelatedLink, Orderable):
-    page = ParentalKey(StandardPage, on_delete=models.CASCADE, related_name='related_links')
+class StandardPageRelatedLink(Orderable, RelatedLink):
+    standardpage = ParentalKey(StandardPage, on_delete=models.CASCADE, related_name='related_links')

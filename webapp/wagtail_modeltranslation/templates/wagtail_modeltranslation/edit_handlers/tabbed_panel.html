@@ -1,25 +1,26 @@
-{% load wagtailadmin_tags block_tags static %}
+{% load  static wagtailadmin_tags lang_tags %}
 {% timestamp as id_prefix %}
 
 {% spaceless %}
-<div class="PanelTabs" role="tablist">
+<div class="PanelTabs {{ self.classname }}" role="tablist">
     {% if self.help_text %}
     <div class="object-help help">{{ self.help_text }}</div>
     {% endif %}
     <div class="panel-heading button-group">
-        <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs button-group col8">
             {% for child in self.children %}
             {% for lang, lang_descript in self.lang_list %}
             {% if forloop.counter0 == forloop.parentloop.counter0 %}
-          <li role="presentation" class="button button-small button-secondary{% if forloop.parentloop.first %} active{% endif %}" >
+          <li role="presentation" class="button button-small button-secondary{% if forloop.parentloop.first %} active{% endif %}" data-fieldname="{{child.field_name}}">
               <a href="#{{ id_prefix }}-{{ forloop.counter0 }}-{{ lang|cautious_slugify }}"
-                 aria-controls="{{ id_prefix }}-{{ lang|cautious_slugify }}"
-                 role="tab" data-toggle="tab">{{ lang_descript }} {{ lang }}</a>
+                 aria-controls="{{ id_prefix }}-{{ forloop.counter0 }}-{{ lang|cautious_slugify }}"
+                 role="tab" data-toggle="tab" >{{ lang_descript }}</a>
           </li>
             {% endif %}
             {% endfor %}
             {% endfor %}
         </ul>
+        <ul class="translation-field-copy-wrapper" style="float: right;"></ul>
     </div>
     <div class="panel-body">
         <div class="tab-content">
@@ -27,7 +28,7 @@
             {% for lang, lang_descript in self.lang_list %}
             {% if forloop.counter0 == forloop.parentloop.counter0 %}
             <div role="tabpanel" class="tab-pane{% if forloop.parentloop.first %} active{% endif %}" id="{{ id_prefix }}-{{ forloop.counter0 }}-{{ lang|cautious_slugify }}">
-                {{ child.render_as_object }}
+                {{ child.render_as_field }}
             </div>
             {% endif %}
             {% endfor %}

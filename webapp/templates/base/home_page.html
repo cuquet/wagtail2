@@ -2,16 +2,16 @@
 {% load wagtailcore_tags wagtailimages_tags site_tags block_tags  static %}
 
 {% block parallax %}
-{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title_translated parallax_text=self.excerpt_translated %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
 {% endblock parallax %}
 
 {% block sectionclass %}section-gray{% endblock sectionclass %}
 
 {% block content %}
-{% if self.body_translated %}
+{% if self.body %}
 <div class="container">
     <div class="row justify-content-md-center">
-        <div class="col">{{self.body_translated}}</div>
+        <div class="col">{{self.body}}</div>
     </div>
 </div>
 {% endif %}
@@ -30,7 +30,7 @@
     {% endif %}
     <div class="card-deck justify-content-md-center">
 {% for card in self.card_items.all %}
-{% include "blocks/card.html" with card=card %}
+{% include "blocks/block_card.html" with card=card %}
 {% if forloop.counter|divisibleby:"2" %}<div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>{% endif %}
 {% if forloop.counter|divisibleby:"3" %}<div class="w-100 d-none d-md-block d-lg-none"><!-- wrap every 3 on md--></div>{% endif %}
 {% if forloop.counter|divisibleby:"4" %}<div class="w-100 d-none d-lg-block d-xl-none"><!-- wrap every 4 on lg--></div>{% endif %}

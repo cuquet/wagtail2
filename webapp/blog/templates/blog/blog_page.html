@@ -38,7 +38,7 @@
         <meta name="twitter:image" content="{% image_url share_image.url %}" />
     {% endif %}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ blog_page.title_translated }}" />
+    <meta name="twitter:title" content="{{ blog_page.title }}" />
     <meta name="twitter:description" content="{{ blog_page.description }}" />
 {% endblock social_share %}
 
@@ -64,14 +64,14 @@
         <a href="{% entry_url entry blog_page %}"><img class="img-thumbnail" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}"></a>
         </div>{% endif %}
         <div class="col mb-2">
-            <h1>{{ entry.title_translated}}</h1>
+            <h1>{{ entry.title }}</h1>
             {% include 'blog/entry_links.html' with entry=entry %}
         </div>
     </div>
-    {% if entry.excerpt_translated|striptags %}
-        {{ entry.excerpt_translated|myrichtext }}
+    {% if entry.excerpt|striptags %}
+        {{ entry.excerpt|myrichtext }}
     {% else %}
-        {{ entry.body_translated|myrichtext|truncatewords_html:70 }}
+        {{ entry.body|myrichtext|truncatewords_html:70 }}
     {% endif %}
     <div class="d-flex justify-content-end">
         <a class="btn btn-outline-info" href="{% entry_url entry blog_page %}"><i class="fa fa-align-left"></i> {% trans "Continue reading" %} <i class="fa fa-angle-right"></i></a>

@@ -2,7 +2,6 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as languages %}
-<div class="d-inline-block">
 <form action="{% url 'set_language' %}" method="post" id="language_selector_form">
   {% csrf_token %}
   <div class="form-group">
@@ -16,4 +15,3 @@
     </select>
   </div>
 </form>
-</div>

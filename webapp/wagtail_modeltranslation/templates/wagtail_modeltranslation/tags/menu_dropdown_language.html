@@ -6,7 +6,7 @@
     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" id="language-list">
         <i class="pe-7s-world"></i><span class="badge badge-info">{{ LANGUAGE_CODE }}</span><p>{% trans 'Language' %}</p>
     </a>
-    {% static "images/flags/" as flag_path %}
+    {% static "wagtail_modeltranslation/images/flags/" as flag_path %}
     <div class="dropdown-menu dropdown-menu-right" id="language-list" aria-labelledby="language-list" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
         {% for language in languages %}
         {% with language.code|upper|add:".png" as flag_static %}

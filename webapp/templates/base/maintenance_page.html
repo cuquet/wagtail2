@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}
-        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.translated_title }}{% endif %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
         {% endblock %}
         {% block title_postfix %} | Wagtail{% endblock %}
     </title>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         <div class="main-head">
-                            {% if self.translated_title %}<h2 class="main-head">{{ self.translated_title }}</h2>{% endif %}
+                            {% if self.title %}<h2 class="main-head">{{ self.title }}</h2>{% endif %}
                             {% if self.excerpt %}<p class="main-head">{{ self.excerpt|richtext }}</p>{% endif %}
                         </div>
                         <div id="countdown-area">
