@@ -1,3 +1,4 @@
+import os
 import random
 import string
 
@@ -6,6 +7,7 @@ import django_cache_url
 
 from .base import *
 
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 # DJANGO_SECRET_KEY *should* be specified in the environment. If it's not, generate an ephemeral key.
@@ -21,6 +23,26 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Redirect all requests to HTTPS
 SECURE_SSL_REDIRECT = os.getenv('DJANGO_SECURE_SSL_REDIRECT', 'off') == 'on'
+
+#If True, the SecurityMiddleware sets the X-Content-Type-Options: nosniff header
+# on all responses that do not already have it.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# If True, the SecurityMiddleware sets the X-XSS-Protection: 1; mode=block header
+# on all responses that do not already have it.
+SECURE_BROWSER_XSS_FILTER = True
+
+# If the header is set to DENY then the browser will block the resource from loading
+#  in a frame no matter which site made the request
+X_FRAME_OPTIONS = 'DENY'
+
+# the cookie will be marked as “secure,” which means browsers may ensure that the cookie is
+# only sent under an HTTPS connection.
+SESSION_COOKIE_SECURE = True
+
+# the cookie will be marked as “secure,” which means browsers may ensure that the cookie is
+# only sent with an HTTPS connection.
+CSRF_COOKIE_SECURE = True
 
 # Accept all hostnames, since we don't know in advance which hostname will be used for any given Heroku instance.
 # IMPORTANT: Set this to a real hostname when using this in production!
@@ -90,8 +112,8 @@ if ELASTICSEARCH_ENDPOINT:
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY')
 RECAPTCHA_DISABLE = False
 
 
@@ -103,3 +125,19 @@ if 'AWS_STORAGE_BUCKET_NAME' in os.environ:
     INSTALLED_APPS.append('storages')
     MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}

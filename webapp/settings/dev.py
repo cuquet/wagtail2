@@ -5,6 +5,7 @@ import dj_database_url
 
 from .base import *
 
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 # DJANGO_SECRET_KEY *should* be specified in the environment. If it's not, generate an ephemeral key.
 if 'DJANGO_SECRET_KEY' in os.environ:

@@ -20,21 +20,22 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'webapp.wagtail_modeltranslation',
+    'webapp.wagtail_modeltranslation.makemigrations',
+    'webapp.wagtail_modeltranslation.migrate',
     'webapp.base',
     'webapp.search',
-    'webapp.recaptcha2forms',
+    'webapp.wagtail_recaptcha2forms',
     'webapp.blog',
-    'webapp.twitter',
-    'webapp.wagtailtinymce',
+    'webapp.wagtail_block_twitter',
+    'webapp.wagtail_tinymce',
 
     'django_social_share',
 
@@ -157,10 +158,11 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
-    ('ca', _('Catalan')),
     ('en', _('English')),
+    ('ca', _('Catalan')),
     ('es', _('Spanish')),
 )
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -192,7 +194,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
-        'WIDGET': 'webapp.wagtailtinymce.rich_text.TinyMCERichTextArea'
+        'WIDGET': 'webapp.wagtail_tinymce.rich_text.TinyMCERichTextArea'
     },
 }
 # Wagtail settings
