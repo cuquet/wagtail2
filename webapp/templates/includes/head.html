@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>
     {% block title %}
-    {% if self.title_translated %}{{ self.title_translated }}{% endif %}
+    {% if self.title %}{{ self.title }}{% endif %}
     {% block title_postfix %}{{title_postfix}}{% endblock %}
     {% endblock title %}
 </title>
@@ -16,7 +16,7 @@
                     {% if self.seo_title %}
                         {{ self.seo_title }}
                     {% else %}
-                        {{ self.title_translated }}
+                        {{ self.title }}
                     {% endif %}
                {% endblock meta_title %}"/>
 <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% endif %}">
@@ -52,12 +52,9 @@
 <!--<link rel="stylesheet" type="text/css" href="{% static 'css/helper.css' %}">-->
 <link rel="stylesheet" type="text/css" href="{% static 'css/pe-icon-7-stroke.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-<!--<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">-->
 {# Custom stylesheets #}
 {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
-<!--<link rel="stylesheet" type="text/css" href="{% static 'css/prism.css' %}">-->
 <link rel="stylesheet" type="text/css" href="{% sass_src 'css/webapp.scss' %}" />
-<!--<link rel="stylesheet" type="text/css" href="{% static 'js/google-code-prettify/prettify.css' %}" />-->
 
 {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
 {% block extra_css %}{% endblock %}

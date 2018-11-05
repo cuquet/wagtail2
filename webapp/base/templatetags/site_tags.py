@@ -106,7 +106,7 @@ def breadcrumbs(context):
     }
 
 
-@register.inclusion_tag('base/includes/footer_text.html', takes_context=True)
+@register.inclusion_tag('blocks/block_footer_text.html', takes_context=True)
 def get_footer_text(context):
     footer_text = ""
     if FooterText.objects.first() is not None:

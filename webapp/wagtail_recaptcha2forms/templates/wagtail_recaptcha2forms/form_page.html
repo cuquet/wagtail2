@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags i18n wagtailimages_tags widget_tweaks block_tags %}
+
+{% block parallax %}
+{% include 'includes/parallax.html' with parallax_image=self.header_image  parallax_filter=self.parallax_filter parallax_size=self.parallax_size parallax_head=self.title parallax_text=self.excerpt %}
+{% endblock parallax %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <form class="" action="{% pageurl page %}" method="POST" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+            <fieldset>
+                <legend>{{ self.excerpt|myrichtext }}</legend>
+                {% comment %}{{ form.as_p }}{% endcomment %}
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.is_hidden %}
+                        {{ field }}
+                    {% else %}
+                        {% include "wagtail_recaptcha2forms/includes/form_field.html" %}
+                    {% endif %}
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-10">
+                        <input class="btn btn-default" type="submit" value="{% trans 'Submit' %}">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_js %}{% endblock extra_js %}

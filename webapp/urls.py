@@ -26,7 +26,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     url(r'^i18n/$', set_language, name='set_language'),
-    # url(r'^jsi18n/$', JavaScriptCatalog.as_view(packages=['melindro']), name='javascript-catalog'),
     url(r'^jsi18n/$', JavaScriptCatalog.as_view(), name='javascript-catalog'),
     url(r'^django-admin/', admin.site.urls),
 

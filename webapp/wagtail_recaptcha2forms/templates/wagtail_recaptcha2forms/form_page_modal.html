@@ -1,0 +1,23 @@
+{% load wagtailcore_tags block_tags i18n %}
+
+<form id="{{ self.title|slugify }}" data-async data-target="#modal-body" action="{% pageurl page %}" method="POST">
+    <fieldset>
+        <legend>{{ self.excerpt|myrichtext }}</legend>
+        {% csrf_token %}
+        {% for field in form.hidden_fields %}
+            {{ field }}
+        {% endfor %}
+        {% for field in form.visible_fields %}
+            {% include "wagtail_recaptcha2forms/includes/form_field.html" %}
+        {% endfor %}
+        <div class="form-group">
+            <div class="pull-right">
+                <input class="btn btn-submit" type="submit" value="{% trans 'Submit' %}">
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+    $(".modal-title").html("{{ self.title }}");
+</script>

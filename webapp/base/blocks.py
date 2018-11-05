@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import get_language, ugettext_lazy as _
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
+from django.conf import settings
 
 from wagtail.admin.edit_handlers import BaseFormEditHandler, FieldPanel
 from wagtail.core.blocks import BooleanBlock, CharBlock, ChoiceBlock, \
@@ -54,7 +55,7 @@ class HeadingBlock(StructBlock):
     """
     Custom `StructBlock` that allows the user to select h2 - h4 sizes for headers
     """
-    heading_text = CharBlock(classname="title", required=True)
+    heading_text = CharBlock(classname="title", required=False)
     size = ChoiceBlock(choices=[
         ('', 'Select a header size'),
         ('h2', 'H2'),
@@ -106,14 +107,14 @@ class BaseParallaxContentBlock(StructBlock):
     @property
     def media(self):
         return forms.Media(
-            # css={'all': ['css/panel_tab.css']},
+            # css={'all': ['css/nnnn.css']},
         )
 
     class Meta:
         template = 'blocks/block_parallax_content.html'
         label = _('The Parallax content')
         form_classname = 'struct-block'
-        # form_template = 'blocks/block_tab.html'
+        # form_template = ''
         abstract = True
 
 
@@ -126,7 +127,7 @@ class BaseParallaxBlock(StructBlock):
 
     class Meta:
         template = 'blocks/block_parallax.html'
-        form_template = 'blocks/admin_block_parallax.html'
+        form_template = 'edit_handlers/parallax_panel.html'
         form_classname = 'struct-block'
         icon = 'image'
         label = _('Parallax Block')
@@ -161,7 +162,7 @@ class IconPanel(FieldPanel):
             self.widget = widget
         super(IconPanel, self).__init__(self.field_name, *args, **kwargs)
 
-    object_template = "base/includes/iconfield_panel.html"
+    object_template = "edit_handlers/iconfield_panel.html"
 
     def render_as_object(self):
         return mark_safe(render_to_string(self.object_template, {
@@ -170,35 +171,10 @@ class IconPanel(FieldPanel):
             'field': self.bound_field,
         }))
 
-    field_template = "base/includes/iconfield_panel.html"
+    field_template = "edit_handlers/iconfield_panel.html"
 
     def render_as_field(self):
         return mark_safe(render_to_string(self.field_template, {
             'field': self.bound_field,
             'field_type': self.field_type(),
         }))
-
-
-class TabbedPanel(BaseFormEditHandler):
-    template = "includes/tabbed_panel.html"
-
-    def __init__(self, *args, **kwargs):
-        self.base_form_class = kwargs.pop('base_form_class', None)
-        super().__init__(*args, **kwargs)
-
-    def clone(self):
-        new = super().clone()
-        new.base_form_class = self.base_form_class
-        return new
-
-# class TabbedPanel(object):
-#     def __init__(self, children, base_form_class=None):
-#         self.children = children
-#         self.base_form_class = base_form_class
-#
-#     def bind_to_model(self, model):
-#         return type(str('_TabbedPanel'), (BaseTabbedPanel,), {
-#             'model': model,
-#             'children': [child.bind_to_model(model) for child in self.children],
-#             'base_form_class': self.base_form_class,
-#         })

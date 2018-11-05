@@ -1,4 +1,4 @@
-{% load i18n static site_tags wagtailcore_tags wagtailroutablepage_tags blog_tags %}
+{% load i18n static site_tags wagtailcore_tags wagtailroutablepage_tags blog_tags lang_tags %}
 {% get_site_root as site_root %}
 <ul class="navbar-nav ml-auto">
     <li class="nav-item">
@@ -8,19 +8,19 @@
     {% for menuitem in menuitems %}
         <li class="nav-item {% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
             <a href="{% pageurl menuitem %}" class="nav-link {% if menuitem.show_dropdown %}dropdown-toggle" id="{{menuitem.type}}_ddtoggle_{{ menuitem.link_page.pk }}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false{% endif %}" >
-                {% if menuitem.specific.menu_icon %}<i class="{{ menuitem.specific.menu_icon }}"></i>{% endif %}<p>{% if menuitem.specific.title_translated %}{{ menuitem.specific.title_translated }}{% else %}{{ menuitem.title }}{% endif %}</p>
+                {% if menuitem.specific.menu_icon %}<i class="{{ menuitem.specific.menu_icon }}"></i>{% endif %}<p>{% if menuitem.specific.title %}{{ menuitem.specific.title }}{% else %}{{ menuitem.title }}{% endif %}</p>
             </a>
             {% if menuitem.show_dropdown %}{% top_menu_children parent=menuitem %}{% endif %}
         </li>
     {% endfor %}
-    {% include "tags/menu_dropdown_language.html" %}
+    {% lang_top_menu %}
+    <!--TODO {# include "tags/menu_dropdown_language.html" #}-->
     <!--TODO {# include "tags/menu_dropdown_user.html" #}-->
 </ul>
 {% if show_search %}
 <div id="search-wrapper" class="nav-item">
     <form action="{% url 'search' %}" method="get">
         {% csrf_token %}
-
         <input type="text" id="search" name="query" value="{% if query_string %}{{ query_string }}{% endif %}" placeholder="{% trans 'Search' %}...">
         <div id="close-icon" style="display: none;" class=""></div>
         <input class="d-none" type="submit" value="">

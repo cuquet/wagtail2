@@ -11,15 +11,14 @@ from django.utils import six
 from wagtail.core.models import Page, PageBase
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.snippets.models import register_snippet
-from wagtail.core import __version__ as WAGTAIL_VERSION
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from modelcluster.fields import ParentalKey
 
 from colorful.fields import RGBColorField
 
 from webapp.base.abstracts import BaseMinimalPageAbstract
-from webapp.twitter.abstracts import MyTwitterPublishAbstract
-from webapp.twitter.panels import twitter_publication_panel
+from webapp.wagtail_block_twitter.abstracts import MyTwitterPublishAbstract
+from webapp.wagtail_block_twitter.panels import twitter_publication_panel
 
 
 from .abstracts import EntryAbstract
@@ -213,9 +212,7 @@ def _add_owner_panel():
     See:
     https://github.com/wagtail/wagtail/pull/3581
     """
-    if parse_version(WAGTAIL_VERSION) >= parse_version('1.11'):
-        return [FieldPanel('owner')]
-    return []
+    return [FieldPanel('owner')]
 
 
 class EntryPage(six.with_metaclass(PageBase, Entry, Page)):

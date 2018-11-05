@@ -1,4 +1,4 @@
-{% load i18n site_tags static %}
+{% load i18n site_tags static lang_tags %}
 <div class="container">
     <!--<h1 class="sr-only" id="page-footer">{% trans "Sitemap" %}</h1>-->
     <div class="row align-items-center justify-content-between">
@@ -10,8 +10,10 @@
             {% endwith %}
             </div>
             {% endif %}
+            <div class="d-inline-block"></div>
             <div class="d-inline-block">
-            </div> {% include "tags/language_selector.html" %}
+                {% lang_selector %}
+            </div>
         </div>
 <!--        <div id="footer2" class="col">{% if not in_maintenance %}{% endif %}</div>
         <div id="footer3" class="col"></div>-->
