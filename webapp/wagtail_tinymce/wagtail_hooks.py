@@ -41,7 +41,7 @@ from wagtail.core.whitelist import allow_without_attributes, attribute_rule
 
 
 def to_js_primitive(string):
-    return mark_safe(json.dumps(escape(string)))
+    return mark_safe(escape(string))
 
 
 @hooks.register('insert_editor_css')
@@ -70,7 +70,7 @@ def insert_editor_js():
         }}());
         </script>
         """,
-        to_js_primitive(static('wagtail_tinymce/js/vendor/tinymce/')),
+        mark_safe(escape(static('wagtail_tinymce/js/vendor/tinymce/'))),
     )
     js_files = [
         'wagtail_tinymce/js/vendor/tinymce/tinymce.min.js',
