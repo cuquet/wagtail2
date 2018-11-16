@@ -30,6 +30,7 @@ def get_weight_fun(t_min, t_max, f_min, f_max):
 
     return weight_fun
 
+
 def strip_prefix_and_ending_slash(path):
     """
     If blog and wagtail are registered with a prefix, it needs to be removed

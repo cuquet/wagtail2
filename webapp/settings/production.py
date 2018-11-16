@@ -24,25 +24,25 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Redirect all requests to HTTPS
 SECURE_SSL_REDIRECT = os.getenv('DJANGO_SECURE_SSL_REDIRECT', 'off') == 'on'
 
-#If True, the SecurityMiddleware sets the X-Content-Type-Options: nosniff header
+# If True, the SecurityMiddleware sets the X-Content-Type-Options: nosniff header
 # on all responses that do not already have it.
-SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # If True, the SecurityMiddleware sets the X-XSS-Protection: 1; mode=block header
 # on all responses that do not already have it.
-SECURE_BROWSER_XSS_FILTER = True
+# SECURE_BROWSER_XSS_FILTER = True
 
 # If the header is set to DENY then the browser will block the resource from loading
 #  in a frame no matter which site made the request
-X_FRAME_OPTIONS = 'DENY'
+# X_FRAME_OPTIONS = 'DENY'
 
 # the cookie will be marked as “secure,” which means browsers may ensure that the cookie is
 # only sent under an HTTPS connection.
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
 # the cookie will be marked as “secure,” which means browsers may ensure that the cookie is
 # only sent with an HTTPS connection.
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Accept all hostnames, since we don't know in advance which hostname will be used for any given Heroku instance.
 # IMPORTANT: Set this to a real hostname when using this in production!
@@ -107,7 +107,7 @@ if ELASTICSEARCH_ENDPOINT:
         )
 
 # Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
+# http://whitenoise.evans.io/en/stable/django.html
 
 MIDDLEWARE.append('whitenoise.middleware.WhiteNoiseMiddleware')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

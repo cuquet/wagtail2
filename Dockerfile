@@ -41,7 +41,7 @@ ENV UWSGI_VIRTUALENV=/venv UWSGI_WSGI_FILE=webapp/wsgi_production.py UWSGI_HTTP=
 
 # Call collectstatic with dummy environment variables:
 # RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
-RUN DATABASE_URL=postgres://none REDIS_URL=none /venv/bin/python manage.py collectstatic --clear --ignore=*.scss -v 3
+RUN DATABASE_URL=postgres://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput --clear --ignore=*.scss -v 3
 
 # make sure static files are writable by uWSGI process
 RUN chown -R 1000:2000 /var/www/webapp/media

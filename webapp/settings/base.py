@@ -26,7 +26,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'webapp.wagtail_modeltranslation',
     'webapp.wagtail_modeltranslation.makemigrations',
     'webapp.wagtail_modeltranslation.migrate',
