@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wagtail 0.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 09:49+0200\n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
 "PO-Revision-Date: 2015-09-23 16:33+0100\n"
 "Last-Translator: aaloy <aaloy@apsl.net>\n"
 "Language-Team: ca <LL@li.org>\n"
@@ -18,227 +18,234 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: abstracts.py:16
-msgid "body"
-msgstr "cos"
-
-#: abstracts.py:18
-msgid "Post date"
-msgstr "Data del post"
-
-#: abstracts.py:21 models.py:38
-msgid "Header image"
-msgstr "Imatge de capçalera"
-
-#: abstracts.py:29
-msgid "excerpt"
-msgstr "resum"
-
-#: abstracts.py:31
-msgid ""
-"Entry excerpt to be displayed on entries list. If this field is not filled, "
-"a truncate version of body text will be used."
-msgstr ""
-"El resum de l'apunt es presentarà a la llista d'entrades. Si no omples "
-"aquest camp, s'utilitzarà una versió espaçada del text."
-
-#: abstracts.py:44
+#: webapp/blog/abstracts.py:21 webapp/blog/abstracts.py:35
 msgid "Content"
 msgstr "Contingut"
 
-#: abstracts.py:49 models.py:165 templates/blog/base.html:92
+#: webapp/blog/abstracts.py:23
+msgid "Post date"
+msgstr "Data del post"
+
+#: webapp/blog/abstracts.py:39 webapp/blog/models.py:173
+#: webapp/blog/templates/blog/base.html:70
+#: webapp/blog/templates/blog/entry_links.html:25
 msgid "Categories"
 msgstr "Categories"
 
-#: abstracts.py:52 templates/blog/related_entries.html:6
+#: webapp/blog/abstracts.py:42
+#: webapp/blog/templates/blog/related_entries.html:2
 msgid "Related Entries"
 msgstr "Entrades relacionades"
 
-#: abstracts.py:56
+#: webapp/blog/abstracts.py:46
 msgid "Metadata"
 msgstr "Metadades"
 
-#: models.py:31 models.py:142
-msgid "Description"
-msgstr "Descripció"
-
-#: models.py:34
-msgid "The blog description that will appear under the title."
-msgstr "La descripció del blog que apareixerà sota el títol"
-
-#: models.py:45
+#: webapp/blog/models.py:34
 msgid "Blog Main Color"
 msgstr ""
 
-#: models.py:47
+#: webapp/blog/models.py:36
 msgid "Display comments"
 msgstr "Mostrar comentaris"
 
-#: models.py:48
+#: webapp/blog/models.py:37
 msgid "Display categories"
 msgstr "Mostrar categories"
 
-#: models.py:49
+#: webapp/blog/models.py:38
 msgid "Display tags"
 msgstr "Mostrar tags"
 
-#: models.py:50
+#: webapp/blog/models.py:39
 msgid "Display popular entries"
 msgstr "Mostrar entrades populars"
 
-#: models.py:51
+#: webapp/blog/models.py:40
 msgid "Display last entries"
 msgstr "Mostrar les darreres entrades"
 
-#: models.py:52
+#: webapp/blog/models.py:41
 msgid "Display archive"
 msgstr "Mostrar arxiu"
 
-#: models.py:57
+#: webapp/blog/models.py:46
 msgid "Entries per page"
 msgstr "Entrades per plana"
 
-#: models.py:58
+#: webapp/blog/models.py:47
 msgid "Last entries limit"
 msgstr "Límit per les darreres entrades"
 
-#: models.py:59
+#: webapp/blog/models.py:48
 msgid "Popular entries limit"
 msgstr "Límit per les entrades populars"
 
-#: models.py:60
+#: webapp/blog/models.py:49
 msgid "Tags limit entry header"
 msgstr "Límit pel nombre de tags de la capçalera"
 
-#: models.py:62
+#: webapp/blog/models.py:50
+msgid "Tags sizes in tag cloud"
+msgstr "Mides de tags al núvol"
+
+#: webapp/blog/models.py:52
 msgid "Use short description in feeds"
-msgstr ""
+msgstr "Utiliza la descripció curta al peu"
 
-#: models.py:80
+#: webapp/blog/models.py:68
 msgid "Widgets"
-msgstr "Andròmines"
+msgstr "Ginys"
 
-#: models.py:89
+#: webapp/blog/models.py:79
 msgid "Parameters"
 msgstr "Paràmetres"
 
-#: models.py:97
+#: webapp/blog/models.py:87
 msgid "Comments"
 msgstr "Comentaris"
 
-#: models.py:103
+#: webapp/blog/models.py:93
 msgid "Feeds"
 msgstr ""
 
-#: models.py:127
+#: webapp/blog/models.py:135
 msgid "Blog"
 msgstr "Blog"
 
-#: models.py:132
+#: webapp/blog/models.py:140
 msgid "Category name"
 msgstr "Nom de la categoria"
 
-#: models.py:139
+#: webapp/blog/models.py:147
 msgid "Parent category"
 msgstr "Categoria pare"
 
-#: models.py:153
-msgid "Parent category cannot be self."
-msgstr "La categoria pare no pot ser self"
+#: webapp/blog/models.py:150
+msgid "Description"
+msgstr "Descripció"
 
-#: models.py:155
+#: webapp/blog/models.py:161
+msgid "Parent category cannot be self."
+msgstr "La categoria pare no pot ser ella mateixa"
+
+#: webapp/blog/models.py:163
 msgid "Cannot have circular Parents."
 msgstr "No pots posar pares circulars"
 
-#: models.py:164 models.py:169
+#: webapp/blog/models.py:172 webapp/blog/models.py:177
 msgid "Category"
 msgstr "Categoria"
 
-#: models.py:189 models.py:190 models.py:245
+#: webapp/blog/models.py:200 webapp/blog/models.py:201
+#: webapp/blog/models.py:251
 msgid "Entry"
 msgstr "Entrada"
 
-#: models.py:246
+#: webapp/blog/models.py:252
 msgid "Entries"
 msgstr "Entrades"
 
-#: routes.py:22
+#: webapp/blog/routes.py:22
 msgid "date"
 msgstr "data"
 
-#: routes.py:35
+#: webapp/blog/routes.py:35
 msgid "tag"
 msgstr "tag"
 
-#: routes.py:42
+#: webapp/blog/routes.py:42
 msgid "category"
 msgstr "categoria"
 
-#: routes.py:49
+#: webapp/blog/routes.py:49
 msgid "author"
 msgstr "autor"
 
-#: routes.py:62
+#: webapp/blog/routes.py:62
 msgid "search"
 msgstr "cercar"
 
-#: templates/el_pagination/show_more.html:5
-msgid "more"
-msgstr "més"
-
-#: templates/blog/base.html:66
-msgid "Feed RSS"
-msgstr ""
-
-#: templates/blog/base.html:71
+#: webapp/blog/templates/blog/base.html:46
 msgid "Search"
 msgstr "Cercar"
 
-#: templates/blog/base.html:80
+#: webapp/blog/templates/blog/base.html:52
+msgid "Feed RSS"
+msgstr ""
+
+#: webapp/blog/templates/blog/base.html:58
 msgid "Last Entries"
 msgstr "Darreres entrades"
 
-#: templates/blog/base.html:86
+#: webapp/blog/templates/blog/base.html:64
 msgid "Popular Entries"
 msgstr "Entrades populars"
 
-#: templates/blog/base.html:98
+#: webapp/blog/templates/blog/base.html:76
+#: webapp/blog/templates/blog/entry_links.html:28
 msgid "Tags"
 msgstr "Tags"
 
-#: templates/blog/base.html:104
+#: webapp/blog/templates/blog/base.html:82
 msgid "Archive"
 msgstr "Arxiu"
 
-#: templates/blog/blog_page.html:15 templates/blog/blog_page.html.py:23
-#: templates/blog/blog_page.html:50
+#: webapp/blog/templates/blog/blog_page.html:15
+#: webapp/blog/templates/blog/blog_page.html:23
+#: webapp/blog/templates/blog/blog_page.html:53
 msgid "Entries for"
 msgstr "Entrades per"
 
-#: templates/blog/blog_page.html:84
+#: webapp/blog/templates/blog/blog_page.html:77
 msgid "Continue reading"
 msgstr "Continuar llegint"
 
-#: templates/blog/blog_page.html:90
-msgid "No results found."
+#: webapp/blog/templates/blog/blog_page.html:80
+#, fuzzy
+#| msgid "No results found."
+msgid "No results founds."
 msgstr "No s'han trobat resultats"
 
-#: templates/blog/entry_page.html:62
+#: webapp/blog/templates/blog/entry_links.html:11
+#, fuzzy
+#| msgid "Comments"
+msgid "View Comments"
+msgstr "Comentaris"
+
+#: webapp/blog/templates/blog/entry_page.html:63
 msgid "Return"
 msgstr ""
 
-#: templates/blog/tags/archives_list.html:23
+#: webapp/blog/templates/blog/includes/pagination.html:7
+#: webapp/blog/templates/blog/includes/pagination.html:9
+msgid "Previous"
+msgstr "Anterior"
+
+#: webapp/blog/templates/blog/includes/pagination.html:17
+msgid "Current"
+msgstr "Actual"
+
+#: webapp/blog/templates/blog/includes/pagination.html:32
+#: webapp/blog/templates/blog/includes/pagination.html:34
+msgid "Next"
+msgstr "Següent"
+
+#: webapp/blog/templates/blog/tags/archives_list.html:25
 msgid "No entry archives yet"
 msgstr "Encara no hi ha res arxivat"
 
-#: templates/blog/tags/categories_list.html:9
+#: webapp/blog/templates/blog/tags/categories_list.html:5
+#: webapp/blog/templates/blog/tags/categories_table.html:12
 msgid "No categories yet"
 msgstr "Encara no hi ha categories"
 
-#: templates/blog/tags/entries_list.html:31
+#: webapp/blog/templates/blog/tags/entries_list.html:17
 msgid "No entries yet"
 msgstr "Encara no hi ha entrades"
 
-#: templates/blog/tags/tags_list.html:9
+#: webapp/blog/templates/blog/tags/tags_cloud.html:8
+#: webapp/blog/templates/blog/tags/tags_list.html:5
 msgid "No tags yet"
 msgstr "Encara no hi ha tags"
+

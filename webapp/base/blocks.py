@@ -100,7 +100,7 @@ class BaseImageBlock(StructBlock):
 
 class BaseParallaxContentBlock(StructBlock):
     parallax_head=CharBlock(label=_("Head"), required=False, blank=True, classname="title",
-                                help_text=_('You can split the title using "|". It will add small .subtitle class.'))
+                                help_text=_("You can split the title using '|'. It will add small .subtitle class."))
     parallax_text=RichTextBlock(label=_("Text"), required=False, null=True, blank=True)
     parallax_pro=CharBlock(label="Pro", required=False, null=True, blank=True)
 
