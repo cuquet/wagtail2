@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: webapp/wagtail_recaptcha2forms/fields.py:52
+#: webapp/wagtail_recaptcha2forms/fields.py:66
+msgid "Connection to reCaptcha server failed"
+msgstr "No s'ha pogut connectar al servidor reCaptcha"
+
+#: webapp/wagtail_recaptcha2forms/fields.py:70
+msgid "reCaptcha invalid or expired, try again"
+msgstr "reCaptcha invàlid o caducat, torna-ho a intentar"
+
+#: webapp/wagtail_recaptcha2forms/fields.py:75
+msgid "reCaptcha response from Google not valid, try again"
+msgstr "La resposta de ReCaptcha de Google no és vàlida, torna-ho a provar"
+
+#: webapp/wagtail_recaptcha2forms/models.py:57
+msgid "Must be modal form"
+msgstr "Ha de ser formulari modal"
+
+#: webapp/wagtail_recaptcha2forms/models.py:59
+msgid "Check it if you want to launch view as modal"
+msgstr "Marqueu-ho si voleu llançar la visualització com modal"
+
+#: webapp/wagtail_recaptcha2forms/models.py:65
+msgid "Form fields"
+msgstr "Camps del formulari"
+
+#: webapp/wagtail_recaptcha2forms/models.py:73
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: webapp/wagtail_recaptcha2forms/templates/wagtail_recaptcha2forms/form_page.html:27
+#: webapp/wagtail_recaptcha2forms/templates/wagtail_recaptcha2forms/form_page_modal.html:15
+msgid "Submit"
+msgstr "Enviar"

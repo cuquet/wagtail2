@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: webapp/settings/base.py:160
+msgid "English"
+msgstr "Anglès"
+
+#: webapp/settings/base.py:161
+msgid "Catalan"
+msgstr "Català"
+
+#: webapp/settings/base.py:162
+msgid "Spanish"
+msgstr "Castellà"
+
+#: webapp/templates/404.html:27
+msgid "Page not found"
+msgstr "Pàgina no trobada"
+
+#: webapp/templates/404.html:30
+msgid ""
+"\n"
+"                      <p>The page you requested could not be found, either "
+"contact your webmaster or try again. Use your browsers\n"
+"                      <b>Back</b> button to navigate to the page you have "
+"prevously come from</p>\n"
+"                      <p><b>Or you could just press this neat little button:"
+"</b></p>\n"
+"                      "
+msgstr ""
+"\n"
+"                      <p>No es pot trobar la pàgina sol.licitada, siusplau  "
+"contacta amb el teu webmaster o torna a rpobar-ho. Utilitza el botó s\n"
+"                      <b>Enrera</b> per navegar cap a la pàgina "
+"prèvia</p>\n"
+"                      <p><b>O bé pots prèmer aquest senzill botó:"
+"</b></p>\n"
+"                      "
+
+#: webapp/templates/404.html:37
+msgid "Take Me Home"
+msgstr "Porta'm a casa"
+
+#: webapp/templates/base.html:42
+#: webapp/templates/base/maintenance_page.html:230
+msgid "Powered by"
+msgstr "Impulsat per"
+
+#: webapp/templates/base.html:44
+#: webapp/templates/base/maintenance_page.html:232
+msgid "and"
+msgstr "i"
+
+#: webapp/templates/base.html:47
+#: webapp/templates/base/maintenance_page.html:235
+msgid "Theme by"
+msgstr "Tema per"
+
+#: webapp/templates/base.html:52
+#: webapp/templates/base/maintenance_page.html:172
+msgid "Back to top"
+msgstr "Vès amunt"
+
+#: webapp/templates/base/maintenance_page.html:175
+#: webapp/templates/includes/footer.html:3
+msgid "Sitemap"
+msgstr "Mapa del lloc web"
+
+#: webapp/templates/base/maintenance_page.html:179
+msgid "Language"
+msgstr "Idioma"
+
+#: webapp/templates/base/maintenance_page.html:194
+msgid "Follow or Share us"
+msgstr "Segueix o comparteix-nos"
+
+#: webapp/templates/base/maintenance_page.html:200
+#: webapp/templates/includes/footer.html:22
+msgid "Share on Facebook"
+msgstr "Compartir a Facebook"
+
+#: webapp/templates/base/maintenance_page.html:205
+#: webapp/templates/includes/footer.html:25
+msgid "Follow us on Twitter"
+msgstr "Segueix-nos a Twitter"
+
+#: webapp/templates/base/maintenance_page.html:210
+#: webapp/templates/includes/footer.html:29
+msgid "Share on Google+"
+msgstr "Compartir a Google+"
+
+#: webapp/templates/base/maintenance_page.html:215
+#: webapp/templates/includes/footer.html:32
+msgid "Share by e-mail"
+msgstr "Compartir per correu"
+
+#: webapp/templates/components.html:902
+msgid "Previous"
+msgstr "Anterior"
+
+#: webapp/templates/components.html:912
+msgid "Next"
+msgstr "Següent"
+
+#: webapp/templates/edit_handlers/iconfield_panel.html:9
+msgid "Please wait..."
+msgstr "Siusplau espera..."
+
+#: webapp/templates/edit_handlers/iconfield_panel.html:11
+#: webapp/templates/edit_handlers/iconfield_panel.html:15
+msgid "Load from"
+msgstr "Carregat de"
+
+#: webapp/templates/includes/footer.html:9
+msgid "Contact us"
+msgstr "Contacta'ns"
+
+#: webapp/templates/search/search_results.html:15
+msgid "Search results"
+msgstr "Resultats de la recerca"
+
+#: webapp/templates/search/search_results.html:16
+msgid "You searched"
+msgstr "Has buscat"
+
+#: webapp/templates/tags/menu_dropdown_user.html:7
+#: webapp/templates/tags/menu_dropdown_user.html:11
+msgid "Users"
+msgstr "Usuaris"
+
+#: webapp/templates/tags/menu_dropdown_user.html:16
+msgid "Administration"
+msgstr "Administració"
+
+#: webapp/templates/tags/menu_dropdown_user.html:21
+msgid "Webmail"
+msgstr "Correu electrònic"
+
+#: webapp/templates/tags/menu_dropdown_user.html:23
+msgid "Profilemanager"
+msgstr "Gestor de perfils"
+
+#: webapp/templates/tags/menu_dropdown_user.html:28
+msgid "Update profile"
+msgstr "Actualitzar perfil"
+
+#: webapp/templates/tags/menu_dropdown_user.html:31
+msgid "Log out"
+msgstr "Sortir"
+
+#: webapp/templates/tags/menu_dropdown_user.html:34
+msgid "Log in"
+msgstr "Accedir"
+
+#: webapp/templates/tags/menu_dropdown_user.html:36
+msgid "Sign up"
+msgstr "Inscriure's"
+
+#: webapp/templates/tags/top_menu.html:5 webapp/templates/tags/top_menu.html:6
+msgid "Home"
+msgstr "Inici"
+
+#: webapp/templates/tags/top_menu.html:24
+msgid "Search"
+msgstr "Buscar"

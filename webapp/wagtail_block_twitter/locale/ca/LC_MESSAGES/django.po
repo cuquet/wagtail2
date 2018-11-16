@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: webapp/wagtail_block_twitter/abstracts.py:10
+msgid "Twitter Consumer Secret"
+msgstr "Secret d'usuari de twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:11
+msgid "Twitter Consumer Key"
+msgstr "Clau d'usuario de Twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:12
+msgid "Twitter Api Secret"
+msgstr "Secret de la api de Twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:13
+msgid "Twitter Api Key"
+msgstr "Clau de la api de Twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:14
+msgid "Twitter Owner"
+msgstr "Propietari de Twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:15
+msgid "Twitter Owner Id"
+msgstr "Id del propietari de Twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:17
+msgid "It will publish entry on twitter account as soon as is saved."
+msgstr "Publicarà l'entrada al compte de Twitter tan aviat com es desi."
+
+#: webapp/wagtail_block_twitter/abstracts.py:18
+#: webapp/wagtail_block_twitter/panels.py:14
+msgid "Enable Twitter Publish"
+msgstr "Activar la publicació a twitter"
+
+#: webapp/wagtail_block_twitter/abstracts.py:25
+msgid "Twitter side contents"
+msgstr "Continguts de Twitter"
+
+#: webapp/wagtail_block_twitter/blocks.py:13
+msgid "Twitter Widget"
+msgstr "Enginy de Twitter"
+
+#: webapp/wagtail_block_twitter/panels.py:19
+msgid "Last tweets from"
+msgstr "Últims tweets de"

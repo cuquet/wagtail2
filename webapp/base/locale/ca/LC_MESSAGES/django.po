@@ -1,0 +1,246 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: webapp/base/abstracts.py:16
+msgid "Streamfield Content"
+msgstr "Contingut de Streamfield"
+
+#: webapp/base/abstracts.py:27
+msgid ""
+"The page description that will appear under the title.On Entry list, excerpt "
+"to be displayed.If this field is not filled, a truncate version of body text "
+"will be used."
+msgstr ""
+"La descripció de la pàgina que apareixerà sota el títol. A la llista d'entrada, extracte"
+"que es mostrarà. Si aquest camp no s'omple, una versió truncada del text del cos"
+"serà utilitzat."
+
+#: webapp/base/abstracts.py:30
+msgid "Excerpt"
+msgstr "Extracte"
+
+#: webapp/base/abstracts.py:41 webapp/base/models.py:149
+msgid "Header image"
+msgstr "Imatge de capecelera"
+
+#: webapp/base/abstracts.py:44
+msgid "Image Filter"
+msgstr "Imatge del filtre"
+
+#: webapp/base/abstracts.py:45 webapp/base/blocks.py:124
+msgid "Filter effect"
+msgstr "Efecte del filtre"
+
+#: webapp/base/abstracts.py:47
+msgid "Image Size"
+msgstr "Mida de la imatge"
+
+#: webapp/base/abstracts.py:48
+msgid "Size effect"
+msgstr "Mida de l'efecte"
+
+#: webapp/base/abstracts.py:51
+msgid "Show search in menus"
+msgstr "Mostra la cerca als menús"
+
+#: webapp/base/abstracts.py:53
+msgid "Whether a search form will appear in automatically generated menus"
+msgstr "Si apareixerà un formulari de cerca als menús generats automàticament"
+
+#: webapp/base/abstracts.py:70
+msgid "Header"
+msgstr "Capcelerea"
+
+#: webapp/base/abstracts.py:88
+msgid "Content"
+msgstr "Contingut"
+
+#: webapp/base/blocks.py:17
+msgid "Avatar centered image"
+msgstr "Avatar centrada en la imatge"
+
+#: webapp/base/blocks.py:18
+msgid "Plain"
+msgstr "Pla"
+
+#: webapp/base/blocks.py:19
+msgid "Background"
+msgstr "Fons"
+
+#: webapp/base/blocks.py:23
+msgid "Small"
+msgstr "Petit"
+
+#: webapp/base/blocks.py:24
+msgid "Medium"
+msgstr "Mitjà"
+
+#: webapp/base/blocks.py:25
+msgid "Large"
+msgstr "Gran"
+
+#: webapp/base/blocks.py:65
+msgid ""
+"Custom StructBlock that allows the user to select h2 - h4 sizes for headers"
+msgstr ""
+"StructBlock personalitzat que permet a l'usuari seleccionar mides h2 - h4 per als encapçalaments"
+
+#: webapp/base/blocks.py:79
+msgid ""
+"Custom StructBlock that allows the user to attribute a quote to the author"
+msgstr ""
+"StructBlock personalitzat que permet a l'usuari atribuir una sangria a l'autor"
+
+#: webapp/base/blocks.py:90
+msgid "Image resize"
+msgstr "Canvia la mida de la imatge"
+
+#: webapp/base/blocks.py:91
+msgid ""
+"It must be defined in wagtail picture redimension tag: width-640, "
+"height-480, fill-200x200-c100 or original (which is the default option)"
+msgstr ""
+"Ha de definir-se a l'etiqueta de la reproducció de la imatge de wagtail: width-640,"
+"height-480, fill-200x200-c100 o original (que és l'opció predeterminada)"
+
+#: webapp/base/blocks.py:102
+msgid "Head"
+msgstr "Capçalera"
+
+#: webapp/base/blocks.py:103
+msgid "You can split the title using '|'. It will add small .subtitle class."
+msgstr "Podeu dividir el títol amb '|'. Afegeix una classe, .subtitle, petita."
+
+#: webapp/base/blocks.py:104
+msgid "Text"
+msgstr "Text"
+
+#: webapp/base/blocks.py:115
+msgid "The Parallax content"
+msgstr "Contingut del Parallax"
+
+#: webapp/base/blocks.py:123
+msgid "Parallax size"
+msgstr "Mida del Parallax"
+
+#: webapp/base/blocks.py:125
+msgid "Display dropdown button"
+msgstr "Mostra el botó desplegable"
+
+#: webapp/base/blocks.py:133
+msgid "Parallax Block"
+msgstr "Bloc Parallax"
+
+#: webapp/base/blocks.py:144
+msgid "Aligned image"
+msgstr "Imatge alineada"
+
+#: webapp/base/models.py:30
+msgid "Results per page on search"
+msgstr "Resultats per pàgina a la cerca"
+
+#: webapp/base/models.py:32
+msgid "Google Analytics ID (http://www.google.com/analytics/)"
+msgstr "Google Analytics ID (http://www.google.com/analytics/)"
+
+#: webapp/base/models.py:39
+msgid "Internal link to contact us page"
+msgstr "Enllaç intern de la pàgina contactar amb nosaltres"
+
+#: webapp/base/models.py:40 webapp/base/models.py:61
+msgid ""
+"Choose an existing page if you want the link to point somewhere inside the "
+"CMS."
+msgstr ""
+"Trieu una pàgina existent si voleu que el vincle es mostri en algun lloc de la"
+"CMS."
+
+#: webapp/base/models.py:44
+msgid "Various settings"
+msgstr "Diverses configuracions"
+
+#: webapp/base/models.py:53
+msgid ""
+"Set an external link if you want the link to point somewhere outside the CMS."
+msgstr ""
+"Establiu un enllaç extern si voleu que l'enllaç es pugui assenyalar en algun lloc fora del CMS."
+
+#: webapp/base/models.py:69
+msgid "Choose an existing document if you want the link to open a document."
+msgstr "Trieu un document existent si voleu que l'enllaç obri un document."
+
+#: webapp/base/models.py:75
+msgid "Blog Category"
+msgstr "Categoria del blog"
+
+#: webapp/base/models.py:99
+msgid "Link title"
+msgstr "Títol de l'enllaç"
+
+#: webapp/base/models.py:119
+msgid ""
+"A text area for entering raw HTML which will be rendered unescaped in the "
+"page output."
+msgstr ""
+"Una àrea de text per introduir HTML sense format que es mostrarà sense escapament "
+"a la finestra."
+
+#: webapp/base/models.py:130
+msgid "Footer Text"
+msgstr "Text del peu"
+
+#: webapp/base/models.py:135
+msgid "Url"
+msgstr "Adreça"
+
+#: webapp/base/models.py:138
+msgid "Relative links are allowed"
+msgstr "Es permeten enllaços relatius"
+
+#: webapp/base/models.py:141
+msgid "title"
+msgstr "títol"
+
+#: webapp/base/models.py:143
+msgid "Title of the card"
+msgstr "Títol de la targeta"
+
+#: webapp/base/models.py:153
+msgid "Card type"
+msgstr "Tipus de targeta"
+
+#: webapp/base/models.py:154
+msgid "Check on components page"
+msgstr "Comprova-ho a la pàgina de components"
+
+#: webapp/base/models.py:173
+msgid "Card items"
+msgstr "Targetes"
+
+#: webapp/base/models.py:177 webapp/base/models.py:208
+msgid "Related links"
+msgstr "Enllaços relacionats"
+
+#: webapp/base/models.py:190
+msgid "Homepage"
+msgstr "Pàgina d'inici"
+
+#: webapp/base/models.py:210
+msgid "Related links and feed image"
+msgstr "Enllaços relacionats i imatge de peu"

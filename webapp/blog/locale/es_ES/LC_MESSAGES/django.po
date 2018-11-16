@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-14 22:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: webapp/blog/abstracts.py:21 webapp/blog/abstracts.py:35
+msgid "Content"
+msgstr "Contenido"
+
+#: webapp/blog/abstracts.py:23
+msgid "Post date"
+msgstr "Fecha del post"
+
+#: webapp/blog/abstracts.py:39 webapp/blog/models.py:173
+#: webapp/blog/templates/blog/base.html:70
+#: webapp/blog/templates/blog/entry_links.html:25
+msgid "Categories"
+msgstr "Categorías"
+
+#: webapp/blog/abstracts.py:42
+#: webapp/blog/templates/blog/related_entries.html:2
+msgid "Related Entries"
+msgstr "Entradas relacionadas"
+
+#: webapp/blog/abstracts.py:46
+msgid "Metadata"
+msgstr "Metadatos"
+
+#: webapp/blog/models.py:34
+msgid "Blog Main Color"
+msgstr "Color principal del blog"
+
+#: webapp/blog/models.py:36
+msgid "Display comments"
+msgstr "Mostrar comentarios"
+
+#: webapp/blog/models.py:37
+msgid "Display categories"
+msgstr "Mostrar categorías"
+
+#: webapp/blog/models.py:38
+msgid "Display tags"
+msgstr "Mostrar tags"
+
+#: webapp/blog/models.py:39
+msgid "Display popular entries"
+msgstr "Mostrar las entradas populares"
+
+#: webapp/blog/models.py:40
+msgid "Display last entries"
+msgstr "Mostrar las últimas entradas"
+
+#: webapp/blog/models.py:41
+msgid "Display archive"
+msgstr "Mostrar Archivo"
+
+#: webapp/blog/models.py:46
+msgid "Entries per page"
+msgstr "Entradas por página"
+
+#: webapp/blog/models.py:47
+msgid "Last entries limit"
+msgstr "Límite para las últimas entradas"
+
+#: webapp/blog/models.py:48
+msgid "Popular entries limit"
+msgstr "Límite para las entradas populares"
+
+#: webapp/blog/models.py:49
+msgid "Tags limit entry header"
+msgstr "Límite para el número de tags de la cabecera"
+
+#: webapp/blog/models.py:50
+msgid "Tags sizes in tag cloud"
+msgstr "Tamaños de los tags en la nube"
+
+#: webapp/blog/models.py:52
+msgid "Use short description in feeds"
+msgstr "Utiliza la descripción corta en los pies"
+
+#: webapp/blog/models.py:68
+msgid "Widgets"
+msgstr "Ingenios"
+
+#: webapp/blog/models.py:79
+msgid "Parameters"
+msgstr "Parámetros"
+
+#: webapp/blog/models.py:87
+msgid "Comments"
+msgstr "Comentarios"
+
+#: webapp/blog/models.py:93
+msgid "Feeds"
+msgstr ""
+
+#: webapp/blog/models.py:135
+msgid "Blog"
+msgstr "Blog"
+
+#: webapp/blog/models.py:140
+msgid "Category name"
+msgstr "Nombre de la categoría"
+
+#: webapp/blog/models.py:147
+msgid "Parent category"
+msgstr "Categoría padre"
+
+#: webapp/blog/models.py:150
+msgid "Description"
+msgstr "Descripción"
+
+#: webapp/blog/models.py:161
+msgid "Parent category cannot be self."
+msgstr "La categoria pare no pot ser ella mateixa"
+
+#: webapp/blog/models.py:163
+msgid "Cannot have circular Parents."
+msgstr "No puedes asignar padres circulares"
+
+#: webapp/blog/models.py:172 webapp/blog/models.py:177
+msgid "Category"
+msgstr "Categoría"
+
+#: webapp/blog/models.py:200 webapp/blog/models.py:201
+#: webapp/blog/models.py:251
+msgid "Entry"
+msgstr "Entrada"
+
+#: webapp/blog/models.py:252
+msgid "Entries"
+msgstr "Entradas"
+
+#: webapp/blog/routes.py:22
+msgid "date"
+msgstr "fecha"
+
+#: webapp/blog/routes.py:35
+msgid "tag"
+msgstr "tag"
+
+#: webapp/blog/routes.py:42
+msgid "category"
+msgstr "categoría"
+
+#: webapp/blog/routes.py:49
+msgid "author"
+msgstr "autor"
+
+#: webapp/blog/routes.py:62
+msgid "search"
+msgstr "búsquedda"
+
+#: webapp/blog/templates/blog/base.html:46
+msgid "Search"
+msgstr "Buscar"
+
+#: webapp/blog/templates/blog/base.html:52
+msgid "Feed RSS"
+msgstr ""
+
+#: webapp/blog/templates/blog/base.html:58
+msgid "Last Entries"
+msgstr "Últimas entradas"
+
+#: webapp/blog/templates/blog/base.html:64
+msgid "Popular Entries"
+msgstr "Entradas populares"
+
+#: webapp/blog/templates/blog/base.html:76
+#: webapp/blog/templates/blog/entry_links.html:28
+msgid "Tags"
+msgstr "Tags"
+
+#: webapp/blog/templates/blog/base.html:82
+msgid "Archive"
+msgstr "Archivo"
+
+#: webapp/blog/templates/blog/blog_page.html:15
+#: webapp/blog/templates/blog/blog_page.html:23
+#: webapp/blog/templates/blog/blog_page.html:53
+msgid "Entries for"
+msgstr "Entradas por"
+
+#: webapp/blog/templates/blog/blog_page.html:77
+msgid "Continue reading"
+msgstr "Continuar leyendo"
+
+#: webapp/blog/templates/blog/blog_page.html:80
+msgid "No results founds."
+msgstr "No se han allado resultados"
+
+#: webapp/blog/templates/blog/entry_links.html:11
+msgid "View Comments"
+msgstr "Comentarios"
+
+#: webapp/blog/templates/blog/entry_page.html:63
+msgid "Return"
+msgstr ""
+
+#: webapp/blog/templates/blog/includes/pagination.html:7
+#: webapp/blog/templates/blog/includes/pagination.html:9
+msgid "Previous"
+msgstr "Anterior"
+
+#: webapp/blog/templates/blog/includes/pagination.html:17
+msgid "Current"
+msgstr "Actual"
+
+#: webapp/blog/templates/blog/includes/pagination.html:32
+#: webapp/blog/templates/blog/includes/pagination.html:34
+msgid "Next"
+msgstr "Siguiente"
+
+#: webapp/blog/templates/blog/tags/archives_list.html:25
+msgid "No entry archives yet"
+msgstr "Todavía no hay nada archivado"
+
+#: webapp/blog/templates/blog/tags/categories_list.html:5
+#: webapp/blog/templates/blog/tags/categories_table.html:12
+msgid "No categories yet"
+msgstr "Aún no hay categorías"
+
+#: webapp/blog/templates/blog/tags/entries_list.html:17
+msgid "No entries yet"
+msgstr "Aún no hay entradas"
+
+#: webapp/blog/templates/blog/tags/tags_cloud.html:8
+#: webapp/blog/templates/blog/tags/tags_list.html:5
+msgid "No tags yet"
+msgstr "Aún no hay tags"
