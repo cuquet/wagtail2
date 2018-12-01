@@ -117,7 +117,7 @@ class FooterText(models.Model):
     """
     rawhtml = models.CharField(default=' ', max_length=255,
                                help_text=_('A text area for entering raw HTML which will '
-                                           'be rendered unescaped in the page output.') )
+                                           'be rendered unescaped in the page output.'))
 
     panels = [
         FieldPanel('rawhtml',widget=forms.Textarea),
@@ -187,7 +187,7 @@ class HomePage(BaseMinimalPageAbstract):
     # def cards(self):
     #     return [card for card in self.card_items.all()]
     class Meta:
-        verbose_name = _('Homepage')
+        verbose_name = 'Homepage'
 
 
 class HomePageRelatedLink(Orderable, RelatedLink):

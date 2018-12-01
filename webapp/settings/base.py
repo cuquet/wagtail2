@@ -161,6 +161,11 @@ LANGUAGES = (
     ('ca', _('Catalan')),
     ('es', _('Spanish')),
 )
+
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, 'locale'),
+)
+
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # Static files (CSS, JavaScript, Images)

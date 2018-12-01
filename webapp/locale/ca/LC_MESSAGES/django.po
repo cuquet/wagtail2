@@ -69,8 +69,8 @@ msgstr "i"
 
 #: webapp/templates/base.html:47
 #: webapp/templates/base/maintenance_page.html:235
-msgid "Theme by"
-msgstr "Tema per"
+msgid "Theme based on"
+msgstr "Tema basat en"
 
 #: webapp/templates/base.html:52
 #: webapp/templates/base/maintenance_page.html:172

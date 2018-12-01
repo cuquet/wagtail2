@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n wagtailcore_tags wagtailimages_tags site_tags block_tags  static %}
+{% load i18n wagtailcore_tags static wagtailimages_tags site_tags block_tags %}
 
 {% block head %}
     {% include "includes/head.html" with title_postfix="Components | Wagtail" %}
@@ -11,7 +11,7 @@
 {% block parallax %}
 {% timestamp as id_prefix %}
 <div id="{{ id_prefix }}" class="parallax parallax-small">
-<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{% static '/images/bg_about.jpg' %}')"data-img-width="900" data-img-height="598" data-diff="100" data-filter-color="filter filter-azure">
+<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{% static '/images/bg_keyboard.jpg' %}')"data-img-width="900" data-img-height="598" data-diff="100" data-filter-color="filter filter-azure">
     <div class="content-a container">
         <div class="content-b content-center">
             <div class="col-md-8 ml-auto mr-auto">
