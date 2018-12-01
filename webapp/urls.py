@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.i18n import set_language, JavaScriptCatalog
+from django.views.generic import TemplateView
 from django.conf.urls.i18n import i18n_patterns
 
 from wagtail.admin import urls as wagtailadmin_urls
@@ -19,8 +20,9 @@ js_info_dict = {
 }
 
 urlpatterns = [
-    url('^sitemap\.xml$', sitemap),
+    url(r'^components/$', TemplateView.as_view(template_name='components.html'), name='components'),
     url(r'^documents/', include(wagtaildocs_urls)),
+    url('^sitemap\.xml$', sitemap),
     url(r'^api/v2/', api_router.urls),
 ]
 
@@ -46,7 +48,6 @@ urlpatterns += i18n_patterns(
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    from django.views.generic import TemplateView
     from django.views.generic.base import RedirectView
 
     # Serve static and media files from development server
@@ -64,6 +65,5 @@ if settings.DEBUG:
     urlpatterns += [
         url(r'^test404/$', TemplateView.as_view(template_name='404.html')),
         url(r'^test500/$', TemplateView.as_view(template_name='500.html')),
-        url(r'^components/$', TemplateView.as_view(template_name='components.html')),
     ]
 

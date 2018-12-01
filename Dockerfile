@@ -28,7 +28,7 @@ RUN set -ex \
 	&& apk del .build-deps
 # RUN apk add --no-cache mysql-client
 RUN apk add --no-cache postgresql-client
-RUN mkdir -p /var/www/webapp/media
+# RUN mkdir -p /var/www/webapp/media
 WORKDIR /var/www/
 ADD . /var/www/
 EXPOSE 8000
