@@ -14,8 +14,6 @@ from wagtail.snippets.models import register_snippet
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from modelcluster.fields import ParentalKey
 
-from colorful.fields import RGBColorField
-
 from webapp.base.abstracts import BaseMinimalPageAbstract
 from webapp.wagtail_block_twitter.abstracts import MyTwitterPublishAbstract
 from webapp.wagtail_block_twitter.panels import twitter_publication_panel
@@ -30,8 +28,6 @@ Entry = import_model(getattr(settings, 'BLOG_ENTRY_MODEL', EntryAbstract))
 
 
 class BlogPage(BlogRoutes, MyTwitterPublishAbstract, BaseMinimalPageAbstract):
-
-    main_color = RGBColorField(_('Blog Main Color'), default="#4D6AE0")
 
     display_comments = models.BooleanField(default=False, verbose_name=_('Display comments'))
     display_categories = models.BooleanField(default=True, verbose_name=_('Display categories'))
@@ -53,9 +49,7 @@ class BlogPage(BlogRoutes, MyTwitterPublishAbstract, BaseMinimalPageAbstract):
 
     extra = BlogManager()
 
-    content_panels = BaseMinimalPageAbstract.content_panels + [
-        FieldPanel('main_color')
-    ]
+    content_panels = BaseMinimalPageAbstract.content_panels
     settings_panels = BaseMinimalPageAbstract.settings_panels + [
         MultiFieldPanel(
             [

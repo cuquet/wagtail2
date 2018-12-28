@@ -15,6 +15,7 @@ register = template.Library()
 def get_google_maps_key():
     return getattr(settings, 'GOOGLE_MAPS_KEY', "")
 
+
 @register.simple_tag(takes_context=True)
 def get_site_root(context):
     # This returns a core.Page. The main menu needs to have the site.root_page

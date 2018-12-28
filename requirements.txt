@@ -27,7 +27,6 @@ awscli==1.16.43
 
 # per puput
 django-social-share
-django-colorful
 
 # per sass scss
 libsass
