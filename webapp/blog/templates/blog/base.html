@@ -16,9 +16,7 @@
 {% block extrahead %}
     {% block social_share %}{% endblock social_share %}
     <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
-    {% block css %}
-    <style>body {--main-color: {{blog_page.main_color}};}</style>
-    {% endblock %}
+    {% block css %}{% endblock %}
 {% endblock extrahead %}
 
 
@@ -41,7 +39,7 @@
                             <div class="form-row align-items-center">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
-                                        <div class="input-group-text border-bottom"><i class="fa fa-search" aria-hidden="true"></i></div>
+                                        <div class="input-group-text border-bottom"><i class="mel-search" aria-hidden="true"></i></div>
                                     </div>
                                     <input type="text" class="form-control border-bottom" id="inlineFormInputGroup" name="q" placeholder="{% trans 'Search' %}">
                                 </div>
@@ -49,7 +47,7 @@
                         </form>
                         <div class="small form-row rss-sitemap">
                             <a href="{% feeds_url blog_page %}" target="_blank" title="RSS">
-                                 <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
+                                 <i class="mel-rss"></i> <span>{% trans 'Feed RSS' %}</span>
                             </a>
                         </div>
                     </div>
@@ -98,5 +96,4 @@ $(function () {
 });
 </script>
 {% endblock %}
-{% block extra_css %}
-{% endblock extra_css %}
+{% block extra_css %}{% endblock extra_css %}
