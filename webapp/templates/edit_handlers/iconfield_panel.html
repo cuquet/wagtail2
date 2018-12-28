@@ -5,80 +5,109 @@
         <li>
             {% include "wagtailadmin/shared/field.html" with show_label=True show_help_text=False %}
         </li>
-            <li id="id_menu_icon_buttons">
-                <button autocomplete="off" type="button" class="button awesome button-longrunning" data-clicked-text="{% trans 'Please wait...' %}">
-                    <span class="icon icon-spinner"></span>
-                    {% trans "Load from" %} Fontawesome
-                </button>
-                <button autocomplete="off" type="button" class="button pe button-longrunning" data-clicked-text="Please wait...">
-                    <span class="icon icon-spinner"></span>
-                    {% trans "Load from" %} Pe 7 Pixeden
-                </button>
-            </li>
+        <li id="id_menu_icon_buttons">
+            <button type="button" class="button fontello button-longrunning" data-clicked-text="{% trans 'Please wait...' %}">
+                <span class="icon icon-spinner"></span>
+                <em>{% trans "Load from" %} LinearIcons</em>
+            </button>
+            <button type="button" class="button icomoon button-longrunning" data-clicked-text="{% trans 'Please wait...' %}">
+                <span class="icon icon-spinner"></span>
+                <em>{% trans "Load from" %} Pe 7 Pixeden</em>
+            </button>
+        </li>
     </ul>
 </fieldset>
 
 {% block extra_js %}
+<!--suppress JSJQueryEfficiency, JSJQueryEfficiency -->
 <script type="text/javascript">
-var icomoon_check = loadJSON('{% static "js/pe-7-font.json" %}','icomoon');
-var fontello_check = loadJSON('{% static "local/fontello/config.json" %}','fontello');
+var $icomoonPrefix = 'pe-7s-',
+    $fontelloPrefix = 'lnr';
 $(function() {
-var original_fa = '<span class="icon icon-spinner"></span>' +  $('#id_menu_icon_buttons button.awesome').text(),
-    original_pe = '<span class="icon icon-spinner"></span>' +  $('#id_menu_icon_buttons button.pe').text();
-
+    var original_fontello = '<span class="icon icon-spinner"></span>' +  $('button.fontello').text(),
+        original_icomoon = '<span class="icon icon-spinner"></span>' +  $('button.icomoon').text();
 
     // Init the font icon picker
     $('#id_menu_icon').closest('li.char_field').css('overflow','visible');
     var menu_icon = $('#id_menu_icon').fontIconPicker({
-        theme: 'fip-grey',
-        emptyIcon: true,
-        hasSearch: true,
+        theme: 'fip-grey'
     });
     // Add the event on the button
-    $('#id_menu_icon_buttons button.awesome').click(function(e) {
+    $('button.fontello').on('click', function(e) {
         e.preventDefault();
         // Show processing message
         $(this).prop('disabled', true).addClass('button-longrunning-active');
-        setTimeout(function() {
-            if (fontello_check == true) {
-                // Set new fonts
-                menu_icon.setIcons($fontello_json_icons);
+        // Get the JSON file
+        $.ajax({
+			url: '{% static "fonts/fontello.json" %}',
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(response) {
+		    $fontelloPrefix = response.css_prefix_text;
+		    var fontello_json_icons = [];
+            // Push the fonts into the array
+            $.each(response.glyphs, function(i, v) {
+                fontello_json_icons.push( $fontelloPrefix + v.css );
+            });
+            // Set new fonts
+            menu_icon.setIcons(fontello_json_icons);
+            // Show success message and disable
+            $('button.fontello').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('{% trans "Icons loaded" %}').prop('disabled', true);
+            $('button.icomoon').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_icomoon).prop('disabled', false);
 
-                // Show success message and disable
-                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('Icons loaded').prop('disabled', true);
-                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_pe).prop('disabled', false);
+		})
+		.fail(function() {
+		    // Show error message and enable
+            $('button.fontello').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
 
-            } else {
-                // Show error message and enable
-                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
-            }
-        }, 1500);
-        e.stopPropagation();
-    });
-    $('#id_menu_icon_buttons button.pe').click(function(e) {
+		});
+		e.stopPropagation();
+	});
+
+    $('button.icomoon').on('click', function(e) {
         e.preventDefault();
         // Show processing message
         $(this).prop('disabled', true).addClass('button-longrunning-active');
-        setTimeout(function() {
-            if (icomoon_check == true) {
-                menu_icon.setIcons($icomoon_json_icons, $icomoon_json_search);
-                // Show success message and disable
-                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('Icons loaded').prop('disabled', true);
-                $('#id_menu_icon_buttons button.awesome').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_fa).prop('disabled', false);
-            } else {
-                // Show error message and enable
-                $('#id_menu_icon_buttons button.pe').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
+        // Get the JSON file
+		$.ajax({
+			url: '{% static "fonts/icomoon.json" %}',
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(response) {
+            $icomoonPrefix = response.preferences.fontPref.prefix;
+            var icomoon_json_icons = [],
+                icomoon_json_search = [];
+            // For each icon
+			$.each(response.icons, function(i, v) {
 
-            }
-        }, 1500);
-        e.stopPropagation();
-    });
+				// Set the source
+				icomoon_json_icons.push( $icomoonPrefix + v.properties.name );
+
+				// Create and set the search source
+				if ( v.icon && v.icon.tags && v.icon.tags.length ) {
+					icomoon_json_search.push( v.properties.name + ' ' + v.icon.tags.join(' ') );
+				} else {
+					icomoon_json_search.push( v.properties.name );
+				}
+			});
+            menu_icon.setIcons(icomoon_json_icons, icomoon_json_search);
+            // Show success message and disable
+            $('button.icomoon').removeClass('button-longrunning-active').addClass('icon yes icon-tick').text('{% trans "Icons loaded" %}').prop('disabled', true);
+            $('button.fontello').removeClass('button-longrunning-active').removeClass('icon yes icon-tick').html(original_fontello).prop('disabled', false);
+		})
+		.fail(function() {
+		    // Show error message and enable
+            $('button.icomoon').removeClass('button-longrunning-active').addClass('icon no icon-cross').text('Error: Try Again?').prop('disabled', false);
+		});
+		e.stopPropagation();
+	});
     // autoselect font depending on input value
+    // language=JQuery-CSS
     var iconEntered = $("input#id_menu_icon").val();
-    var substring = "pe-7s";
-    if(iconEntered.indexOf(substring) !== -1){ $("#id_menu_icon_buttons button.pe").click();}
-    var substring = "fa-";
-    if(iconEntered.indexOf(substring) !== -1){ $("#id_menu_icon_buttons button.awesome").click();}
+    if(iconEntered.indexOf($icomoonPrefix) !== -1){ $("button.icomoon").click();}
+    if(iconEntered.indexOf($fontelloPrefix) !== -1){ $("button.fontello").click();}
 });
 </script>
 {% endblock extra_js %}

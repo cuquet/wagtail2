@@ -9,8 +9,8 @@ def global_admin_css():
     css_files = [
         'css/jquery.fonticonpicker.min.css',
         'css/jquery.fonticonpicker.grey.min.css',
-        'css/pe-icon-7-stroke.css',
-        'local/fontello/css/fontawesome.css'
+        'css/icomoon.css',
+        'css/fontello.css'
     ]
     css_includes = format_html_join('\n', '<link rel="stylesheet" href="{0}{1}"/>',
                                     ((settings.STATIC_URL, filename) for filename in css_files))
@@ -21,7 +21,7 @@ def global_admin_css():
 def global_admin_js():
     js_files = [
         'js/jquery.fonticonpicker.min.js',
-        'js/jquery.wagtail.iconpicker.js',
+        # 'js/jquery.wagtail.iconpicker.js',
     ]
     js_includes = format_html_join('\n', '<script type="text/javascript" src="{0}{1}" ></script>',
                                    ((settings.STATIC_URL, filename) for filename in js_files))

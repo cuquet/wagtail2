@@ -6,7 +6,7 @@
             {% if not in_maintenance and settings.base.BaseSiteSettings.contact_us %}
             <div class="d-inline-block">
             {% with modalhtml=settings.base.BaseSiteSettings.contact_us.url %}
-                <h5><a class=" text-dark" id="comment-button"  data-toggle="modal" data-target="#modal" data-modalhtml="{{ modalhtml }}" href="#" rel="tooltip" title="{% trans 'Contact us' %}"><i class="fa fa-paper-plane"></i></a></h5>
+                <h5><a class=" text-dark" id="comment-button"  data-toggle="modal" data-target="#modal" data-modalhtml="{{ modalhtml }}" href="#" rel="tooltip" title="{% trans 'Contact us' %}"><i class="mel-paper-plane"></i></a></h5>
             {% endwith %}
             </div>
             {% endif %}
@@ -20,17 +20,17 @@
         <div id="footer4" class="col">
             <div class="d-inline-block float-right">
                 <a class="btn btn-just-icon btn-social-facebook" data-toggle="tooltip" data-placement="left" title="{% trans 'Share on Facebook' %}" data-container="body" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.melindro.org" target="_blank">
-                    <i class="fa fa-facebook-official"></i>
+                    <i class="mel-facebook"></i>
                 </a>
                 <a class="btn btn-just-icon btn-social-twitter" data-toggle="tooltip" data-placement="top" title="{% trans 'Follow us on Twitter' %}" data-container="body" href="https://twitter.com/angelc_calleja" data-show-count="false" data-size="large" data-show-screen-name="false">
-                    <i class="fa fa-twitter"></i>
+                    <i class="mel-twitter"></i>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </a>
                 <a class="btn btn-just-icon btn-social-google" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Share on Google+' %}" data-container="body" href="https://plus.google.com/share?url=http%3A//www.melindro.org" target="_blank">
-                    <i class="fa fa-google-plus-circle"></i>
+                    <i class="mel-google-plus-round"></i>
                 </a>
                 <a class="btn btn-info btn-just-icon" data-toggle="tooltip" data-placement="right" title="{% trans 'Share by e-mail' %}" data-container="body" href="mailto:?subject=I%20would%20share%20this&amp;body=%20http%3A%2F%2Fwww.melindro.org" target="_blank" >
-                    <i class="fa fa-at"></i>
+                    <i class="mel-at"></i>
                 </a>
             </div>
         </div>

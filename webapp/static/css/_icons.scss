@@ -1,0 +1,797 @@
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5l77d4');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?5l77d4#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?5l77d4') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?5l77d4') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?5l77d4##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="mel-"], [class*=" mel-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.mel-like {
+  &:before {
+    content: $mel-like;
+  }
+}
+.mel-list {
+  &:before {
+    content: $mel-list;
+  }
+}
+.mel-home {
+  &:before {
+    content: $mel-home;
+  }
+}
+.mel-filter {
+  &:before {
+    content: $mel-filter;
+  }
+}
+.mel-align-center {
+  &:before {
+    content: $mel-align-center;
+  }
+}
+.mel-align {
+  &:before {
+    content: $mel-align;
+  }
+}
+.mel-align-left {
+  &:before {
+    content: $mel-align-left;
+  }
+}
+.mel-align-right {
+  &:before {
+    content: $mel-align-right;
+  }
+}
+.mel-calendar {
+  &:before {
+    content: $mel-calendar;
+  }
+}
+.mel-calendar-sunny {
+  &:before {
+    content: $mel-calendar-sunny;
+  }
+}
+.mel-calendar-clock {
+  &:before {
+    content: $mel-calendar-clock;
+  }
+}
+.mel-calendar-tick {
+  &:before {
+    content: $mel-calendar-tick;
+  }
+}
+.mel-calendar-close {
+  &:before {
+    content: $mel-calendar-close;
+  }
+}
+.mel-calendar-plus {
+  &:before {
+    content: $mel-calendar-plus;
+  }
+}
+.mel-clock {
+  &:before {
+    content: $mel-clock;
+  }
+}
+.mel-watch {
+  &:before {
+    content: $mel-watch;
+  }
+}
+.mel-clock-alarm {
+  &:before {
+    content: $mel-clock-alarm;
+  }
+}
+.mel-cancel {
+  &:before {
+    content: $mel-cancel;
+  }
+}
+.mel-dot-circle {
+  &:before {
+    content: $mel-dot-circle;
+  }
+}
+.mel-tick {
+  &:before {
+    content: $mel-tick;
+  }
+}
+.mel-square {
+  &:before {
+    content: $mel-square;
+  }
+}
+.mel-circle {
+  &:before {
+    content: $mel-circle;
+  }
+}
+.mel-info-round {
+  &:before {
+    content: $mel-info-round;
+  }
+}
+.mel-warning {
+  &:before {
+    content: $mel-warning;
+  }
+}
+.mel-paper-plane {
+  &:before {
+    content: $mel-paper-plane;
+  }
+}
+.mel-at {
+  &:before {
+    content: $mel-at;
+  }
+}
+.mel-text-editor {
+  &:before {
+    content: $mel-text-editor;
+  }
+}
+.mel-switch-on {
+  &:before {
+    content: $mel-switch-on;
+  }
+}
+.mel-switch-off {
+  &:before {
+    content: $mel-switch-off;
+  }
+}
+.mel-finger-print {
+  &:before {
+    content: $mel-finger-print;
+  }
+}
+.mel-map1 {
+  &:before {
+    content: $mel-map1;
+  }
+}
+.mel-puzzle {
+  &:before {
+    content: $mel-puzzle;
+  }
+}
+.mel-paperclip {
+  &:before {
+    content: $mel-paperclip;
+  }
+}
+.mel-attachment {
+  &:before {
+    content: $mel-attachment;
+  }
+}
+.mel-lightbulb {
+  &:before {
+    content: $mel-lightbulb;
+  }
+}
+.mel-compass {
+  &:before {
+    content: $mel-compass;
+  }
+}
+.mel-facebook-r {
+  &:before {
+    content: $mel-facebook-r;
+  }
+}
+.mel-twitter-r {
+  &:before {
+    content: $mel-twitter-r;
+  }
+}
+.mel-googleplus-r {
+  &:before {
+    content: $mel-googleplus-r;
+  }
+}
+.mel-rss {
+  &:before {
+    content: $mel-rss;
+  }
+}
+.mel-linkedin-r {
+  &:before {
+    content: $mel-linkedin-r;
+  }
+}
+.mel-global-network {
+  &:before {
+    content: $mel-global-network;
+  }
+}
+.mel-key {
+  &:before {
+    content: $mel-key;
+  }
+}
+.mel-lamp {
+  &:before {
+    content: $mel-lamp;
+  }
+}
+.mel-login-form {
+  &:before {
+    content: $mel-login-form;
+  }
+}
+.mel-map-pin {
+  &:before {
+    content: $mel-map-pin;
+  }
+}
+.mel-name-tag {
+  &:before {
+    content: $mel-name-tag;
+  }
+}
+.mel-postit {
+  &:before {
+    content: $mel-postit;
+  }
+}
+.mel-t-shirt {
+  &:before {
+    content: $mel-t-shirt;
+  }
+}
+.mel-toilet-paper {
+  &:before {
+    content: $mel-toilet-paper;
+  }
+}
+.mel-fire {
+  &:before {
+    content: $mel-fire;
+  }
+}
+.mel-globe {
+  &:before {
+    content: $mel-globe;
+  }
+}
+.mel-guitar {
+  &:before {
+    content: $mel-guitar;
+  }
+}
+.mel-info {
+  &:before {
+    content: $mel-info;
+  }
+}
+.mel-download {
+  &:before {
+    content: $mel-download;
+  }
+}
+.mel-upload {
+  &:before {
+    content: $mel-upload;
+  }
+}
+.mel-chart {
+  &:before {
+    content: $mel-chart;
+  }
+}
+.mel-arrow-tl {
+  &:before {
+    content: $mel-arrow-tl;
+  }
+}
+.mel-arrow-tr {
+  &:before {
+    content: $mel-arrow-tr;
+  }
+}
+.mel-arrow-bl {
+  &:before {
+    content: $mel-arrow-bl;
+  }
+}
+.mel-arrow-br {
+  &:before {
+    content: $mel-arrow-br;
+  }
+}
+.mel-arrow-b {
+  &:before {
+    content: $mel-arrow-b;
+  }
+}
+.mel-arrow-t {
+  &:before {
+    content: $mel-arrow-t;
+  }
+}
+.mel-calculator {
+  &:before {
+    content: $mel-calculator;
+  }
+}
+.mel-birdpen {
+  &:before {
+    content: $mel-birdpen;
+  }
+}
+.mel-brush {
+  &:before {
+    content: $mel-brush;
+  }
+}
+.mel-setting {
+  &:before {
+    content: $mel-setting;
+  }
+}
+.mel-theme {
+  &:before {
+    content: $mel-theme;
+  }
+}
+.mel-map-plus {
+  &:before {
+    content: $mel-map-plus;
+  }
+}
+.mel-diagram {
+  &:before {
+    content: $mel-diagram;
+  }
+}
+.mel-arrow-reload {
+  &:before {
+    content: $mel-arrow-reload;
+  }
+}
+.mel-arrows {
+  &:before {
+    content: $mel-arrows;
+  }
+}
+.mel-wrench {
+  &:before {
+    content: $mel-wrench;
+  }
+}
+.mel-wrench-double {
+  &:before {
+    content: $mel-wrench-double;
+  }
+}
+.mel-vote {
+  &:before {
+    content: $mel-vote;
+  }
+}
+.mel-tv {
+  &:before {
+    content: $mel-tv;
+  }
+}
+.mel-trash {
+  &:before {
+    content: $mel-trash;
+  }
+}
+.mel-speaker-low {
+  &:before {
+    content: $mel-speaker-low;
+  }
+}
+.mel-star-3 {
+  &:before {
+    content: $mel-star-3;
+  }
+}
+.mel-star-2 {
+  &:before {
+    content: $mel-star-2;
+  }
+}
+.mel-star-1 {
+  &:before {
+    content: $mel-star-1;
+  }
+}
+.mel-speaker-mute {
+  &:before {
+    content: $mel-speaker-mute;
+  }
+}
+.mel-speaker-high {
+  &:before {
+    content: $mel-speaker-high;
+  }
+}
+.mel-settings {
+  &:before {
+    content: $mel-settings;
+  }
+}
+.mel-setting1 {
+  &:before {
+    content: $mel-setting1;
+  }
+}
+.mel-search-minus {
+  &:before {
+    content: $mel-search-minus;
+  }
+}
+.mel-search-plus {
+  &:before {
+    content: $mel-search-plus;
+  }
+}
+.mel-search {
+  &:before {
+    content: $mel-search;
+  }
+}
+.mel-screwdriver {
+  &:before {
+    content: $mel-screwdriver;
+  }
+}
+.mel-scissors {
+  &:before {
+    content: $mel-scissors;
+  }
+}
+.mel-pencil {
+  &:before {
+    content: $mel-pencil;
+  }
+}
+.mel-pen {
+  &:before {
+    content: $mel-pen;
+  }
+}
+.mel-map {
+  &:before {
+    content: $mel-map;
+  }
+}
+.mel-padlock-open {
+  &:before {
+    content: $mel-padlock-open;
+  }
+}
+.mel-padlock {
+  &:before {
+    content: $mel-padlock;
+  }
+}
+.mel-heart {
+  &:before {
+    content: $mel-heart;
+  }
+}
+.mel-headphone {
+  &:before {
+    content: $mel-headphone;
+  }
+}
+.mel-chat-2 {
+  &:before {
+    content: $mel-chat-2;
+  }
+}
+.mel-chat-1 {
+  &:before {
+    content: $mel-chat-1;
+  }
+}
+.mel-feedback-3 {
+  &:before {
+    content: $mel-feedback-3;
+  }
+}
+.mel-feedback-2 {
+  &:before {
+    content: $mel-feedback-2;
+  }
+}
+.mel-feedback {
+  &:before {
+    content: $mel-feedback;
+  }
+}
+.mel-email-open {
+  &:before {
+    content: $mel-email-open;
+  }
+}
+.mel-email {
+  &:before {
+    content: $mel-email;
+  }
+}
+.mel-badge {
+  &:before {
+    content: $mel-badge;
+  }
+}
+.mel-arrow-l {
+  &:before {
+    content: $mel-arrow-l;
+  }
+}
+.mel-arrow-r {
+  &:before {
+    content: $mel-arrow-r;
+  }
+}
+.mel-angle-up {
+  &:before {
+    content: $mel-angle-up;
+  }
+}
+.mel-angle-down {
+  &:before {
+    content: $mel-angle-down;
+  }
+}
+.mel-angle-left {
+  &:before {
+    content: $mel-angle-left;
+  }
+}
+.mel-angle-right {
+  &:before {
+    content: $mel-angle-right;
+  }
+}
+.mel-antenna {
+  &:before {
+    content: $mel-antenna;
+  }
+}
+.mel-centos {
+  &:before {
+    content: $mel-centos;
+  }
+}
+.mel-chrome {
+  &:before {
+    content: $mel-chrome;
+  }
+}
+.mel-creative-commons {
+  &:before {
+    content: $mel-creative-commons;
+  }
+}
+.mel-facebook {
+  &:before {
+    content: $mel-facebook;
+  }
+}
+.mel-facebook-square {
+  &:before {
+    content: $mel-facebook-square;
+  }
+}
+.mel-git-square {
+  &:before {
+    content: $mel-git-square;
+  }
+}
+.mel-git {
+  &:before {
+    content: $mel-git;
+  }
+}
+.mel-github-alt {
+  &:before {
+    content: $mel-github-alt;
+  }
+}
+.mel-github-square {
+  &:before {
+    content: $mel-github-square;
+  }
+}
+.mel-github {
+  &:before {
+    content: $mel-github;
+  }
+}
+.mel-google-plus {
+  &:before {
+    content: $mel-google-plus;
+  }
+}
+.mel-google-plus-square {
+  &:before {
+    content: $mel-google-plus-square;
+  }
+}
+.mel-google-plus-round {
+  &:before {
+    content: $mel-google-plus-round;
+  }
+}
+.mel-linkedin {
+  &:before {
+    content: $mel-linkedin;
+  }
+}
+.mel-linkedin-square {
+  &:before {
+    content: $mel-linkedin-square;
+  }
+}
+.mel-pinterest {
+  &:before {
+    content: $mel-pinterest;
+  }
+}
+.mel-pinterest-square {
+  &:before {
+    content: $mel-pinterest-square;
+  }
+}
+.mel-pinterest-round {
+  &:before {
+    content: $mel-pinterest-round;
+  }
+}
+.mel-python {
+  &:before {
+    content: $mel-python;
+  }
+}
+.mel-instagram {
+  &:before {
+    content: $mel-instagram;
+  }
+}
+.mel-twitter-square {
+  &:before {
+    content: $mel-twitter-square;
+  }
+}
+.mel-twitter {
+  &:before {
+    content: $mel-twitter;
+  }
+}
+.mel-bookmark {
+  &:before {
+    content: $mel-bookmark;
+  }
+}
+.mel-people {
+  &:before {
+    content: $mel-people;
+  }
+}
+.mel-user {
+  &:before {
+    content: $mel-user;
+  }
+}
+.mel-globe-africa {
+  &:before {
+    content: $mel-globe-africa;
+  }
+}
+.mel-globe-america {
+  &:before {
+    content: $mel-globe-america;
+  }
+}
+.mel-globe-asia {
+  &:before {
+    content: $mel-globe-asia;
+  }
+}
+.mel-globe-europe {
+  &:before {
+    content: $mel-globe-europe;
+  }
+}
+.mel-share-square {
+  &:before {
+    content: $mel-share-square;
+  }
+}
+.mel-share {
+  &:before {
+    content: $mel-share;
+  }
+}
+.mel-clipboard-list {
+  &:before {
+    content: $mel-clipboard-list;
+  }
+}
+.mel-eye {
+  &:before {
+    content: $mel-eye;
+  }
+}
+.mel-emoticon-cry {
+  &:before {
+    content: $mel-emoticon-cry;
+  }
+}
+.mel-emoticon {
+  &:before {
+    content: $mel-emoticon;
+  }
+}
+.mel-emoticon-sunglasses {
+  &:before {
+    content: $mel-emoticon-sunglasses;
+  }
+}
+.mel-emoticon-smile {
+  &:before {
+    content: $mel-emoticon-smile;
+  }
+}
+.mel-emoticon-regular {
+  &:before {
+    content: $mel-emoticon-regular;
+  }
+}
+.mel-emoticon-ugly {
+  &:before {
+    content: $mel-emoticon-ugly;
+  }
+}
+.mel-emoticon-surprised {
+  &:before {
+    content: $mel-emoticon-surprised;
+  }
+}
+.mel-emoticon-amazing {
+  &:before {
+    content: $mel-emoticon-amazing;
+  }
+}
+.mel-emoticon-bigsmile {
+  &:before {
+    content: $mel-emoticon-bigsmile;
+  }
+}

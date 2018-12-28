@@ -6,17 +6,17 @@
                 <img class="border rounded-circle avatar-sm" src="{% if entry.owner.avatar %}{{ entry.owner.avatar.url }}{% else %}{% static 'images/avatar/default_avatar.png' %}{% endif %}" alt="{{ entry.owner.username|capfirst }}">
                 <span>{{ entry.owner.username|capfirst }}</span>
             </a>
-            | <i class="fa fa-clock-o" aria-hidden="true"></i> {{ entry.date|date:"DATE_FORMAT" }}
+            | <i class="mel-clock" aria-hidden="true"></i> {{ entry.date|date:"DATE_FORMAT" }}
             {% if blog_page.display_comments %}
-            | <i class="fa fa-comments" aria-hidden="true"></i><a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}"> {% trans "View Comments" %}</a>
+            | <i class="mel-chat-2" aria-hidden="true"></i><a href="{{ entry.full_url }}#disqus_thread" data-disqus-identifier="{{ entry.slug }}"> {% trans "View Comments" %}</a>
             {% endif %}
         </div>
         <div class="p-1">
             <div class="float-right">
-                {% post_to_gplus self.url '<span><i class="fa fa-google-plus"></i></span>' %}
-                {% post_to_twitter self.title self.url '<span><i class="fa fa-twitter"></i></span>' %}
-                {% post_to_linkendin self.url '<span><i class="fa fa-linkedin"></i></span>' %}
-                {% post_to_facebook self.url '<span><i class="fa fa-facebook"></i></span>' %}
+                {% post_to_gplus self.url '<span><i class="mel-google-plus"></i></span>' %}
+                {% post_to_twitter self.title self.url '<span><i class="mel-twitter"></i></span>' %}
+                {% post_to_linkendin self.url '<span><i class="mel-linkedin"></i></span>' %}
+                {% post_to_facebook self.url '<span><i class="mel-facebook"></i></span>' %}
             </div>
         </div>
     </div>

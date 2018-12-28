@@ -3,7 +3,7 @@
 {% image parallax_image original as the_image %}
 
 <div id="{{ id_prefix }}" class="parallax {{ parallax_size }}">
-<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{{ the_image.url }}')"data-img-width="{{ the_image.width }}" data-img-height="{{ the_image.height }}" data-diff="80" data-filter-color="{{ parallax_filter }}">
+<div id="{{ id_prefix }}-img" class="background parallax-image" style="background-image: url('{{ the_image.url }}'); background-size:cover;" data-img-width="{{ the_image.width }}" data-img-height="{{ the_image.height }}" data-diff="80" data-filter-color="{{ parallax_filter }}">
     <div class="content-a">
         <div class="content-b px-5 content-center">
               <div class="col mx-auto">

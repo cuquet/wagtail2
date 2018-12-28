@@ -25,18 +25,18 @@
         cursor: pointer;
         border-radius: 3px;
         top: 0;
-        background-color: $gray-500;
-        border: 1px solid $gray-200;
+        //background-color: $gray-500;
+        border: 1px solid $gray-600;
         @include transition(opacity 0.3s linear);
     }
     .form-check-sign::after{
-        font-family: 'FontAwesome';
-        content: "\f00c";
+        font-family: "#{$icomoon-font-family}";
+        content: "\e907";
         top: 0px;
         text-align: center;
         font-size: 14px;
         opacity: 0;
-        color: #EFE;
+        color: $gray-900;
         border: 0;
         background-color: inherit;
     }
@@ -92,8 +92,8 @@
 }
 
 .form-check-radio .form-check-sign::before{
-    font-family: 'FontAwesome';
-    content: "\f10c";
+    font-family: "#{$icomoon-font-family}";
+    content: "\e909";
     font-size: 22px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -121,8 +121,8 @@
 }
 
 .form-check-radio input[type="radio"]:checked + .form-check-sign::after {
-    font-family: 'FontAwesome';
-    content: "\f192";
+    font-family: "#{$icomoon-font-family}";
+    content: "\e906";
     top: -5px;
     position: absolute;
     left: 5px;

@@ -50,7 +50,7 @@
     <div class="border rounded p-1 text-muted">
         <div class="d-flex flex-row align-items-center justify-content-md-between">
             <div class="p-1">
-                <div class="searchTerm"><i class="fa fa-filter"></i>  {% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
+                <div class="searchTerm"><i class="mel-filter"></i>  {% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
             </div>
         </div>
     </div>
@@ -58,24 +58,21 @@
 {% endif %}
 <section class="py-3">
     {% for entry in entries %}
-    <div class="row justify-content-around align-items-center">
+    <div class="row pt-2 justify-content-around align-items-center">
         {% if entry.header_image %}<div class="col-md-3 mb-2">
         {% image entry.header_image original as header_image %}
         <a href="{% entry_url entry blog_page %}"><img class="img-thumbnail" alt="{{ entry.header_image.title }}" src="{{ header_image.url }}"></a>
         </div>{% endif %}
         <div class="col mb-2">
-            <h1>{{ entry.title }}</h1>
-            {% include 'blog/entry_links.html' with entry=entry %}
+            <a class="nav-link" href="{% entry_url entry blog_page %}" data-toggle="tooltip" data-placement="bottom" title="{% trans 'Continue reading' %}"><h1>{{ entry.title }} <i class="mel-angle-right"></i></h1></a>
+            {% if entry.excerpt|striptags %}
+                {{ entry.excerpt|myrichtext }}
+            {% else %}
+                {{ entry.body|myrichtext|truncatewords_html:70 }}
+            {% endif %}
         </div>
     </div>
-    {% if entry.excerpt|striptags %}
-        {{ entry.excerpt|myrichtext }}
-    {% else %}
-        {{ entry.body|myrichtext|truncatewords_html:70 }}
-    {% endif %}
-    <div class="d-flex justify-content-end">
-        <a class="btn btn-outline-info" href="{% entry_url entry blog_page %}"><i class="fa fa-align-left"></i> {% trans "Continue reading" %} <i class="fa fa-angle-right"></i></a>
-    </div>
+    {% include 'blog/entry_links.html' with entry=entry %}
     {% empty %}
     <span>{% trans 'No results founds.' %}</span>
     {% endfor %}
