@@ -65,7 +65,7 @@ def insert_editor_js():
         (function() {{
             "use strict";
             window.tinymce = window.tinymce || {{}};
-            window.tinymce.base = window.tinymce.baseURL = {};
+            window.tinymce.base = window.tinymce.baseURL = "{}";
             window.tinymce.suffix = "";
         }}());
         </script>
@@ -90,8 +90,8 @@ def images_richtexteditor_js():
     return format_html(
         """
         <script>
-            registerMCEPlugin("wagtailimage", {}, {});
-            window.chooserUrls.imageChooserSelectFormat = {};
+            registerMCEPlugin("wagtailimage", "{}", "{}");
+            window.chooserUrls.imageChooserSelectFormat = "{}";
         </script>
         """,
         to_js_primitive(static('wagtail_tinymce/js/tinymce-plugins/wagtailimage.js')),
@@ -105,7 +105,7 @@ def embeds_richtexteditor_js():
     return format_html(
         """
         <script>
-            registerMCEPlugin("wagtailembeds", {}, {});
+            registerMCEPlugin("wagtailembeds", "{}", "{}");
         </script>
         """,
         to_js_primitive(static('wagtail_tinymce/js/tinymce-plugins/wagtailembeds.js')),
@@ -118,7 +118,7 @@ def links_richtexteditor_js():
     return format_html(
         """
         <script>
-            registerMCEPlugin("wagtaillink", {}, {});
+            registerMCEPlugin("wagtaillink", "{}", "{}");
         </script>
         """,
         to_js_primitive(static('wagtail_tinymce/js/tinymce-plugins/wagtaillink.js')),
@@ -131,7 +131,7 @@ def docs_richtexteditor_js():
     return format_html(
         """
         <script>
-            registerMCEPlugin("wagtaildoclink", {}, {});
+            registerMCEPlugin("wagtaildoclink", "{}", "{}");
         </script>
         """,
         to_js_primitive(static('wagtail_tinymce/js/tinymce-plugins/wagtaildoclink.js')),
