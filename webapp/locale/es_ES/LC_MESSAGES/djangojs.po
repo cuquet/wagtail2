@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-16 19:12+0000\n"
+"POT-Creation-Date: 2018-12-29 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,3 +48,91 @@ msgstr "segundo"
 #: webapp/static/js/jquery.downCount.js:86
 msgid "seconds"
 msgstr "segundos"
+
+#: webapp/static/js/webapp.js:18
+msgid "Go to today"
+msgstr "Ir a hoy"
+
+#: webapp/static/js/webapp.js:19
+msgid "Clear selection"
+msgstr "Cancelar selección"
+
+#: webapp/static/js/webapp.js:20
+msgid "Close the picker"
+msgstr "Cerrar el selector"
+
+#: webapp/static/js/webapp.js:21
+msgid "Select Month"
+msgstr "Selecciona el mes"
+
+#: webapp/static/js/webapp.js:22
+msgid "Previous Month"
+msgstr "El mes anterior"
+
+#: webapp/static/js/webapp.js:23
+msgid "Next Month"
+msgstr "El mes siguiente"
+
+#: webapp/static/js/webapp.js:24
+msgid "Select Year"
+msgstr "Selecciona el año"
+
+#: webapp/static/js/webapp.js:25
+msgid "Previous Year"
+msgstr "El año anterior"
+
+#: webapp/static/js/webapp.js:26
+msgid "Next Year"
+msgstr "El año siguiente"
+
+#: webapp/static/js/webapp.js:27
+msgid "Select Decade"
+msgstr "Selecciona Década"
+
+#: webapp/static/js/webapp.js:28
+msgid "Previous Decade"
+msgstr "La Década anterior"
+
+#: webapp/static/js/webapp.js:29
+msgid "Next Decade"
+msgstr "La Década siguiente"
+
+#: webapp/static/js/webapp.js:30
+msgid "Previous Century"
+msgstr "Siglo anterior"
+
+#: webapp/static/js/webapp.js:31
+msgid "Next Century"
+msgstr "Siglo siguiente"
+
+#: webapp/static/js/webapp.js:32
+msgid "Increment Hour"
+msgstr "Incremento de la hora"
+
+#: webapp/static/js/webapp.js:33
+msgid "Pick Hour"
+msgstr "Selecciona la hora"
+
+#: webapp/static/js/webapp.js:35
+msgid "Increment Minute"
+msgstr "Incrementa los minutos"
+
+#: webapp/static/js/webapp.js:36
+msgid "Pick Minute"
+msgstr "Selecciona los minutos"
+
+#: webapp/static/js/webapp.js:37
+msgid "Decrement Minute"
+msgstr "Reduce los minutos"
+
+#: webapp/static/js/webapp.js:38
+msgid "Increment Second"
+msgstr "Incrementa los segundos"
+
+#: webapp/static/js/webapp.js:39
+msgid "Pick Second"
+msgstr "Selecciona los segundos"
+
+#: webapp/static/js/webapp.js:40
+msgid "Decrement Second"
+msgstr "Reduce los segundos"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-16 19:12+0000\n"
+"POT-Creation-Date: 2018-12-29 14:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: webapp/static/js/jquery.downCount.js:83
 msgid "day"
 msgstr "dia"
@@ -48,3 +49,91 @@ msgstr "segon"
 #: webapp/static/js/jquery.downCount.js:86
 msgid "seconds"
 msgstr "segons"
+
+#: webapp/static/js/webapp.js:18
+msgid "Go to today"
+msgstr "Anar a avui"
+
+#: webapp/static/js/webapp.js:19
+msgid "Clear selection"
+msgstr "Cancel.lar selecció"
+
+#: webapp/static/js/webapp.js:20
+msgid "Close the picker"
+msgstr "Tancar el selector"
+
+#: webapp/static/js/webapp.js:21
+msgid "Select Month"
+msgstr "Seleccioneu el mes"
+
+#: webapp/static/js/webapp.js:22
+msgid "Previous Month"
+msgstr "El mes anterior"
+
+#: webapp/static/js/webapp.js:23
+msgid "Next Month"
+msgstr "El mes següent"
+
+#: webapp/static/js/webapp.js:24
+msgid "Select Year"
+msgstr "Seleccioneu l'any"
+
+#: webapp/static/js/webapp.js:25
+msgid "Previous Year"
+msgstr "L'any anterior"
+
+#: webapp/static/js/webapp.js:26
+msgid "Next Year"
+msgstr "L'any següent"
+
+#: webapp/static/js/webapp.js:27
+msgid "Select Decade"
+msgstr "Seleccioneu Dècada"
+
+#: webapp/static/js/webapp.js:28
+msgid "Previous Decade"
+msgstr "La Dècada anterior"
+
+#: webapp/static/js/webapp.js:29
+msgid "Next Decade"
+msgstr "La Dècada següent"
+
+#: webapp/static/js/webapp.js:30
+msgid "Previous Century"
+msgstr "Segle anterior"
+
+#: webapp/static/js/webapp.js:31
+msgid "Next Century"
+msgstr "Segle següent"
+
+#: webapp/static/js/webapp.js:32
+msgid "Increment Hour"
+msgstr "Increment de l'hora"
+
+#: webapp/static/js/webapp.js:33
+msgid "Pick Hour"
+msgstr "Selecciona l'hora"
+
+#: webapp/static/js/webapp.js:35
+msgid "Increment Minute"
+msgstr "Incrementa els minuts"
+
+#: webapp/static/js/webapp.js:36
+msgid "Pick Minute"
+msgstr "Seleccionar minuts"
+
+#: webapp/static/js/webapp.js:37
+msgid "Decrement Minute"
+msgstr "Redueix els minuts"
+
+#: webapp/static/js/webapp.js:38
+msgid "Increment Second"
+msgstr "Incrementa els segons"
+
+#: webapp/static/js/webapp.js:39
+msgid "Pick Second"
+msgstr "Selecciona el segons"
+
+#: webapp/static/js/webapp.js:40
+msgid "Decrement Second"
+msgstr "Redueix els segons"

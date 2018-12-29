@@ -1570,25 +1570,8 @@ pk.initPopovers();</code></pre>
 
 
 {% block extra_js %}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 <script type="text/javascript" >
-
-// https://tempusdominus.github.io/bootstrap-4/Options/
-$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
-            icons: {
-                time: 'mel-clock',
-                date: 'mel-calendar',
-                up: 'mel-angle-up',
-                down: 'mel-angle-down',
-                previous: 'mel-angle-left',
-                next: 'mel-angle-right',
-                today: 'mel-calendar-tick',
-                clear: 'mel-trash',
-                close: 'mel-cancel'
-            } });
-
-$(document).ready(function(){
+$(function () {
     $('#datetimepicker').datetimepicker({
         locale: '{{ LANGUAGE_CODE }}',
     });
@@ -1596,13 +1579,13 @@ $(document).ready(function(){
         inline: true,
         sideBySide: true,
         buttons:{
-            showToday:true
+            showToday:true,
+            showClear: true,
+            showClose: true
         }
     });
 });
 </script>
-<!--<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&amp;skin=desert"></script>-->
-
 {% endblock extra_js %}
 
 {% block extra_css %}

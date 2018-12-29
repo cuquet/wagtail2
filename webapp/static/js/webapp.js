@@ -1,6 +1,45 @@
 var window_height;
 var scroll_distance;
 
+// https://tempusdominus.github.io/bootstrap-4/Options/
+$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
+            icons: {
+                time: 'mel-clock',
+                date: 'mel-calendar',
+                up: 'mel-angle-up',
+                down: 'mel-angle-down',
+                previous: 'mel-angle-left',
+                next: 'mel-angle-right',
+                today: 'mel-calendar-tick',
+                clear: 'mel-trash',
+                close: 'mel-cancel'
+            },
+            tooltips: {
+                today: gettext('Go to today'),
+                clear: gettext('Clear selection'),
+                close: gettext('Close the picker'),
+                selectMonth: gettext('Select Month'),
+                prevMonth: gettext('Previous Month'),
+                nextMonth: gettext('Next Month'),
+                selectYear: gettext('Select Year'),
+                prevYear: gettext('Previous Year'),
+                nextYear: gettext('Next Year'),
+                selectDecade: gettext('Select Decade'),
+                prevDecade: gettext('Previous Decade'),
+                nextDecade: gettext('Next Decade'),
+                prevCentury: gettext('Previous Century'),
+                nextCentury: gettext('Next Century'),
+                incrementHour: gettext('Increment Hour'),
+                pickHour: gettext('Pick Hour'),
+                decrementHour:'Decrement Hour',
+                incrementMinute: gettext('Increment Minute'),
+                pickMinute: gettext('Pick Minute'),
+                decrementMinute: gettext('Decrement Minute'),
+                incrementSecond: gettext('Increment Second'),
+                pickSecond: gettext('Pick Second'),
+                decrementSecond: gettext('Decrement Second')
+            }
+});
 
 // PreLoader
 $(window).on("load", function () {
@@ -18,7 +57,6 @@ $(window).on('resize', function() {
 
 
 $(function () {
-    // PreLoader
     "use strict";
     $(window).scroll(function(){
         LAUNCH.initParallax();
