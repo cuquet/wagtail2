@@ -199,19 +199,23 @@ $code-color-tag:			null	!default;
 	}
 }
 .code-toolbar {
-	position: relative;
-	.toolbar {
+  position: relative;
+  margin: 2em;
+  .toolbar {
 		position: absolute;
-		top: -2.5rem;
+		top: -2rem;
 		right: 0;
 		/*transition: opacity 0.3s ease-in-out;
 		opacity: 0;*/
 
 		.toolbar-item {
 			display: inline-block;
+            a.btn {
+                font-size:.6em !important;
+            }
 			@each $color, $value in $theme-colors {
 				a.btn-#{$color} {
-					@include button-variant($value, $value);
+                  @include button-variant($value, $value);
 				}
 			}
 /*			button {
@@ -245,7 +249,9 @@ $code-color-tag:			null	!default;
 		// opacity: 1;
 	}
 }
-
+.tab-pane .code-toolbar {
+  margin:0;
+}
 //extra css for components page
 .row-example {
 	margin-bottom: 2rem;

@@ -80,7 +80,7 @@ class BlockQuote(StructBlock):
         blank=True, required=False, label='e.g. Mary Berry')
 
     class Meta:
-        icon = "fa-quote-left"
+        icon = "openquote"
         template = "blocks/block_quote.html"
 
 
@@ -138,7 +138,7 @@ class BaseStreamBlock(StreamBlock):
     heading_block = HeadingBlock()
     intro = RichTextBlock(icon="pilcrow")
     paragraph_block = RichTextBlock(
-        icon="fa-paragraph",
+        icon="form",
         template="blocks/block_paragraph.html"
     )
     aligned_image = BaseImageBlock(label=_('Aligned image'), icon="image")
@@ -148,7 +148,7 @@ class BaseStreamBlock(StreamBlock):
     block_parallax = BaseParallaxBlock()
     embed_block = EmbedBlock(
         help_text='Insert an embed URL e.g https://www.youtube.com/embed/SGJFWirQ3ks',
-        icon="fa-s15",
+        icon="placeholder",
         template="blocks/block_embed.html")
 
 

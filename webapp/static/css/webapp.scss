@@ -35,7 +35,7 @@ form small, form span {
 @import "progress";
 @import "prism";
 @import "responsive";
-
+//
 //// icons
 @import "icons";
 
@@ -89,81 +89,15 @@ footer {
     border: transparent;
   }
 }
-//
-// Blog side bar
-//
 
-/*
-.blog_widget {
-  border-radius: $card-border-radius;
-  margin-bottom: 20px;
-  padding: 1rem;
-  border: $list-group-border-width solid $list-group-border-color;
-  &.blog_widget_plain{
-    border: $list-group-border-width transparent;
-    margin-bottom: 0;
-
-  }
-  .form-control, .form-control:hover, .form-control:focus, .input-group-text{
-    background-color: $input-bg;
-    @include box-shadow(none);
-    border: transparent;
-  }
-  .accordion {
-    text-decoration: none;
-    .card{
-      margin: 0;
-      display:block;
-      box-shadow: none;
-      border:none;
-      .card-header{
-        padding:0;
-        .btn:hover,.btn:focus,btn:active,btn-link:hover{
-          box-shadow: none;
-          text-decoration: none;
-        }
-      }
-      .card-body{
-        padding:0;
-      }
-    }
-    .card:not(:first-of-type):not(:last-of-type) {
-      border-bottom: 0;
-      border-radius: 0;
-    }
-
-    .card:not(:first-of-type) {
-      .card-header:first-child {
-        border-radius: 0;
-      }
-    }
-
-    .card:first-of-type {
-      border-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    .card:last-of-type {
-      margin: 0;
-      box-shadow: none;
-      display:block;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-}
-*/
-
-
-span > .fa-twitter {
+span > [class^="mel-twitter"] {
   color: $social-twitter;
   &:active,&:focus{
     color: $social-twitter;
   }
 }
 
-span > .fa-facebook {
+span > [class^="mel-facebook"] {
   color: $social-facebook;
   &:active,&:focus{
     color: $social-facebook;
@@ -171,46 +105,24 @@ span > .fa-facebook {
 }
 
 
-span > .fa-google-plus {
+span > [class^="mel-google-plus"] {
   color: $social-google;
   &:active,&:focus{
     color: $social-google;
   }
 }
-span > .fa-linkedin {
+span > [class^="mel-linkedin"] {
   color: $social-linkedin;
   &:active,&:focus{
     color: $social-linkedin;
   }
 }
 
-span > .fa-github {
+span > [class^="mel-github"] {
   color: #333333;
   &:active,&:focus{
     color: #333333;
   }
 }
 
-
-/*.img-wrapper {
-    margin-bottom: 1em;
-    position: relative;
-
-    img {
-        display: block;
-        width: 100%;
-        margin-bottom:0;
-    }
-
-    &.left {
-        float:left;
-        width: 45%;
-        margin-right: 5%;
-    }
-    &.right {
-        float:right;
-        width: 45%;
-        margin-left: 5%;
-    }
-}*/
 

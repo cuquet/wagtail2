@@ -187,7 +187,7 @@ $variations: (
         // $args = $function, $colors, $parameters
         $args: join($args, map-get($this-variation, parameters));
       }
-      //@return $args;
+      //@return $args; TODO get-function()
       @return call($args...);
     }
   }
