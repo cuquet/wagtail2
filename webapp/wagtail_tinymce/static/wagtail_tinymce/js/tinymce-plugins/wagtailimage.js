@@ -27,33 +27,45 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 (function() {
     'use strict';
-
     (function($) {
+        $.fn.replaceClass = function (sSearch, sReplace) {
+            return this.each(function() {
+                var s = (' ' + this.className + ' ').replace(
+                    ' ' + sSearch.trim() + ' ',
+                    ' ' + sReplace.trim() + ' '
+                );
+                this.className = s.substr(1, s.length - 2);
+            });
+        };
+
         tinymce.PluginManager.add('wagtailimage', function(editor) {
 
             /* stop editing and resizing of embedded image content */
             function fixContent() {
                 $(editor.getBody()).find('[data-embedtype=image]').each(function () {
-                    $(this).attr('contenteditable', false).attr('data-mce-contenteditable', 'false').find('div,table,img').attr('data-mce-resize', 'false');
+                    //$(this).attr('contenteditable', false).attr('data-mce-contenteditable', 'false').find('div,table,img').attr('data-mce-resize', 'false');
+                    $(this).replaceClass('left','float-left').replaceClass('right','float-right').replaceClass('full-width','mx-auto d-block');
                 });
             }
 
             function showDialog() {
-                var url, urlParams, mceSelection, $currentNode, $targetNode, insertElement;
+                var url, onload, mceSelection, $currentNode, $targetNode, insertElement;
 
                 mceSelection = editor.selection;
                 $currentNode = $(mceSelection.getEnd());
                 // target selected image (if any)
                 $targetNode = $currentNode.closest('[data-embedtype=image]');
                 if ($targetNode.length) {
-                    url = window.chooserUrls.imageChooserSelectFormat;
+                    alert($targetNode.data('id'));
+                    url = window.chooserUrls.imageChooser;
                     url = url.replace('00000000', $targetNode.data('id'));
-                    urlParams = {
-                        edit: 1,
-                        format: $targetNode.data('format'),
-                        alt_text: $targetNode.data('alt'),
-                        caption: $targetNode.data('caption')
-                    };
+//                    urlParams = {
+//                        edit: 1,
+//                        format: $targetNode.data('format'),
+//                        alt_text: $targetNode.data('alt'),
+//                        caption: $targetNode.data('caption')
+//                    };
+                    onload = IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS
                     // select and replace target
                     insertElement = function(elem) {
                         mceSelection.select($targetNode.get(0));
@@ -61,29 +73,39 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     };
                 }
                 else {
-                    url = window.chooserUrls.imageChooser;
-                    urlParams = {
-                        select_format: true
-                    };
+                    //url = window.chooserUrls.imageChooser;
+                    url = window.chooserUrls.imageChooser + '?select_format=true';
+//                    onload = {
+//                        select_format: true
+//                    };
+                    onload = IMAGE_CHOOSER_MODAL_ONLOAD_HANDLERS
                     // otherwise target immediate child of nearest div container
-                    $targetNode = $currentNode.parentsUntil('div:not([data-embedtype])').not('body,html').last();
-                    if (0 == $targetNode.length) {
+//                    $targetNode = $currentNode.parentsUntil('div:not([data-embedtype])').not('body,html').last();
+//                    if (0 == $targetNode.length) {
                         // otherwise target current node
                         $targetNode = $currentNode;
-                    }
+//                    }
                     // select and insert after target
                     insertElement = function(elem) {
-                        $(elem).insertBefore($targetNode);
-                        mceSelection.select(elem);
+                        mceSelection.setNode(elem);
+//                        $(elem).insertBefore($targetNode);
+                        //mceSelection.select(elem);
                     };
                 }
 
                 ModalWorkflow({
                     url: url,
-                    urlParams: urlParams,
+                    onload: onload,
                     responses: {
                         imageChosen: function(imageData) {
-                            var elem = $(imageData.html).get(0);
+                            //var elem = $(imageData.html).get(0);
+                            var elem = $(imageData.html);
+                            /*var elem = new Image(imageData.preview.width,imageData.preview.height);
+                            elem.src = imageData.preview.url;
+                            elem.alt = imageData.title;
+                            elem.title = imageData.title;
+                            elem.id = imageData.id;
+                            elem.setAttribute('data-embedtype', 'image');*/
                             editor.undoManager.transact(function() {
                                 editor.focus();
                                 insertElement(elem);
@@ -93,6 +115,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     }
                 });
             }
+            function isCodeSample(elm) {
+              return elm && elm.nodeName === 'IMG' && elm.className.indexOf('richtext-image') !== -1;
+            }
+            var Utils = {
+              isCodeSample: isCodeSample,
+            };
 
             editor.addButton('wagtailimage', {
                 icon: 'image',
@@ -113,6 +141,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
             editor.on('LoadContent', function (e) {
                 fixContent();
+            });
+            editor.on('dblclick', function (e) {
+                alert(e.target);
+                alert(Utils.isCodeSample(e.target));
+                if (Utils.isCodeSample(e.target)) {
+                  showDialog;
+                }
             });
         });
     })(jQuery);

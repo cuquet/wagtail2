@@ -31,7 +31,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     function createLink(pageData, currentText)
     {
         var a, text;
-
         // Create link
         a = document.createElement('a');
         a.setAttribute('href', pageData.url);
@@ -57,12 +56,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 currentText = '';
                 url = window.chooserUrls.documentChooser;
                 urlParams = {};
-
                 mceSelection = editor.selection;
                 $currentNode = $(mceSelection.getEnd());
                 // target selected link (if any)
                 $targetNode = $currentNode.closest('a[href]');
-
                 if ($targetNode.length) {
                     currentText = $targetNode.text();
                     if( $targetNode.children().length == 0 )
@@ -101,7 +98,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                 ModalWorkflow({
                     url: url,
-                    urlParams: urlParams,
+                    onload: DOCUMENT_CHOOSER_MODAL_ONLOAD_HANDLERS,
                     responses: {
                         documentChosen: function(pageData) {
                             editor.undoManager.transact(function() {
