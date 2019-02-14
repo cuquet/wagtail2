@@ -11,7 +11,7 @@
     {% else %}
         {% image self.image original as theimage %}
     {% endif %}
-    <img id="img-{{ id_prefix }}" src="{{ theimage.url }}" class="{{ self.image.shape }}"  width="{{ theimage.width }}" height="{{ theimage.height }}" alt="{{ theimage.alt }}" />
+    <img alt="{{ theimage.alt }}" class="{{ self.image.alignment }} {{ self.image.shape }}" height="{{ theimage.height }}"  id="img-{{ id_prefix }}" src="{{ theimage.url }}" width="{{ theimage.width }}" />
     {% if child.value.caption %}
         <div class="caption">
             {{ self.image.caption|myrichtext }}
