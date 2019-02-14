@@ -42,7 +42,7 @@ $.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Const
 });
 
 // PreLoader
-$(window).on("load", function () {
+$(window).on('load', function () {
     setTimeout(function() {
         $('#preload').delay(2000).fadeOut(1000); //.addClass('animated fadeOutUp'); //
     });
@@ -99,9 +99,9 @@ $(function () {
     var $navbar = $('.navbar[color-on-scroll]');
     scroll_distance = $navbar.attr('color-on-scroll') || 300;
     if ($('.navbar-color-on-scroll').length != 0) {
-        $(window).on('scroll', LAUNCH.checkScrollForTransparentNav);
+        $(window).on('scroll', function() { LAUNCH.checkScrollForTransparentNav();});
     }
-    LAUNCH.checkScrollForTransparentNav();
+    // LAUNCH.checkScrollForTransparentNav();
     LAUNCH.initNavSearch();
     LAUNCH.initAlertAutoDismiss();
     LAUNCH.backgroundResize();
@@ -287,13 +287,13 @@ LAUNCH = {
         });
     },
 
-    DatePicker: function(){
+/*    DatePicker: function(){
         $('.datepicker').datepicker({
             weekStart:1,
             format: 'dd/mm/yyyy',
             color: 'green',
         });
-    }
+    }*/
 };
 
 // Returns a function, that, as long as it continues to be invoked, will not
@@ -322,6 +322,7 @@ function handleFirstTab(e) {
     }
 }
 
+/*
 function simpleParallax(intensity, element) {
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
@@ -333,4 +334,4 @@ function simpleParallax(intensity, element) {
             '-o-transform': 'translateY(' + imgPos + ')'
         });
     });
-}
+}*/
