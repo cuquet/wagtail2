@@ -1,34 +1,37 @@
-FROM python:3.5-alpine
+FROM python:3.7-alpine
 
-ADD req_docker.txt/ /requirements/
+ADD req_docker.txt /requirements/
+ADD requirements.txt /requirements/
 RUN set -ex \
-	&& apk add --no-cache --virtual .build-deps \
-		gcc \
-		g++ \
-		make \
-		libc-dev \
-		musl-dev \
-		linux-headers \
-		pcre-dev \
-        postgresql-dev \
-		libjpeg-turbo-dev \
-		zlib-dev \
-		git \
-	&& pyvenv /venv \
-	&& /venv/bin/pip install -U pip \
-	&& LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "/venv/bin/pip install -r /requirements/req_docker.txt" \
-	&& runDeps="$( \
-		scanelf --needed --nobanner --recursive /venv \
-			| awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
-			| sort -u \
-			| xargs -r apk info --installed \
-			| sort -u \
-	)" \
-	&& apk add --virtual .python-rundeps $runDeps \
-	&& apk del .build-deps
+        && apk add --no-cache --virtual .build-deps \
+                gcc \
+                g++ \
+                make \
+                libc-dev \
+                musl-dev \
+                linux-headers \
+                pcre-dev \
+                postgresql-dev \
+                libjpeg-turbo-dev \
+                zlib-dev \
+                git \
+#       && pyvenv /venv \
+        && python3 -m venv /venv \
+        && /venv/bin/pip install -U pip \
+        && LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "/venv/bin/pip install -r /requirements/req_docker.txt" \
+        && runDeps="$( \
+                scanelf --needed --nobanner --recursive /venv \
+                        | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+                        | sort -u \
+                        | xargs -r apk info --installed \
+                        | sort -u \
+        )" \
+        && apk add --virtual .python-rundeps $runDeps \
+        && apk del .build-deps \
+        && apk add libjpeg-turbo pcre
 # RUN apk add --no-cache mysql-client
 RUN apk add --no-cache postgresql-client
-# RUN mkdir -p /var/www/webapp/media
+RUN mkdir -p /var/www/webapp/media
 WORKDIR /var/www/
 ADD . /var/www/
 EXPOSE 8000
