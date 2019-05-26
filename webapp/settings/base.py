@@ -11,8 +11,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ
+
+# root = environ.Path(__file__) - 3  # three folder back (/a/b/c/ - 3 = /)
+env = environ.Env(DEBUG=(bool, False),)
+environ.Env.read_env(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env'))
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
@@ -55,6 +59,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.settings',
     'wagtail.core',
     'wagtail.contrib.styleguide',
+    'wagtail.contrib.postgres_search',
 
     'rest_framework',
     'modelcluster',
@@ -188,11 +193,17 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Use Elasticsearch as the search backend for extra performance and better search results
+# http://docs.wagtail.io/en/v2.5.1/reference/contrib/postgres_search.html#postgres-search
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.search.backends.db',
+#         'INDEX': 'webapp',
+#     },
+# }
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.search.backends.db',
-        'INDEX': 'webapp',
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+        'ATOMIC_REBUILD': True,
     },
 }
 

@@ -13,11 +13,9 @@ services:
       - "9200"
   web:
     environment:
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-      DATABASE_URL: ${DATABASE_URL_PROD}
+      DJANGO_SETTINGS_MODULE: "webapp.settings.production"
       CACHE_URL: redis://redis
-      ELASTICSEARCH_ENDPOINT: elasticsearch
-      WAIT_FOR: postgresdb:5432
+#      WAIT_FOR: postgresdb:5432
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -25,15 +23,15 @@ services:
     links:
       - redis:redis
       - elasticsearch:elasticsearch
-    external_links:
-      - mariadb:mariadb
-      - postgresdb:postgresdb
+#    external_links:
+#      - mariadb:mariadb
+#      - postgresdb:postgresdb
     ports:
       - "8000:8000"
     depends_on:
       - redis
       - elasticsearch
-networks:
-  default:
-    external:
-      name: my_network
+#networks:
+#  default:
+#    external:
+#      name: my_network

@@ -22,7 +22,7 @@ js_info_dict = {
 urlpatterns = [
     url(r'^components/$', TemplateView.as_view(template_name='components.html'), name='components'),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url('^sitemap\.xml$', sitemap),
+    url(r'^sitemap\.xml$', sitemap),
     url(r'^api/v2/', api_router.urls),
 ]
 
