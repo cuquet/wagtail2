@@ -13,7 +13,7 @@ whitenoise==3.2.2
 django-storages==1.6.5
 
 # For retrieving credentials and signing requests to Elasticsearch
-urllib3==1.24.1
+urllib3==1.26.5
 django-redis==4.8.0
 # For copying initial media to S3 bucket
 
