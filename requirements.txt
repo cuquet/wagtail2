@@ -1,4 +1,4 @@
-Django==2.1.8
+Django==2.2.24
 #django-dotenv==1.4.1
 django-environ==0.4.5
 wagtail==2.4
