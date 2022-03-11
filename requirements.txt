@@ -2,7 +2,7 @@ Django==2.1.8
 #django-dotenv==1.4.1
 django-environ==0.4.5
 wagtail==2.4
-Pillow==5.4.1
+Pillow==9.0.1
 
 # DB client
 psycopg2<2.8
